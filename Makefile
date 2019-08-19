@@ -19,3 +19,5 @@ install:
 soft_install:
 	export PATH = $PATH:$(currentdir)meow
 	echo soft-installed!
+uninstall:
+	rm /usr/bin/meow
