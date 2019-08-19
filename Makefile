@@ -2,7 +2,7 @@ maindir=main/
 moduledir=modules/
 outdir=out/
 outname=meow
-currentdir = $(PWD)/
+currentdir = $(shell pwd)/
 cc=g++
 .SILENT all:
 all:
