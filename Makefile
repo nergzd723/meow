@@ -18,7 +18,7 @@ install:
 	cp $(currentdir)meow /usr/bin/meow
 	echo done!
 soft_install:
-	export PATH=$(currentmeowdir):$PATH
+	export PATH=$(currentdir):$PATH
 	echo soft-installed!
 uninstall:
 	rm /usr/bin/meow
