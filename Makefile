@@ -12,7 +12,7 @@ all:
 	mkdir -p out
 	cp $(maindir)$(target) $(outdir)$(target)
 	cp -r $(moduledir)* $(outdir)
-	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include
+	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 clean:	
 	rm -rf out/
 install:
