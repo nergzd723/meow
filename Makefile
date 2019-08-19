@@ -3,7 +3,7 @@ moduledir=modules/
 outdir=out/
 outname=main.o
 cc=g++
-.SILENT:
+.SILENT all:
 
 	all:
 		mkdir -p out
