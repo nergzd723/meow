@@ -9,8 +9,8 @@ int main
     ifstream filetomeow;
     filetomeow.open(argv[1]);
     if (!filetomeow.is_open()){
-        cout << "No input file available\n";
-        return 1;
+        loopwait();
+        return 0;
     }
     while (getline(filetomeow, buffer)){
         cout << buffer << endl;
