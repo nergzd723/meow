@@ -12,7 +12,7 @@ int checkforvar(string main){
         char* env;
         char* v;
         v* << main;
-        env* << getenv(main);
+        env* << getenv(v*);
         if (env!=NULL){
             
             cout << env << endl;
