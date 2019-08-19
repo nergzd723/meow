@@ -13,6 +13,6 @@ int main(int argc, char **argv){
         return 1;
     }
     while (getline(filetomeow, buffer)){
-        cout << buff << endl;
+        cout << buffer << endl;
     }
 }
