@@ -3,6 +3,7 @@ moduledir=modules/
 outdir=out/
 outname=meow
 currentdir = $(shell pwd)/
+currentmeowdir = $(currentdir)$(outname)
 cc=g++
 .SILENT all:
 all:
@@ -17,7 +18,7 @@ install:
 	cp $(currentdir)meow /usr/bin/meow
 	echo done!
 soft_install:
-	export PATH = $PATH:$(currentdir)meow
+	export PATH = $(currentmeowdir):$PATH
 	echo soft-installed!
 uninstall:
 	rm /usr/bin/meow
