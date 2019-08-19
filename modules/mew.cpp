@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int loopwait(){
+void loopwait(){
 	while(1){
 		string buf;
 		cin >> buf;
