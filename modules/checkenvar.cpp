@@ -6,7 +6,7 @@ using namespace std;
 
 int checkforvar(string main){
     char doll;
-    doll << main.at(0);
+    doll << main.at(1);
     cout << doll;
     if (doll = '$'){
         return 0;
