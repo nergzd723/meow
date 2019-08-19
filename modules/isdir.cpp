@@ -1,10 +1,11 @@
 using namespace std;
+#include <iostream>
 
-void main(char* dir){
+void main(string dir){
 
-  char *myDir = dirname(myPath);
+  char *myDir = dirname(dir);
   struct stat myStat;
-  if ((stat(myDir, &myStat) == 0) && (((myStat.st_mode) & S_IFMT) == S_IFDIR)) {
+  if ((stat(dir, &myStat) == 0) && (((myStat.st_mode) & S_IFMT) == S_IFDIR)) {
       cout << "is a directory" << endl;
       exit(1)
   }
