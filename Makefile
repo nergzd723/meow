@@ -11,7 +11,7 @@ all:
 	mkdir -p out
 	cp $(maindir)$(target) $(outdir)$(target)
 	cp -r $(moduledir)* $(outdir)
-	$(cc) $(outdir)mew.cpp $(outdir)$(moduletarget) -o $(outname) -I$(currentdir)include
+	$(cc) $(outdir)meow.cpp $(outdir)$(moduletarget) -o $(outname) -I$(currentdir)include
 clean:	
 	rm -rf out/
 install:
