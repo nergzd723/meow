@@ -1,3 +1,3 @@
 using namespace std;
 void loopwait();
-int checkforvar(string main);
+void checkforvar(string main);
