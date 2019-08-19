@@ -5,7 +5,6 @@ void loopwait(){
 	while(1){
 		string buf;
 		cin >> buf;
-		cout << buf;
-		cout << "\n";
+		cout << buf << endl;
 	}
 }
