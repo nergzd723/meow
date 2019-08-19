@@ -7,6 +7,7 @@ currentmeowdir = $(currentdir)$(outname)
 moduletarget = mew.cpp checkforvar.cpp
 target = meow.cpp
 cc=g++
+.SILENT all:
 all:
 	mkdir -p out
 	cp $(maindir)$(target) $(outdir)$(target)
