@@ -1,6 +1,6 @@
 using namespace std;
 #include <iostream>
-
+#include <sys/stat.h>
 void main(string dir){
 
   char *myDir = dirname(dir);
