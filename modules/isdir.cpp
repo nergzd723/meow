@@ -1,6 +1,9 @@
 using namespace std;
 #include <iostream>
 #include <filesystem>
-int dirn(string dir){
-  return 0;
+void dirn(string dir){
+  if (is_directory(dir)){
+    cout << "Is a directory" << endl;
+    exit(0)
+  }
 }
