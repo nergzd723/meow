@@ -9,6 +9,7 @@ target = meow.cpp
 cc=g++
 all:
 	mkdir -p out
+	cd out
 	cp $(maindir)$(target) $(outdir)$(target)
 	cp -r $(moduledir)* $(outdir)
 	$(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include
