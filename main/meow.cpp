@@ -11,7 +11,7 @@ int main
     ifstream filetomeow;
     filetomeow.open(argv[1]);
     if (!filetomeow.is_open()){
-        checkforvar(argv[1]);
+        i = checkforvar(argv[1]);
         loopwait();                                 //if nothing worked, enter endless loop of repeating what user typed
         return 0;
     }
