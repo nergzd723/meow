@@ -10,7 +10,7 @@ all:
 	mkdir -p out
 	cp $(maindir)meow.cpp $(outdir)meow.cpp
 	cp $(moduledir)mew.cpp $(outdir)mew.cpp
-	$(cc) $(outdir)mew.cpp $(outdir)meow.cpp -o $(outname) -linclude
+	$(cc) $(outdir)mew.cpp $(outdir)meow.cpp -o $(outname) -l$(currentdir)include
 clean:	
 	rm -rf out/
 install:
