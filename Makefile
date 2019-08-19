@@ -11,7 +11,7 @@ cc=g++
 all:
 	mkdir -p out
 	cp $(maindir)$(target) $(outdir)$(target)
-	cp $(moduledir)* $(outdir)
+	cp $(moduledir){$(moduletarget)} $(outdir)
 	$(cc) $(outdir)mew.cpp $(outdir)$(moduletarget) -o $(outname) -I$(currentdir)include
 clean:	
 	rm -rf out/
