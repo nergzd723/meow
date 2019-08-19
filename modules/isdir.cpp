@@ -1,7 +1,7 @@
 using namespace std;
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 #include <iostream>
-#include <experimental/filesystem>
+#include <filesystem>
 void dirn(string dir){
   if (is_directory(dir)){
     cout << "Is a directory" << endl;
