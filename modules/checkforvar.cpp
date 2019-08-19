@@ -4,7 +4,7 @@
 using namespace std;
 int check(string main){
     char doll;
-    doll << str.at(main);
+    doll << main.at(main);
     if (doll = '$'){
         return 1;
     }
