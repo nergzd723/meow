@@ -6,5 +6,6 @@ void loopwait(){
 		string buf;
 		cin >> buf;
 		cout << buf;
+		cout << "\n";
 	}
 }
