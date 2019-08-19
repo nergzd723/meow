@@ -20,7 +20,7 @@ int main
     string buffer;
     ifstream filetomeow;
     filetomeow.open(argv[1]);
-    cout >> argv[1];
+    cout << argv[1];
     if (!filetomeow.is_open()){
         int i = checkforvar(argv[1]);
         loopwait();                                 //if nothing worked, enter endless loop of repeating what user typed
