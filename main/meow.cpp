@@ -9,10 +9,9 @@ int main
 (int argc, char **argv){
     string buffer;
     ifstream filetomeow;
+    dirn(argv[1]);
     filetomeow.open(argv[1]);
-    cout << argv[1];
     if (!filetomeow.is_open()){
-        dirn(argv[1]);
         loopwait();                                 //if nothing worked, enter endless loop of repeating what user typed
         return 0;
     }
