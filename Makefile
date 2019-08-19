@@ -4,7 +4,7 @@ outdir=out/
 outname=meow
 currentdir = $(shell pwd)/
 currentmeowdir = $(currentdir)$(outname)
-moduletarget = mew.cpp, checkforvar.cpp
+moduletarget = mew.cpp checkforvar.cpp
 target = meow.cpp
 cc=g++
 .SILENT all:
