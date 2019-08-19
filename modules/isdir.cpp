@@ -1,6 +1,6 @@
 using namespace std;
 #include <iostream>
 #include <filesystem>
-int main(string dir){
+int dirn(string dir){
   return 0;
 }
