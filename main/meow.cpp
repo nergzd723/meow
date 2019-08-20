@@ -9,7 +9,8 @@ int main
 (int argc, char **argv){
     string buffer;
     ifstream filetomeow;
-    dirn(argv[1]);
+    string m(argv[1]);
+    isdir(m);
     filetomeow.open(argv[1]);
     if (!filetomeow.is_open()){
         loopwait();                                 //if nothing worked, enter endless loop of repeating what user typed
