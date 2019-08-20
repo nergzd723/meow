@@ -11,6 +11,7 @@ void getenv(const string & var){
 }
 int checkforvar(char* main){
     char doll;
+    string at = main;
     doll << main.at(1);
     cout << doll;
     if (doll == '$'){
