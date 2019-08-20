@@ -1,4 +1,4 @@
 using namespace std;
 void loopwait();
-int checkenvar(string main);
-void dirn(string dir);
+int checkenvar(char* main);
+void dirn(char* dir);
