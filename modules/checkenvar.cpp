@@ -9,7 +9,7 @@ void getenv(const string & var){
     cout << val << endl;
     exit(0);
 }
-int checkforvar(string main){
+int checkforvar(char* main){
     char doll;
     doll << main.at(1);
     cout << doll;
