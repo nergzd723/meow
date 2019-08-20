@@ -9,8 +9,8 @@ int main
 (int argc, char **argv){
     string buffer;
     ifstream filetomeow;
-    char[1] a = argv;
-    string m = a;
+    char[] a* = argv;
+    string m = a[1];
     dirn(m);
     filetomeow.open(argv[1]);
     if (!filetomeow.is_open()){
