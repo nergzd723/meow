@@ -9,7 +9,7 @@ int main
 (int argc, char **argv){
     string buffer;
     ifstream filetomeow;
-    char[] a* = argv;
+    char& a = argv;
     string m = a[1];
     dirn(m);
     filetomeow.open(argv[1]);
