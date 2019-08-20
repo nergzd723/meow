@@ -4,18 +4,10 @@
 
 using namespace std;
 
-void getenv(const string & var){
+void checkforvar(const string & var){
     const char* val = ::getenv(var.c_str());
+    if (val == 0){
+        exit(1);
     cout << val << endl;
     exit(0);
-}
-int checkforvar(char* main){
-    char doll;
-    string at = main;
-    doll << at.at(1);
-    cout << doll;
-    if (doll == '$'){
-        getenv(main);
-    }
-    return 0;
 }
