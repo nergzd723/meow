@@ -13,6 +13,7 @@ all:
 	cp $(maindir)$(target) $(outdir)$(target)
 	cp -r $(moduledir)* $(outdir)
 	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
+	mv $(target) $(outdir)$(target)
 clean:	
 	rm -rf out/
 install:
