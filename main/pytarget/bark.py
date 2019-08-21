@@ -1,6 +1,3 @@
 import os
 import sys
-arg = sys.argv()
-print(len(arg), " ", str(arg))
-
-
+print(len(sys.argv()), " ", str(sys.argv()))
