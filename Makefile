@@ -32,3 +32,6 @@ soft_install:
 	echo soft-installed!
 uninstall:
 	rm /usr/bin/meow
+target-py:
+	cd out && $(pcomp) $(pflags) $(ptarget) && cd bark.dist && cp bark ../../bark
+	echo Target Python modules OK!
