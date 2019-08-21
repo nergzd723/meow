@@ -16,7 +16,10 @@ else:
 if os.path.exists(ar[0]) and os.path.exists(ar[1]):
   f = open(ar[1], "w+")
   f.close()
-  shutil.copyfile(ar[0], ar[1])
+  try:
+    shutil.copyfile(ar[0], ar[1])
+  except:
+    print('cpy: file already exists!')
 elif os.path.exists(ar[0]):
   f = open(ar[1], "w+")
   f.close()
