@@ -1,15 +1,25 @@
 import os
+import shutil
 import sys
 arg = sys.argv[1:]
 if '-r' in arg:
   ar = arg[1:]
-  recursive = TRUE;
+  recursive = True
 else:
   ar = arg
 i = 0
 for x in ar:
   if os.path.exists(ar[i]):
-    os.remove(ar[i])
+    try:
+      os.remove(ar[i])
+    except:
+      if os.isdir(ar[i]) and recursive:
+        shutil.rmtree(ar[i])
+        os.rmdir(ar[i])
+      else:
+        print("bark: Is a directory, " ar[i])
+                 
+      
   else:
     print("No such file or directory -", ar[i]) 
   i+=1
