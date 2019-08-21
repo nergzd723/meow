@@ -19,13 +19,13 @@ all:
 	cp -r $(maindir)$(pdir)* $(outdir)
 	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 	echo Target and modules compiled!
-	cd out && $(pcomp) $(pflags) $(ptarget)
+	cd out && $(pcomp) $(pflags) $(ptarget) && cd bark.dist && cp bark ../../bark
 	echo Target Python modules OK!
 clean:	
 	rm -rf out/
 install:
 	echo installing...
-	cp $(currentdir)meow /usr/bin/meow
+	cp $(currentdir)meow /usr/bin/meow 
 	echo done!
 soft_install:
 	export PATH=$PATH:$(currentdir)
