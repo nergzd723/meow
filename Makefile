@@ -7,7 +7,8 @@ currentmeowdir = $(currentdir)$(outname)
 moduletarget = loop.cpp checkenvar.cpp isdir.cpp
 target = meow.cpp
 pdir = pytarget/
-ptarget = bark.py
+ptarget = bark.py cpy.py
+pcp = bark.bin cpy.bin
 pflags = -m nuitka --follow-imports
 pcomp = python3
 cc=g++
@@ -19,7 +20,7 @@ all:
 	cp -r $(maindir)$(pdir)* $(outdir)
 	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 	echo Target and modules compiled!
-	cd out && $(pcomp) $(pflags) $(ptarget) && cp bark.bin ../bark
+	cd out && $(pcomp) $(pflags) $(ptarget) && cp $(pcp) ../bark
 	echo Warning! Bark has compiled in non-standalone mode.
 	echo Target Python modules OK!
 clean:	
