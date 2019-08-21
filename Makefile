@@ -28,7 +28,6 @@ clean:
 install:
 	echo installing...
 	cp $(currentdir)meow /usr/bin/meow
-        cp $(currentdir)bark /usr/bin/bark
 	echo done!
 soft_install:
 	export PATH=$PATH:$(currentdir)
