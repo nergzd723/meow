@@ -17,7 +17,7 @@ for x in ar:
         shutil.rmtree(ar[i])
         os.rmdir(ar[i])
       else:
-        print("bark: Is a directory, " ar[i])
+        print("bark: Is a directory, ", ar[i])
                  
       
   else:
