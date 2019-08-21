@@ -25,7 +25,7 @@ elif os.path.exists(ar[0]):
   f.close()
   try:
     shutil.copyfile(ar[0], ar[1])
-  except IsADirectoryError:
+  except:
     if recursive:
       shutil.copytree(ar[0], ar[1])
     else:
