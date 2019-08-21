@@ -19,7 +19,7 @@ all:
 	cp -r $(maindir)$(pdir)* $(outdir)
 	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 	echo Target and modules compiled!
-	cd out && $(pcomp) $(pflags) $(ptarget) && cd bark.dist && cp bark ../../bark
+	cd out && $(pcomp) $(pflags) $(ptarget) && cp bark.bin ../bark
 	echo Target Python modules OK!
 clean:	
 	rm -rf out/
