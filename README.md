@@ -1,7 +1,7 @@
 # meow
 # Multiple C++ and Python utils
 
-There are only availible two variants now - bark for removing and meow for reading from file
+There are only availible two variants now - `bark` for removing and `meow` for reading from file
 
 # How to install?
 Do `make` to build all supported modules and targets. Then `make install` to install to /usr/bin and `make uninstall` to delete binaries from it.
