@@ -20,6 +20,8 @@ all:
 	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 	echo Target and modules compiled!
 	cd out && $(pcomp) $(pflags) $(ptarget) && cp bark.bin ../bark
+	echo Warning! Bark has compiled in non-standalone mode. \
+	It cannot be run on systems without Python interpreter. Do make target-py to recompile as standalone
 	echo Target Python modules OK!
 clean:	
 	rm -rf out/
@@ -33,5 +35,5 @@ soft_install:
 uninstall:
 	rm /usr/bin/meow
 target-py:
-	cd out && $(pcomp) $(pflags) $(ptarget) && cd bark.dist && cp bark ../../bark
+	cd out && $(pcomp) $(pflags) --standalone $(ptarget) && cd bark.dist && cp bark ../../bark
 	echo Target Python modules OK!
