@@ -6,8 +6,10 @@ if '-r' in arg:
   recursive = TRUE;
 else:
   ar = arg
-for x in ar:
-  if os.path.exists(ar[x]):
-    os.remove(ar[x])
+i = 0
+for i in ar:
+  if os.path.exists(ar[i]):
+    os.remove(ar[i])
   else:
-    print("No such file or directory -", ar[x]) 
+    print("No such file or directory -", ar[i]) 
+  i+=1
