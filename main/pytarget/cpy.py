@@ -23,7 +23,13 @@ if os.path.exists(ar[0]) and os.path.exists(ar[1]):
 elif os.path.exists(ar[0]):
   f = open(ar[1], "w+")
   f.close()
-  shutil.copyfile(ar[0], ar[1])
+  try:
+    shutil.copyfile(ar[0], ar[1])
+  except IsADirectoryError:
+    if recursive:
+      shutil.copytree(ar[0], ar[1])
+    else:
+      print("cpy: is a directory!(-r flag will probably fix this)")
 elif os.path.exists(ar[1]):
   print("cpy:", ar[0], "does not exist!")
 
