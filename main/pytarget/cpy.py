@@ -14,7 +14,7 @@ if '-v' in arg:
 else:
   ar = arg
 if os.path.exists(ar[0]) and os.path.exists(ar[1]):
-  f = open(ar[1], w+)
+  f = open(ar[1], "w+")
   f.close()
   shutil.copyfile(ar[0], ar[1])
 elif os.path.exists(ar[0]):
