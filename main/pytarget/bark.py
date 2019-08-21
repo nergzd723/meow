@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+recursive = False
 arg = sys.argv[1:]
 if '-r' in arg:
   ar = arg[1:]
