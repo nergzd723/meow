@@ -13,7 +13,7 @@ for x in ar:
     try:
       os.remove(ar[i])
     except:
-      if os.isdir(ar[i]) and recursive:
+      if os.path.isdir(ar[i]) and recursive:
         shutil.rmtree(ar[i])
         os.rmdir(ar[i])
       else:
