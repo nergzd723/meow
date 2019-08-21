@@ -16,7 +16,6 @@ for x in ar:
     except:
       if os.path.isdir(ar[i]) and recursive:
         shutil.rmtree(ar[i])
-        os.rmdir(ar[i])
       else:
         print("bark: Is a directory, ", ar[i])
                  
