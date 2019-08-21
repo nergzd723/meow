@@ -28,13 +28,15 @@ clean:
 install:
 	echo installing...
 	cp $(currentdir)meow /usr/bin/meow
+	cp $(currentdir)bark /usr/bin/meow
+	cp $(currentdir)cpy /usr/bin/meow
 	echo done!
 soft_install:
 	export PATH=$PATH:$(currentdir)
 	echo soft-installed!
 uninstall:
 	rm /usr/bin/meow
-        rm /usr/bin/bark
+ 	rm /usr/bin/bark
 target-py:
 	cd out && $(pcomp) $(pflags) --standalone $(ptarget) && cd bark.dist && cp bark ../../bark
 	echo Target Python modules OK!
