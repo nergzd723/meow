@@ -16,7 +16,7 @@ all:
 	mkdir -p out
 	cp $(maindir)$(target) $(outdir)$(target)
 	cp -r $(moduledir)* $(outdir)
-	cp -r $(maindir)$(pydir)* $(outdir)
+	cp -r $(maindir)$(pdir)* $(outdir)
 	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 	echo Target and modules compiled!
 	$(pcomp) $(pflags) $(ptarget)
