@@ -7,7 +7,7 @@ if '-r' in arg:
 else:
   ar = arg
 i = 0
-for i in ar:
+for x in ar:
   if os.path.exists(ar[i]):
     os.remove(ar[i])
   else:
