@@ -20,5 +20,7 @@ if os.path.exists(ar[0]) and os.path.exists(ar[1]):
 elif os.path.exists(ar[0]):
   print("cpy:", ar[1], "does not exist!")
 elif os.path.exists(ar[1]):
-  print("cpy:", ar[0], "does not exist!")
+  f = open(ar[1], "w+")
+  f.close()
+  shutil.copyfile(ar[0], ar[1])
   
