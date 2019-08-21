@@ -13,10 +13,10 @@ if '-v' in arg:
   getv()
 else:
   ar = arg
-if os.path.exists(ar[1]) and os.path.exists(ar[2]):
-  shutil.copyfile(ar[1], ar[2])
-elif os.path.exists(ar[1]):
-  print("cpy:", ar[2], "does not exist!")
-elif os.path.exists(ar[2]):
+if os.path.exists(ar[0]) and os.path.exists(ar[1]):
+  shutil.copyfile(ar[0], ar[1])
+elif os.path.exists(ar[0]):
   print("cpy:", ar[1], "does not exist!")
+elif os.path.exists(ar[1]):
+  print("cpy:", ar[0], "does not exist!")
   
