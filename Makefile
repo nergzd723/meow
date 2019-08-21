@@ -8,7 +8,7 @@ moduletarget = loop.cpp checkenvar.cpp isdir.cpp
 target = meow.cpp
 pdir = pytarget/
 ptarget = bark.py
-pflags = -m nuitka
+pflags = -m nuitka --follow-imports
 pcomp = python3
 cc=g++
 .SILENT all:
