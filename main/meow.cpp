@@ -11,8 +11,9 @@ int main
     ifstream filetomeow;
     filetomeow.open(argv[1]);
     if (!filetomeow.is_open()){
-        string env;
+        string env = "";
         env = checkforvar(argv[1]);
+        cout << env << endl;
         loopwait();                                 //if nothing worked, enter endless loop of repeating what user typed
         return 0;
     }
