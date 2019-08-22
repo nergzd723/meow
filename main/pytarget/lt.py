@@ -14,5 +14,7 @@ try:
   art = os.listdir(path)
 except:
   print('ln: no such file or directory')
-print('    '.join(str(x) for x in art))
-print('\n'.join(''.join(str(i).center(5) for i in row) for row in art))
+for lists in art:
+    for i in lists:
+        print(i,end='\t')
+    print()
