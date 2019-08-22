@@ -8,10 +8,10 @@ import os
 ar = sys.argv[1:]
 file = ar[0]
 #try:  
-  f = open(file, "r")
-  a = os.getcwd()
-  ark = a+'/'+file
-  os.utime(ark, (epoch, epoch+1))
+f = open(file, "r")
+a = os.getcwd()
+ark = a+'/'+file
+os.utime(ark, (epoch, epoch+1))
 #except:
 #  print("\n")
 #  f = open(file, "w+")
