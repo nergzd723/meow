@@ -5,7 +5,6 @@ import datetime
 epoch = datetime.datetime.utcfromtimestamp(0)
 import sys
 import os
-import 
 ar = sys.argv[1:]
 file = ar[0]
 try:  
