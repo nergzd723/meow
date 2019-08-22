@@ -16,4 +16,3 @@ try:
 except:
   print('ln: no such file or directory')
 print('    '.join(str(x) for x in art))
-print('\n'.join(''.join(str(i).center(5) for i in row) for row in art))
