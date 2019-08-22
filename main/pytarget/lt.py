@@ -3,7 +3,6 @@
 # GNU LGPL v3
 import os
 import sys
-import shutils
 ext = False
 ar = sys.argv[1:]
 path = ""
