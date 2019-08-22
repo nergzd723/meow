@@ -6,7 +6,10 @@ epoch = int(time.time())
 import sys
 import os
 ar = sys.argv[1:]
-file = ar[0]
+try:
+  file = ar[0]
+except:
+  print('tap: no such file or directory!')
 try:  
   f = open(file, "r")
   a = os.getcwd()
