@@ -9,7 +9,7 @@ ar = sys.argv[1:]
 file = ar[0]
 try:  
   f = open(file, "r")
-  os.utime(file, (epoch, epoch+1))
+  os.utime(os.path.abspath(file), (epoch, epoch+1))
 except:
   print("\n")
   f = open(file, "w+")
