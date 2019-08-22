@@ -14,5 +14,4 @@ try:
   art = os.listdir(path)
 except:
   print('ln: no such file or directory')
-for file in range(len(art)):
-  print(art[file])
+print(*ar)
