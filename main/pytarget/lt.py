@@ -15,3 +15,7 @@ try:
 except:
   print('ln: no such file or directory')
 print('    '.join(str(x) for x in art))
+for x in art:
+  for y in x:
+    print('{0:<10}'.format(y), end='')
+    print()
