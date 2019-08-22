@@ -7,14 +7,14 @@ import sys
 import os
 ar = sys.argv[1:]
 file = ar[0]
-try:  
+#try:  
   f = open(file, "r")
   a = os.getcwd()
   ark = a+'/'+file
   os.utime(ark, (epoch, epoch+1))
-except:
-  print("\n")
-  f = open(file, "w+")
+#except:
+#  print("\n")
+#  f = open(file, "w+")
 try:
   f.close()
 except:
