@@ -9,8 +9,10 @@ target = meow.cpp
 pdir = pytarget/
 ptarget = bark.py
 ptarget2 = cpy.py
+ptargetlt = lt.py
 pcp = bark.bin
 pcp2 = cpy.bin
+pcp3 = lt.bin
 pflags = -m nuitka --follow-imports
 pcomp = python3
 cc=clang++
@@ -25,6 +27,7 @@ all:
 	echo Target and modules compiled!
 	$(pcc) $(ptarget) && cp $(pcp) ../bark
 	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
+	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
 	echo Warning! Python modules has compiled in non-standalone mode.
 	echo Target Python modules OK!
 clean:	
@@ -45,4 +48,5 @@ uninstall:
 target-py:
 	cd out && $(pcomp) $(pflags) --standalone $(ptarget) && cd bark.dist && cp bark ../../bark
 	cd out && $(pcomp) $(pflags) --standalone $(ptarget2) && cd cpy.dist && cp cpy ../../cpy
+	cd out && $(pcomp) $(pflags) --standalone $(ptarget3) && cd lt.dist && cp lt ../../lt
 	echo Target Python modules OK!
