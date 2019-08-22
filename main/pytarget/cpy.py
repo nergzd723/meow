@@ -9,7 +9,7 @@ recursive = False
 if '-r' in arg:
   ar = arg[1:]
   recursive = True
-if '-v' in arg:
+elif '-v' in arg:
   getv()
 else:
   ar = arg
