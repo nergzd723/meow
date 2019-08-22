@@ -5,7 +5,7 @@ import sys
 import os
 ar = sys.argv[1:]
 file = ar[0]
-f = open(file)
+f = open(file, "w+")
 try:
   f.close()
 except:
