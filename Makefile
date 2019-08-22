@@ -13,7 +13,8 @@ pcp = bark.bin
 pcp2 = cpy.bin
 pflags = -m nuitka --follow-imports
 pcomp = python3
-cc=g++
+cc=clang++
+pcc = cd out && $(pcomp) $(pflags)
 .SILENT all:
 all:
 	mkdir -p out
@@ -22,8 +23,8 @@ all:
 	cp -r $(maindir)$(pdir)* $(outdir)
 	cd out && $(cc) $(target) $(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 	echo Target and modules compiled!
-	cd out && $(pcomp) $(pflags) $(ptarget) && cp $(pcp) ../bark
-	cd out && $(pcomp) $(pflags) $(ptarget2) && cp $(pcp2) ../cpy
+	$(pcc) $(ptarget) && cp $(pcp) ../bark
+	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
 	echo Warning! Python modules has compiled in non-standalone mode.
 	echo Target Python modules OK!
 clean:	
