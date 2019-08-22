@@ -27,6 +27,7 @@ elif os.path.exists(ar[0]):
     shutil.copyfile(ar[0], ar[1])
   except:
     if recursive:
+      os.remove(ar[1])
       shutil.copytree(ar[0], ar[1])
     else:
       print("cpy: is a directory!(-r flag will probably fix this)")
