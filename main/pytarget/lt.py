@@ -2,6 +2,7 @@
 # Copyright Nergzd723
 # GNU LGPL v3
 import os
+from tabulate import tabulate
 import sys
 ext = False
 ar = sys.argv[1:]
