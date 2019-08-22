@@ -14,4 +14,4 @@ try:
   art = os.listdir(path)
 except:
   print('ln: no such file or directory')
-print(*ar)
+print(' '.join(ar)) 
