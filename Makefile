@@ -40,6 +40,8 @@ install:
 	cp $(currentdir)meow /usr/bin/meow
 	cp $(currentdir)bark /usr/bin/bark
 	cp $(currentdir)cpy /usr/bin/cpy
+	cp $(currentdir)lt /usr/bin/lt
+	cp $(currentdir)tap /usr/bin/tap
 	echo done!
 soft_install:
 	export PATH=$PATH:$(currentdir)
