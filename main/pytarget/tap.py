@@ -11,7 +11,7 @@ file = ar[0]
 f = open(file, "r")
 a = os.getcwd()
 ark = a+'/'+file
-os.utime(ark, (epoch, epoch))
+os.utime(ark, (int(epoch), int(epoch)))
 #except:
 #  print("\n")
 #  f = open(file, "w+")
