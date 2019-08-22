@@ -16,3 +16,4 @@ except:
   print('ln: no such file or directory')
 for file in range(len(art)):
   print(art[file])
+print(' '.join(str(x) for x in art))
