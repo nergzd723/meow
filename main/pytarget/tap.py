@@ -11,6 +11,7 @@ try:
   f = open(file, "r")
   os.utime(file, (epoch, epoch+1))
 except:
+  print("\n")
   f = open(file, "w+")
 try:
   f.close()
