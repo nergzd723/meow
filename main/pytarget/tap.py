@@ -11,7 +11,10 @@ try:
 except:
   print('tap: no such file or directory!')
 try:  
-  f = open(file, "r")
+  try:
+    f = open(file, "r")
+  except:
+    print('tap: is a directory!')
   a = os.getcwd()
   ark = a+'/'+file
   os.utime(ark, (epoch, epoch))
