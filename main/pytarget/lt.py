@@ -19,4 +19,7 @@ except:
     path = pw
   else:
     print('lt: no such file or directory')
-print('  '.join(str(x) for x in art))
+try:
+  print('  '.join(str(x) for x in art))
+except:
+  pass
