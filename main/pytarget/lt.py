@@ -13,5 +13,9 @@ else:
 try: 
   art = os.listdir(path)
 except:
-  print('lt: no such file or directory')
+  apt = os.path.isdir(path)
+  if apt:
+    path = os.getcwd()+'/'+path
+  else:
+    print('lt: no such file or directory')
 print('  '.join(str(x) for x in art))
