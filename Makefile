@@ -49,7 +49,7 @@ install:
 	cp $(currentdir)lt /usr/bin/lt
 	cp $(currentdir)tap /usr/bin/tap
 	cp $(currentdir)dip /usr/bin/dip
-	cp $(currentdir)dip /usr/bin/exo
+	cp $(currentdir)exo /usr/bin/exo
 	echo done!
 soft_install:
 	export PATH=$PATH:$(currentdir)
