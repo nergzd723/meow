@@ -7,9 +7,10 @@ if '>' in art:
   if os.path.exists(at):
     try:
       o = open(at, "w+")
-      try:
-        o.write(ar)
+      o.write(ar)
     except:
       print("exo: no write permissions!")
+else:
+  print(art)
       
     
