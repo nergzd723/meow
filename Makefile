@@ -50,6 +50,8 @@ uninstall:
 	rm /usr/bin/meow
 	rm /usr/bin/bark
 	rm /usr/bin/cpy
+	rm /usr/bin/lt
+	rm /usr/bin/tap
 target-py:
 	cd out && $(pcomp) $(pflags) --standalone $(ptarget) && cd bark.dist && cp bark ../../bark
 	cd out && $(pcomp) $(pflags) --standalone $(ptarget2) && cd cpy.dist && cp cpy ../../cpy
