@@ -13,5 +13,5 @@ else:
 try: 
   art = os.listdir(path)
 except:
-  print('ln: no such file or directory')
+  print('lt: no such file or directory')
 print('  '.join(str(x) for x in art))
