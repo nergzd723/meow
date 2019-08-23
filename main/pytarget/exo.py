@@ -2,15 +2,13 @@ import os
 import sys
 art = sys.argv[1:]
 if '>' in art:
-  ar = art[0]
-  at = art[2]
   if os.path.exists(at):
     try:
-      o = open(at, "w+")
-      o.write(ar)
+      o = open(art[2], "w+")
+      o.write(art[0])
     except:
       print("exo: no write permissions!")
 else:
-  print(art)
+  print(art[0])
       
     
