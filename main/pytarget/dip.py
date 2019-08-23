@@ -14,6 +14,7 @@ try:
   art = os.listdir(path)
 except:
   print('dip: no such file or directory')
+  exit()
 
 for file in range(len(art)):
   print(art[file])
