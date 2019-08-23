@@ -6,6 +6,9 @@ epoch = int(time.time())
 import sys
 import os
 ar = sys.argv[1:]
+if not ar:
+  print('tap: no such file or directory!')
+  exit()
 try:
   file = ar[0]
 except:
