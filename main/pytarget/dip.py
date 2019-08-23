@@ -13,7 +13,7 @@ else:
 try: 
   art = os.listdir(path)
 except:
-  print('lt: no such file or directory')
+  print('dip: no such file or directory')
 
 for file in range(len(art)):
   print(art[file])
