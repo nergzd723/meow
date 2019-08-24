@@ -9,7 +9,11 @@ path = ""
 if not ar:
   path = os.getcwd()
 else:
-  path = ar[0]
+  try:
+    path = ar[0]
+  except:
+    print('lt: no such file or directory')
+    exit()
 try: 
   art = os.listdir(path)
 except:

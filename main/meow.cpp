@@ -6,7 +6,8 @@
 using namespace std;
     
 int main
-(int argc, char **argv){
+(int argc, char **argv)
+{
     string buffer;
     ifstream filetomeow;
     filetomeow.open(argv[1]);

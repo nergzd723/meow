@@ -7,7 +7,7 @@ if '>' in art:
       o = open(art[2], "w+")
       o.write(art[0])
     except:
-      print("exo: no write permissions!")
+      print("exo: no such file or directory!")
 else:
   print(art[0])
       
