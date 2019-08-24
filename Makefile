@@ -13,12 +13,14 @@ ptargetlt = lt.py
 ptargettap = tap.py
 ptargetdip = dip.py
 ptargetexo = exo.py
+ptargetmkdip = mkdip.py
 pcp = bark.bin
 pcp2 = cpy.bin
 pcp3 = lt.bin
 pcp4 = tap.bin
 pcp5 = dip.bin
 pcp6 = exo.bin
+pcp7 = mkdip.py
 pflags = -m nuitka --follow-imports
 pcomp = python3
 cc=clang++
@@ -37,6 +39,7 @@ all:
 	$(pcc) $(ptargettap) && cp $(pcp4) ../tap
 	$(pcc) $(ptargetdip) && cp $(pcp5) ../dip
 	$(pcc) $(ptargetexo) && cp $(pcp6) ../exo
+	$(pcc) $(ptargetexo) && cp $(pcp6) ../mkdip
 	echo Warning! Python modules has compiled in non-standalone mode.
 	echo Target Python modules OK!
 clean:	
@@ -50,6 +53,7 @@ install:
 	cp $(currentdir)tap /usr/bin/tap
 	cp $(currentdir)dip /usr/bin/dip
 	cp $(currentdir)exo /usr/bin/exo
+	cp $(currentdir)mkdip /usr/bin/mkdip
 	echo done!
 soft_install:
 	export PATH=$PATH:$(currentdir)
@@ -62,6 +66,7 @@ uninstall:
 	rm /usr/bin/tap
 	rm /usr/bin/dip
 	rm /usr/bin/exo
+	rm /usr/bin/mkdip
 target-py:
 	cd out && $(pcomp) $(pflags) --standalone $(ptarget) && cd bark.dist && cp bark ../../bark
 	cd out && $(pcomp) $(pflags) --standalone $(ptarget2) && cd cpy.dist && cp cpy ../../cpy
@@ -69,4 +74,5 @@ target-py:
 	cd out && $(pcomp) $(pflags) --standalone $(ptargettap) && cd tap.dist && cp tap ../../tap
 	cd out && $(pcomp) $(pflags) --standalone $(ptargetdip) && cd dip.dist && cp dip ../../dip
 	cd out && $(pcomp) $(pflags) --standalone $(ptargetexo) && cd exo.dist && cp exo ../../exo
+	cd out && $(pcomp) $(pflags) --standalone $(ptargetmkdip) && cd mkdip.dist && cp mkdip ../../mkdip
 	echo Target Python modules OK!
