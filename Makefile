@@ -39,7 +39,7 @@ all:
 	$(pcc) $(ptargettap) && cp $(pcp4) ../tap
 	$(pcc) $(ptargetdip) && cp $(pcp5) ../dip
 	$(pcc) $(ptargetexo) && cp $(pcp6) ../exo
-	$(pcc) $(ptargetexo) && cp $(pcp6) ../mkdip
+	$(pcc) $(ptargetexo) && cp $(pcp7) ../mkdip
 	echo Warning! Python modules has compiled in non-standalone mode.
 	echo Target Python modules OK!
 clean:	
