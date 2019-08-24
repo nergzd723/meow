@@ -2,7 +2,7 @@ import os
 import sys
 art = sys.argv[1:]
 parentof = False
-if '-p in art:
+if '-p' in art:
   parentof = True
   art = art[1:]
 ap = os.getcwd()
