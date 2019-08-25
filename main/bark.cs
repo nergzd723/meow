@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+namespace Meow
+{
 {
     class Bark
     {
@@ -58,4 +60,5 @@ using System.IO;
             }
         }
     }
+}
 }
