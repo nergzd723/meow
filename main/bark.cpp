@@ -1,10 +1,8 @@
 #include <iostream>
 #include <cstring>
 #include <experimental/filesystem>
-namespace fs = std::experimental::filesystem;
 using namespace std;
-using namespace fs;
-
+using namespace std::experimental::filesystem;
 int main(int argc, char *argv[]) {
     
     bool Recursive = false;
@@ -20,7 +18,7 @@ int main(int argc, char *argv[]) {
     Recursive = true;
     };
     
-    path need_to_remove = argv[2];
+   path need_to_remove = argv[2];
     
     if(is_directory(need_to_remove) == true && Recursive == false) {
         cout << "Is a directory(use -r to delete 'em recursivily" << endl;
@@ -35,6 +33,10 @@ int main(int argc, char *argv[]) {
         };
     };
     if(is_directory(need_to_remove) == false) {
+        if(argc >= 3) {
+            cout << "I'm deleting only single file, but not multiple files!" << endl;
+            return 1;
+        }
         if(!remove(need_to_remove)) {
             cout << "Failed to remove!" << endl;
             return 1;
