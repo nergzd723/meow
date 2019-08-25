@@ -31,7 +31,7 @@ all:
 	cp $(maindir)$(target) $(outdir)$(target)
 	cp -r $(moduledir)* $(outdir)
 	cp -r $(maindir)$(pdir)* $(outdir)
-	cd out && $(cc) ~/meow/main/$(target)  ~/meow/main/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
+	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++17
 	echo Target and modules compiled!
 	$(pcc) $(ptarget) && cp $(pcp) ../bark
