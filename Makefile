@@ -34,6 +34,7 @@ all:
 	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
 	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -lstdc++fs
 	echo Target and modules compiled!
+	cd out && mcs ../main/bark.cs && cp bark.exe ../barkcs
 	$(pcc) $(ptarget) && cp $(pcp) ../bark
 	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
 	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
