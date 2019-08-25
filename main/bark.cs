@@ -2,7 +2,7 @@ using System;
 using System.IO;
 namespace Meow
 {
-{
+
     class Bark
     {
         public static void Main(string[] args)
@@ -61,4 +61,4 @@ namespace Meow
         }
     }
 }
-}
+
