@@ -1,52 +1,61 @@
 using System;
 using System.IO;
-private class Bark
 {
-    public static void Main(string[] args)
+    class Bark
     {
-        cwd = Directory.GetCurrentDirectory();
-        recursive = false;
-        if (args[1] == "-r")
+        public static void Main(string[] args)
         {
-            recursive = true;
-        }
-            
-        foreach(string p in args)
-        {
-            if (File.Exists(p))
+            string cwd = Directory.GetCurrentDirectory();
+            bool recursive = false;
+            try
             {
-                File.Delete(p);
-            }
-            else if (Directory.Exists(p))
-            {
-                if (recursive)
+                if (args[0] == "-r")
                 {
-                    Directory.Delete(p, true);
-                }
-                else
-                {
-                    Console.WriteLine("bark: is a directory");
+                    recursive = true;
                 }
             }
-
-            else if (File.Exists(cwd+p))
+            catch
             {
-                File.Delete(cwd+p);
+                Console.WriteLine("bark: no arguments specified!");
             }
 
-            else if (Directory.Exists(cwd+p))
+            foreach (string p in args)
             {
-                if (recursive)
+                if (File.Exists(p))
                 {
-                    Directory.Delete(cwd+p, true);
+                    File.Delete(p);
                 }
-                else
+                else if (Directory.Exists(p))
                 {
-                    Console.WriteLine("bark: is a directory");
+                    if (recursive)
+                    {
+                        Directory.Delete(p, true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("bark: is a directory");
+                    }
                 }
+
+                else if (File.Exists(cwd + p))
+                {
+                    File.Delete(cwd + p);
+                }
+
+                else if (Directory.Exists(cwd + p))
+                {
+                    if (recursive)
+                    {
+                        Directory.Delete(cwd + p, true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("bark: is a directory");
+                    }
+                }
+
+
             }
-
-
         }
     }
 }
