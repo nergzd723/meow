@@ -22,7 +22,7 @@ pcp5 = dip.bin
 pcp6 = exo.bin
 pcp7 = mkdip.py
 pflags = -m nuitka --follow-imports
-pcomp = python3
+pcomp = python3 -
 cc=clang++
 pcc = cd out && $(pcomp) $(pflags)
 
@@ -32,7 +32,7 @@ all:
 	cp -r $(moduledir)* $(outdir)
 	cp -r $(maindir)$(pdir)* $(outdir)
 	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17
-	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11
+	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -lstdc++fs
 	echo Target and modules compiled!
 	$(pcc) $(ptarget) && cp $(pcp) ../bark
 	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
