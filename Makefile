@@ -36,6 +36,7 @@ all:
 	echo Target and modules compiled!
 	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
 	cd out && mcs ../main/meow.cs && cp ../main/meow.exe ../meowcs
+	echo Target C# modules compiled!
 #	$(pcc) $(ptarget) && cp $(pcp) ../bark
 #	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
 #	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
