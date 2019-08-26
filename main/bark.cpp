@@ -27,13 +27,14 @@ path need_to_remove = argv[2]; // main part start, setup path to files
         cout << "Is a directory(use -r to delete 'em recursivily" << endl;
         return 1;
     } else if(is_directory(need_to_remove) == true && Recursive == true) {
-        if(remove_all(need_to_remove) == -1) {
-            cout << "Failed to remove!" << endl;
-            return 1;
-        } else {
-            cout << "Removed!" << endl;
-            return 0;
-        };
+       uintmax_t count = remove_all(need_to_remove);
+       if(count == -1) {
+           cout << "Failed to remove directory!" << endl;
+           return 1;
+       } else {
+           cout << "Removed " << count << " files and directories!" << endl;
+           return 0;
+       };
     };
     if(is_directory(need_to_remove) == false) {
         if(strcmp(argv[1], "-r")  && argc > 2) { // check for key, and arguments
