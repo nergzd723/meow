@@ -56,6 +56,7 @@ install:
 	cp $(currentdir)dip /usr/bin/dip
 	cp $(currentdir)exo /usr/bin/exo
 	cp $(currentdir)mkdip /usr/bin/mkdip
+	cp $(currentdir)barkcs /usr/bin/barkcs
 	echo done!
 soft_install:
 	export PATH=$PATH:$(currentdir)
