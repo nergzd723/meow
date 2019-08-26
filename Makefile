@@ -35,6 +35,7 @@ all:
 	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -lstdc++fs && cp ~/meow/out/bark++ ../bark++
 	echo Target and modules compiled!
 	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
+	cd out && mcs ../main/meow.cs && cp ../main/meow.exe ../meowcs
 #	$(pcc) $(ptarget) && cp $(pcp) ../bark
 #	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
 #	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
@@ -49,6 +50,7 @@ clean:
 install:
 	echo installing...
 	cp $(currentdir)meow /usr/bin/meow
+	cp $(currentdir)meowcs /usr/bin/meowcs
 	cp $(currentdir)bark++ /usr/bin/bark++
 #	cp $(currentdir)bark /usr/bin/bark
 #	cp $(currentdir)cpy /usr/bin/cpy
