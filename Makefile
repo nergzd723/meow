@@ -25,7 +25,6 @@ pflags = -m nuitka --follow-imports
 pcomp = python3 -
 cc=clang++
 pcc = cd out && $(pcomp) $(pflags)
-.SILENT all:
 all:
 	mkdir -p out
 	cp $(maindir)$(target) $(outdir)$(target)
