@@ -25,14 +25,14 @@ pflags = -m nuitka --follow-imports
 pcomp = python3 -
 cc=clang++
 pcc = cd out && $(pcomp) $(pflags)
-
+.SILENI all:
 all:
 	mkdir -p out
 	cp $(maindir)$(target) $(outdir)$(target)
 	cp -r $(moduledir)* $(outdir)
 	cp -r $(maindir)$(pdir)* $(outdir)
-	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17 && cp ~/meow/main/meow ../meow
-	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -lstdc++fs && cp ~/meow/main/bark++ ../bark++
+	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17 && cp ~/meow/щге/meow ../meow
+	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -lstdc++fs && cp ~/meow/out/bark++ ../bark++
 	echo Target and modules compiled!
 	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
 	$(pcc) $(ptarget) && cp $(pcp) ../bark
