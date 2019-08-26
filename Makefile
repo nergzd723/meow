@@ -35,27 +35,28 @@ all:
 	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -lstdc++fs && cp ~/meow/out/bark++ ../bark++
 	echo Target and modules compiled!
 	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
-	$(pcc) $(ptarget) && cp $(pcp) ../bark
-	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
-	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
-	$(pcc) $(ptargettap) && cp $(pcp4) ../tap
-	$(pcc) $(ptargetdip) && cp $(pcp5) ../dip
-	$(pcc) $(ptargetexo) && cp $(pcp6) ../exo
-	$(pcc) $(ptargetmkdip) && cp $(pcp7) ../mkdip
-	echo Warning! Python modules has compiled in non-standalone mode.
-	echo Target Python modules OK!
+#	$(pcc) $(ptarget) && cp $(pcp) ../bark
+#	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
+#	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
+#	$(pcc) $(ptargettap) && cp $(pcp4) ../tap
+#	$(pcc) $(ptargetdip) && cp $(pcp5) ../dip
+#	$(pcc) $(ptargetexo) && cp $(pcp6) ../exo
+#	$(pcc) $(ptargetmkdip) && cp $(pcp7) ../mkdip
+#	echo Warning! Python modules has compiled in non-standalone mode.
+#	echo Target Python modules OK!
 clean:	
 	rm -rf out/
 install:
 	echo installing...
 	cp $(currentdir)meow /usr/bin/meow
-	cp $(currentdir)bark /usr/bin/bark
-	cp $(currentdir)cpy /usr/bin/cpy
-	cp $(currentdir)lt /usr/bin/lt
-	cp $(currentdir)tap /usr/bin/tap
-	cp $(currentdir)dip /usr/bin/dip
-	cp $(currentdir)exo /usr/bin/exo
-	cp $(currentdir)mkdip /usr/bin/mkdip
+	cp $(currentdir)bark++ /usr/bin/bark++
+#	cp $(currentdir)bark /usr/bin/bark
+#	cp $(currentdir)cpy /usr/bin/cpy
+#	cp $(currentdir)lt /usr/bin/lt
+#	cp $(currentdir)tap /usr/bin/tap
+#	cp $(currentdir)dip /usr/bin/dip
+#	cp $(currentdir)exo /usr/bin/exo
+#	cp $(currentdir)mkdip /usr/bin/mkdip
 	cp $(currentdir)barkcs /usr/bin/barkcs
 	echo done!
 soft_install:
