@@ -7,7 +7,7 @@
 #include <cstring> // for strcmp
 #include <boost/filesystem.hpp> // for filesystem management
 using namespace std;
-using namespace std::experimental::filesystem;
+using namespace boost::filesystem;
 int main(int argc, char *argv[]) {
     
     bool Recursive = false; // bool for -r key
