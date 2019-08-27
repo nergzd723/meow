@@ -7,6 +7,6 @@ os.mkdir('ndir')
 dirp = ap+'/'+'ndir'+'/'
 
 for i in range(a):  
-  f = open(dirp+i,"w+")
+  f = open(dirp+str(i),"w+")
   f.close()
   print(i)
