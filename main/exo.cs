@@ -1,3 +1,9 @@
+// Exo on .NET 
+// Mark Hargreaves and x0r3d
+// Part of MEOW project
+// dont work yet
+// will be deprecated and changed to exo on c++ by x0r3d
+
 using System;
 using System.IO;
 using System.Linq;
