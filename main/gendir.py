@@ -3,7 +3,10 @@ import sys
 art = sys.argv[1:]
 a = int(input())
 ap = os.getcwd()
-os.mkdir('ndir')
+try:
+  os.mkdir('ndir')
+except:
+  pass
 dirp = ap+'/'+'ndir'+'/'
 
 for i in range(a):  
