@@ -36,15 +36,15 @@ all:
 	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
 	cd out && mcs ../main/meow.cs && cp ../main/meow.exe ../meowcs
 	echo Target C# modules compiled!
-#	$(pcc) $(ptarget) && cp $(pcp) ../bark
-#	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
-#	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
-#	$(pcc) $(ptargettap) && cp $(pcp4) ../tap
-#	$(pcc) $(ptargetdip) && cp $(pcp5) ../dip
-#	$(pcc) $(ptargetexo) && cp $(pcp6) ../exo
-#	$(pcc) $(ptargetmkdip) && cp $(pcp7) ../mkdip
-#	echo Warning! Python modules has compiled in non-standalone mode.
-#	echo Target Python modules OK!
+	$(pcc) $(ptarget) && cp $(pcp) ../bark
+	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
+	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
+	$(pcc) $(ptargettap) && cp $(pcp4) ../tap
+	$(pcc) $(ptargetdip) && cp $(pcp5) ../dip
+	$(pcc) $(ptargetexo) && cp $(pcp6) ../exo
+	$(pcc) $(ptargetmkdip) && cp $(pcp7) ../mkdip
+	echo Warning! Python modules has compiled in non-standalone mode.
+	echo Target Python modules OK!
 clean:	
 	rm -rf out/
 install:
@@ -52,13 +52,13 @@ install:
 	cp $(currentdir)meow /usr/bin/meow
 	cp $(currentdir)meowcs /usr/bin/meowcs
 	cp $(currentdir)bark++ /usr/bin/bark++
-#	cp $(currentdir)bark /usr/bin/bark
-#	cp $(currentdir)cpy /usr/bin/cpy
-#	cp $(currentdir)lt /usr/bin/lt
-#	cp $(currentdir)tap /usr/bin/tap
-#	cp $(currentdir)dip /usr/bin/dip
-#	cp $(currentdir)exo /usr/bin/exo
-#	cp $(currentdir)mkdip /usr/bin/mkdip
+	cp $(currentdir)bark /usr/bin/bark
+	cp $(currentdir)cpy /usr/bin/cpy
+	cp $(currentdir)lt /usr/bin/lt
+	cp $(currentdir)tap /usr/bin/tap
+	cp $(currentdir)dip /usr/bin/dip
+	cp $(currentdir)exo /usr/bin/exo
+	cp $(currentdir)mkdip /usr/bin/mkdip
 	cp $(currentdir)barkcs /usr/bin/barkcs
 	echo done!
 soft_install:
