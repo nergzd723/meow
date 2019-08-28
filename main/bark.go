@@ -10,6 +10,6 @@ import (
 )
 
 func main(){
-  art = os.Args[1:]
-  fmt.Println("Got arguments", art)
+	art := os.Args[1:]
+  	fmt.Println("Got arguments", art)
 }
