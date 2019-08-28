@@ -6,7 +6,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"path"
 )
 
 func main(){
