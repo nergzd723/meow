@@ -31,11 +31,11 @@ all:
 	cp -r $(moduledir)* $(outdir)
 	cp -r $(maindir)$(pdir)* $(outdir)
 	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17 && cp ~/meow/out/meow ../meow
-	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -lstdc++fs && cp ~/meow/out/bark++ ../bark++
+	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -Iboost_filesystem && cp ~/meow/out/bark++ ../bark++
 	echo Target and modules compiled!
 	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
 	cd out && mcs ../main/meow.cs && cp ../main/meow.exe ../meowcs
-	echo Target C# modules compiled!
+	echo Target CS modules compiled!
 #	$(pcc) $(ptarget) && cp $(pcp) ../bark
 #	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
 #	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
@@ -82,3 +82,6 @@ target-py:
 	cd out && $(pcomp) $(pflags) --standalone $(ptargetexo) && cd exo.dist && cp exo ../../exo
 	cd out && $(pcomp) $(pflags) --standalone $(ptargetmkdip) && cd mkdip.dist && cp mkdip ../../mkdip
 	echo Target Python modules OK!
+target-sharp:
+	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
+	cd out && mcs ../main/meow.cs && cp ../main/meow.exe ../meowcs
