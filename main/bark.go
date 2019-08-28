@@ -1,6 +1,6 @@
-#Part of MEOW
-#Basic Auto Remove toolKit
-#By Mark Hargreaves and x0r3d
+//Part of MEOW
+//Basic Auto Remove toolKit
+//By Mark Hargreaves and x0r3d
 package main
 
 import (
