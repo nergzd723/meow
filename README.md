@@ -11,4 +11,4 @@ It means that Python modules cannot be run on systems with no Python installed. 
 ## Python modules aren't compiling!
 We are currently deprecating Python modules because of size of binaries and low speed. They will be fully rewritten on C++ or C# or maybe C. 
 ##### You can still build them though! 
-Uncomment Python entrys from Makefile and build.
+Checkout legacy branch
