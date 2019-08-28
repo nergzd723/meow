@@ -82,3 +82,6 @@ target-py:
 	cd out && $(pcomp) $(pflags) --standalone $(ptargetexo) && cd exo.dist && cp exo ../../exo
 	cd out && $(pcomp) $(pflags) --standalone $(ptargetmkdip) && cd mkdip.dist && cp mkdip ../../mkdip
 	echo Target Python modules OK!
+target-sharp:
+	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
+	cd out && mcs ../main/meow.cs && cp ../main/meow.exe ../meowcs
