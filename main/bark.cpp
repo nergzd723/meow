@@ -23,6 +23,8 @@ int main(int argc, char *argv[]) {
     Recursive = true;
     };
     
+    if(strcmp(argv[1], "-r")) path need_to_remove = argv[1];
+    
 path need_to_remove = argv[2]; // main part start, setup path to files
     
     if(is_directory(need_to_remove) == true && Recursive == false) { // checks for key and directory comparation
