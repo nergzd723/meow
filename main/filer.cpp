@@ -1,8 +1,8 @@
-#Filer util
-#Creates some directories
-#Testing purpoces only
-#Mark Hargreaves and x0r3d
-#Part of MEOW project
+//Filer util
+//Creates some directories
+//Testing purpoces only
+//Mark Hargreaves and x0r3d
+//Part of MEOW project
 
 #include <experimental/filesystem>
 #include <string>
