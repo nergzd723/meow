@@ -1,9 +1,10 @@
 // Meow part
 // Copyrtight 2019, Oleg Sazonov(@x0r3d) in collaboration with Mark Hargreaves(@nergzd723)
-// YaDD: Yet another DD
+// YeDD: Yet another DD
 // 28.08.19: Initial write
 #include <stdio.h> // for fopen,fread,fwrite
 #include <iostream> // for IO management
+#include "yedd.hpp"
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -12,8 +13,9 @@ int main(int argc, char *argv[]) {
         cout << "Usage: yadd path_from path_to size_of_transaction(K,M,G)" << endl;
         return 0;
     };
-    
-    char buf[1024]; // buffer for readed data
+    int bufsize = 1024;
+
+    char buf[bufsize]; // buffer for readed data
     
     try {
         FILE *read = fopen64(argv[1], "r");
