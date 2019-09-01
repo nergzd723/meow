@@ -41,7 +41,7 @@ def cryptia(message):
         if l in alpha:
             apt = (apter.index(l) +  last_index) % len(alpha)
             last_index = apt
-            result = result + apter[apt]
+            mesg = mesg + apter[apt]
         else:
             mesg = mesg + l
     return mesg
