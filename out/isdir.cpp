@@ -1,10 +1,13 @@
 #include <iostream>
-#include <filesystem>
-namespace fs = std::filesystem;
-void dirn(char* dir){
-  if (fs::is_directory(dir)){
-    
-    std::cout << "Is a directory" << std::endl;
+#include <boost/filesystem.hpp>
+
+using namespace boost::filesystem;
+using namespace std;
+
+void dirn(path dir){
+  if (is_directory(dir)){
+
+    cout << "Is a directory" << endl;
     exit(0);
   }
 }

@@ -2,8 +2,8 @@
 #include "modulelist.h"
 using namespace std;
 void loopwait(){
+	string buf;
 	while(1){
-		string buf;
 		cin >> buf;
 		cout << buf << endl;
 	}
