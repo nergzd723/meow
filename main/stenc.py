@@ -23,7 +23,7 @@ def getkey(mesg):
 
 def genkey(mesg):
     k1 = len(mesg)
-    k2 = random.randint(1, 5)
+    k2 = random.randint(-15, 20)
     key = k1+k2
     while key > 26:
         key = key-26
