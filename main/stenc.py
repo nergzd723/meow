@@ -30,6 +30,21 @@ def genkey(mesg):
         key = key-26
     return key
 
+def cryptia(message):
+    counter = 0
+    message = message.lower()
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+    apter = list(alpha)
+    mesg = ""
+    last_index = 0
+    for l in message:
+        if l in alpha:
+            apt = (apter.index(l) +  last_index) % len(alpha)
+            last_index = apt
+            result = result + apter[apt]
+        else:
+            mesg = mesg + l
+    return mesg
 def caesar(key, message):
     message = message.lower()
     alpha = "abcdefghijklmnopqrstuvwxyz"
@@ -73,3 +88,5 @@ key = genkey(cin)
 cint = cin+'martha'
 r = caesar(key, cint)
 print('Encrypted message', r)
+rt = cryptia(cint)
+print(rt)
