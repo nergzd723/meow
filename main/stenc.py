@@ -88,5 +88,5 @@ key = genkey(cin)
 cint = cin+'martha'
 r = caesar(key, cint)
 print('Encrypted message', r)
-rt = cryptia(cint)
+rt = cryptia(cin)
 print(rt)
