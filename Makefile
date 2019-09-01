@@ -36,7 +36,7 @@ all:
 	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
 	cd out && mcs ../main/meow.cs && cp ../main/meow.exe ../meowcs
 	echo Target CS modules compiled!
-	$(pcc) ./../main/stenc && cp stenc ./../stenc
+	$(pcc) stenc && cp stenc ../stenc
 #	$(pcc) $(ptarget) && cp $(pcp) ../bark
 #	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
 #	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt
