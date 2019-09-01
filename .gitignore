@@ -1,3 +1,5 @@
 .kdve4/*
 .vscode/*
 meow.kdev4
+out/*
+out_debug/*
