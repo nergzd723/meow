@@ -56,7 +56,7 @@ def decaesar(key, message):
 a = sys.argv[1:]
 if not a:
     cin = input("Enter message or DEC to decrypt ")
-    if cin = 'DEC':
+    if cin == 'DEC':
         cin = input('Enter text to decrypt ')
         k = getkey(cin)
         rath = decaesar(k, cin)
