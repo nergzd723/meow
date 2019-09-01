@@ -1,5 +1,5 @@
 # meow
-# Multiple C++, C# and Python utils
+# Multiple C++ utils
 
 `bark` for removing,`meow` for reading from file, `lt` for showing file list in directory and `tap` to create new file or to change its access date to newer one
 
