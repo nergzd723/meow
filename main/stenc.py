@@ -25,6 +25,7 @@ def genkey(mesg):
     k1 = len(mesg)
     k2 = random.randint(-15, 20)
     key = k1+k2
+    key = abs(key)
     while key > 26:
         key = key-26
         print(key)
