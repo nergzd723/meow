@@ -55,12 +55,25 @@ def decaesar(key, message):
     return result
 a = sys.argv[1:]
 if not a:
-    cin = input("Enter message ")
+    cin = input("Enter message or DEC to decrypt ")
+    if cin = 'DEC':
+        cin = input('Enter text to decrypt ')
+        k = getkey(cin)
+        rath = decaesar(k, cin)
+        print(rath)
+        exit()        
 else:
+    if '-d' in a:
+        cin = a[1]
+        k = getkey(cin)
+        rath = decaesar(k, cin)
+        print(rath)
+        exit()
     cin = a[0]
 key = genkey(cin)
 cint = cin+'martha'
 r = caesar(key, cint)
+print('Encrypted message', r)
 rth = getkey(r)
 rtx = decaesar(rth, r)
-print(rtx)
+
