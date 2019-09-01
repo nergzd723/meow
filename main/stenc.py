@@ -60,20 +60,17 @@ if not a:
         cin = input('Enter text to decrypt ')
         k = getkey(cin)
         rath = decaesar(k, cin)
-        print(rath)
+        print(rath[:-6])
         exit()        
 else:
     if '-d' in a:
         cin = a[1]
         k = getkey(cin)
         rath = decaesar(k, cin)
-        print(rath)
+        print(rath[:-6])
         exit()
     cin = a[0]
 key = genkey(cin)
 cint = cin+'martha'
 r = caesar(key, cint)
 print('Encrypted message', r)
-rth = getkey(r)
-rtx = decaesar(rth, r)
-
