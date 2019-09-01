@@ -28,7 +28,6 @@ def genkey(mesg):
     key = abs(key)
     while key > 26:
         key = key-26
-        print(key)
     return key
 
 def caesar(key, message):
