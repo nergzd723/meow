@@ -36,6 +36,13 @@ all:
 	cd out && $(cc) ~/meow/main/exo.cpp -o exo++ -I$(currentdir)include  && cp ~/meow/out/exo++ ../exo++
 	cd out && $(cc) ~/meow/main/yedd.cpp -o yedd++ -I$(currentdir)include  -lboost_filesystem && cp ~/meow/out/yedd++ ../yedd++
 	echo Target and modules compiled!
+<<<<<<< HEAD
+=======
+	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
+	cd out && mcs ../main/meow.cs && cp ../main/meow.exe ../meowcs
+	echo Target CS modules compiled!
+	$(pcc) stenc && cp stenc ../stenc
+>>>>>>> 4c3bfd547020b26ccb8bbe6ebbbdbe956f2abbce
 #	$(pcc) $(ptarget) && cp $(pcp) ../bark
 #	$(pcc) $(ptarget2) && cp $(pcp2) ../cpy
 #	$(pcc) $(ptargetlt) && cp $(pcp3) ../lt

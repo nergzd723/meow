@@ -1,6 +1,6 @@
-#Tap for MEOW utilities
-#Copyright Nergzd723
-#LGPL v3
+# Python target module for MEOW.
+# Copyright Nergzd723
+# GNU LGPL v3
 import time
 epoch = int(time.time())
 import sys

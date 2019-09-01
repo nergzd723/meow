@@ -1,3 +1,6 @@
+# Python target module for MEOW.
+# Copyright Nergzd723
+# GNU LGPL v3
 import os
 import sys
 import shutil

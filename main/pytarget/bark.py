@@ -1,3 +1,6 @@
+# Python target module for MEOW.
+# Copyright Nergzd723
+# GNU LGPL v3
 import os
 import shutil
 import sys
@@ -18,8 +21,7 @@ for x in ar:
         shutil.rmtree(ar[i])
       else:
         print("bark: Is a directory,", ar[i])
-                 
-      
+                      
   else:
     print("bark: No such file or directory,", ar[i]) 
   i+=1
