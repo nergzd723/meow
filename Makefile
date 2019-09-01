@@ -30,7 +30,7 @@ all:
 	cp $(maindir)$(target) $(outdir)$(target)
 	cp -r $(moduledir)* $(outdir)
 	cp -r $(maindir)$(pdir)* $(outdir)
-#	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17 && cp ~/meow/out/meow ../meow
+	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include --std=c++17 && cp ~/meow/out/meow ../meow
 	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include --std=c++11 -Iboost_filesystem && cp ~/meow/out/bark++ ../bark++
 	echo Target and modules compiled!
 	cd out && mcs ../main/bark.cs && cp ../main/bark.exe ../barkcs
