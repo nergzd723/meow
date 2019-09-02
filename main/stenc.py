@@ -17,6 +17,8 @@ def getkey(mesg):
         if ra == 'martha':
             break
     if f == 27:
+        decryptia(mesg)
+        print(mesg)
         print("Decryption failed! Message is corrupted or MAGIC is not there")
         exit(0)
     return f
@@ -31,7 +33,6 @@ def genkey(mesg):
     return key
 
 def cryptia(message):
-    counter = 0
     message = message.lower()
     alpha = "abcdefghijklmnopqrstuvwxyz"
     apter = list(alpha)
@@ -45,6 +46,22 @@ def cryptia(message):
         else:
             mesg = mesg + l
     return mesg
+
+def decryptia(message):
+    message = message.lower()
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+    apter = list(alpha)
+    mesg = ""
+    last_index = 0
+    for l in message:
+        if l in alpha:
+            apt = (apter.index(l) -  last_index) % len(alpha)
+            last_index = apt
+            mesg = mesg + apter[apt]
+        else:
+            mesg = mesg + l
+    return mesg
+
 def caesar(key, message):
     message = message.lower()
     alpha = "abcdefghijklmnopqrstuvwxyz"
