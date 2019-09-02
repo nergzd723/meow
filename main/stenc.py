@@ -59,6 +59,7 @@ def decryptia(message):
     for l in message:
         if l in alpha:
             apt = (apter.index(l) -  last_index) % len(alpha)
+            print(apt)
             last_index = apt
             mesg = mesg + apter[apt]
         else:
