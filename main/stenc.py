@@ -43,6 +43,7 @@ def cryptia(message):
             print(apter.index(l))
             print(last_index)
             apt = (apter.index(l) +  last_index) % len(alpha)
+            print(apt)
             last_index = apt
             mesg = mesg + apter[apt]
         else:
