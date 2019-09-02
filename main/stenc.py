@@ -17,8 +17,8 @@ def getkey(mesg):
         if ra == 'martha':
             break
     if f == 27:
-        decryptia(mesg)
-        print(mesg)
+        dort = decryptia(mesg)
+        print(dort)
         print("Decryption failed! Message is corrupted or MAGIC is not there")
         exit(0)
     return f
