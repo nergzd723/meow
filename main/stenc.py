@@ -34,7 +34,7 @@ def genkey(mesg):
 
 def cryptia(message):
     message = message.lower()
-    alpha = "abcdefghijklmnopqrstuvwxyz"
+    alpha = "abcdefghijklmnopqrstuvwxyzйцукенгшщзхъфывапролджэ\\ячсмитьбю."
     apter = list(alpha)
     mesg = ""
     last_index = 0
@@ -49,7 +49,7 @@ def cryptia(message):
 
 def decryptia(message):
     message = message.lower()
-    alpha = "abcdefghijklmnopqrstuvwxyz"
+    alpha = "abcdefghijklmnopqrstuvwxyzйцукенгшщзхъфывапролджэ\\ячсмитьбю."
     apter = list(alpha)
     mesg = ""
     last_index = 0
