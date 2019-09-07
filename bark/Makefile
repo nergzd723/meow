@@ -1,6 +1,6 @@
 cc=clang++
 currentdir = $(shell pwd)/
-.SILENT all:
+.SILENT all-bark:
 all-bark:
 	$(cc) bark.cpp -o bark++ -I$(currentdir)include  -lboost_filesystem
 	echo [CC] bark++

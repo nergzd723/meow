@@ -1,6 +1,6 @@
 cc=clang++
 currentdir = $(shell pwd)/
-.SILENT all:
+.SILENT all-exo:
 all-exo:
 	$(cc) exo.cpp -o exo++ -I$(currentdir)include  -lboost_filesystem
 	echo [CC] exo++

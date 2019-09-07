@@ -1,6 +1,6 @@
 cc=clang++
 currentdir = $(shell pwd)/
-.SILENT all:
+.SILENT all-cpy:
 all-cpy:
 		$(cc) cpy.cpp -o cpy++ -I$(currentdir)include  -lboost_filesystem
 		echo [CC] cpy

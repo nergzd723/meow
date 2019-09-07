@@ -1,3 +1,4 @@
-.SILENT all:
-	python3 -m nuitka --follow-imports dip.py
+.SILENT all-dip:
+all-dip:
+	python3 -m nuitka --clang dip.py
 	echo [CC] dip

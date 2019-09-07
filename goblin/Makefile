@@ -1,4 +1,4 @@
-.SILENT all:
+.SILENT all-goblin:
 all-goblin:
 	gccgo goblin.go -o goblingo
 	echo [CC] goblingo
