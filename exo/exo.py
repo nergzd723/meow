@@ -5,7 +5,7 @@ import os
 import sys
 art = sys.argv[1:]
 if '>' in art:
-  if os.path.exists(at):
+  if os.path.exists(art[2]):
     try:
       o = open(art[2], "w+")
       o.write(art[0])

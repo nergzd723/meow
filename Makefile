@@ -1,47 +1,39 @@
-maindir=main/
-moduledir=modules/
-outdir=out/
-debugdir=out_debug/
-outname=meow
-currentdir = $(shell pwd)/
-currentmeowdir = $(currentdir)$(outname)
-moduletarget = checkenvar.cpp isdir.cpp
-target = meow.cpp
-cc=clang++
-all:
-	mkdir -p out
-	cp $(maindir)$(target) $(outdir)$(target)
-	cp -r $(moduledir)* $(outdir)
-	cp -r $(maindir)$(pdir)* $(outdir)
-	cd out && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include -lboost_filesystem && cp ~/meow/out/meow ../meow
-	cd out && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include  -lboost_filesystem && cp ~/meow/out/bark++ ../bark++
-	cd out && $(cc) ~/meow/main/exo.cpp -o exo++ -I$(currentdir)include  && cp ~/meow/out/exo++ ../exo++
-	cd out && $(cc) ~/meow/main/yedd.cpp -o yedd++ -I$(currentdir)include  -lboost_filesystem && cp ~/meow/out/yedd++ ../yedd++
-	echo Target and modules compiled!
-debug:
-	mkdir -p out_debug
-	cp $(maindir)$(target) $(debugdir)$(target)
-	cp -r $(moduledir)* $(debugdir)
-	cp -r $(maindir)$(pdir)* $(debugdir)
-	cd out_debug && $(cc) ~/meow/main/$(target)  ~/meow/modules/$(moduletarget) -o $(outname) -I$(currentdir)include -g -lboost_filesystem && cp ~/meow/out/meow ../meow
-	cd out_debug && $(cc) ~/meow/main/bark.cpp -o bark++ -I$(currentdir)include  -g -lboost_filesystem && cp ~/meow/out/bark++ ../bark++
-	cd out_debug && $(cc) ~/meow/main/exo.cpp -o exo++ -g -I$(currentdir)include  && cp ~/meow/out/exo++ ../exo++
-	cd out_debug && $(cc) ~/meow/main/yedd.cpp -o yedd++ -g -I$(currentdir)include  -lboost_filesystem && cp ~/meow/out/yedd++ ../yedd++
-	echo Target and modules compiled!
+SILENT copy:
+copy:
+	mkdir -p bin
+	cp bark/bark.exe bin/barkcs
+	cp bark/bark++ bin/bark++
+	cp bark/bark.bin bin/barkpy
+	cp cpy/cpy++ bin/cpy++
+	cp cpy/cpy.bin bin/cpypy
+	cp dip/dip.bin bin/dip
+	cp dutils/filer bin/filer
+	cp dutils/gendir.bin bin/gendir
+	cp dutils/stenc.bin dutils/stenc
+	cp exo/exo++ bin/exo++
+	cp exo/exo.bin bin/exopy
+	cp goblin/goblingo bin/goblingo
+	cp goblin/goblin.bin bin/goblin.py
+	cp lt/lt.bin bin/lt
+	cp meow/meow.exe bin/meowcs
+	cp bark/bark++ bin/meow++
+	cp mkdip/mkdip.bin bin/mkdip
+	cp no/no.bin bin/no
+	cp tap/tap.bin bin/tap
+	cp yedd/yedd bin/yedd
+all: do clean copy
+do:
+	make -C bark 
+	make -C cpy
+	make -C dip 
+	make -C dutils 
+	make -C exo
+	make -C goblin 
+	make -C lt
+	make -C meow
+	make -C mkdip
+	make -C no
+	make -C tap
+	make -C yedd
 clean:
-	rm -rf out/
-install:
-	echo installing...
-	cp $(currentdir)meow /usr/bin/meow
-	cp $(currentdir)bark++ /usr/bin/bark++
-	cp $(currentdir)exo++ /usr/bin/exo++
-	cp $(currentdir)yedd++ /usr/bin/yedd++
-	echo done!
-soft_install:
-	export PATH=$PATH:$(currentdir)
-	echo soft-installed!
-uninstall:
-	rm /usr/bin/meow
-	rm /usr/bin/bark++
-	rm /usr/bin/yedd++
-	rm /usr/bin/exo++
+	rm -rf bin/
