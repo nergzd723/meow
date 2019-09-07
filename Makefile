@@ -34,6 +34,6 @@ do:
 	make -C mkdip
 	make -C no
 	make -C tap
-	#make -C yedd
+	make -C yedd
 clean:
 	rm -rf bin/
