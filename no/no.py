@@ -1,5 +1,8 @@
 import sys
-artg = sys.argv[1]
+try:
+  artg = sys.argv[1]
+except:
+  artg = 'n'
 try:
   while True:
     print(artg)
