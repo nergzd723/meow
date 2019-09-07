@@ -1,3 +1,4 @@
+all: do clean copy
 copy:
 	mkdir -p bin
 	cp bark/bark.exe bin/barkcs
@@ -20,7 +21,6 @@ copy:
 	cp no/no.bin bin/no
 	cp tap/tap.bin bin/tap
 	cp yedd/yedd bin/yedd
-all: do
 do:
 	make -C bark 
 	make -C cpy
