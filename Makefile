@@ -1,4 +1,4 @@
-SILENT copy:
+.SILENT all:
 copy:
 	mkdir -p bin
 	cp bark/bark.exe bin/barkcs

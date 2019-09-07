@@ -1,6 +1,6 @@
 cc=clang++
 currentdir = $(shell pwd)/
-SILENT all:
+.SILENT all:
 all-filer:
 		$(cc) filer.cpp -o filer -I$(currentdir)include  -lboost_filesystem
 		echo [CC] filer
@@ -8,4 +8,3 @@ all-filer:
 		echo [CC] gendir
 		python3 -m nuitka --follow-imports stenc.py
 		echo [CC] stenc
-		
