@@ -4,6 +4,6 @@ currentdir = $(shell pwd)/
 all-bark:
 	$(cc) bark.cpp -o bark++ -I$(currentdir)include  -lboost_filesystem -lboost_system
 	echo [CC] bark++
-	python3 -m nuitka --follow-imports --clang bark.py
+	python3 -m nuitka --follow-imports bark.py
 	echo [CC] barkpy
 	mcs bark.cs

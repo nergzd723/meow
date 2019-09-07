@@ -1,4 +1,4 @@
 .SILENT all-lt:
 all-lt:
-	python3 -m nuitka --clang lt.py
+	python3 -m nuitka lt.py
 	echo [CC] lt

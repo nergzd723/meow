@@ -1,4 +1,4 @@
 .SILENT all-tap:
 all-tap:
-	python3 -m nuitka --clang tap.py
+	python3 -m nuitka tap.py
 	echo [CC] tap

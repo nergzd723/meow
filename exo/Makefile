@@ -4,5 +4,5 @@ currentdir = $(shell pwd)/
 all-exo:
 	$(cc) exo.cpp -o exo++ -I$(currentdir)include  -lboost_filesystem -lboost_system
 	echo [CC] exo++
-	python3 -m nuitka --follow-imports --clang exo.py
+	python3 -m nuitka --follow-imports exo.py
 	echo [CC] exopy
