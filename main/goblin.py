@@ -10,7 +10,6 @@ def main():
         n = randint(1, 10000000)
         domath(n)
         i += 1
-        print(i)
     ert = time()
     est = ert - r
     print(est, 's')
