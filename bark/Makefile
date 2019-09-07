@@ -2,7 +2,7 @@ cc=clang++
 currentdir = $(shell pwd)/
 .SILENT all-bark:
 all-bark:
-	$(cc) bark.cpp -o bark++ -I$(currentdir)include  -lboost_filesystem
+	$(cc) bark.cpp -o bark++ -I$(currentdir)include  -lboost_filesystem -lboost_system
 	echo [CC] bark++
 	python3 -m nuitka --follow-imports --clang bark.py
 	echo [CC] barkpy

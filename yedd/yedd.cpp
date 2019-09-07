@@ -4,7 +4,6 @@
 // 28.08.19: Initial write
 #include <stdio.h> // for fopen,fread,fwrite
 #include <iostream> // for IO management
-#include "yedd.hpp"
 using namespace std;
 
 int main(int argc, char *argv[]) {
