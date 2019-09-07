@@ -8,7 +8,7 @@ copy:
 	cp cpy/cpy++ bin/cpy++
 	cp cpy/cpy.bin bin/cpypy
 	cp dip/dip.bin bin/dip
-	cp dutils/filer bin/filer
+	#cp dutils/filer bin/filer
 	cp dutils/gendir.bin bin/gendir
 	cp dutils/stenc.bin dutils/stenc
 	cp exo/exo++ bin/exo++
