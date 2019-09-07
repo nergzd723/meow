@@ -14,7 +14,7 @@ copy:
 	cp exo/exo++ bin/exo++
 	cp exo/exo.bin bin/exopy
 	cp goblin/goblingo bin/goblingo
-	cp goblin/goblin.bin bin/goblin.py
+	cp goblin/goblin.bin bin/goblinpy
 	cp lt/lt.bin bin/lt
 	cp meow/meow.exe bin/meowcs
 	cp bark/bark++ bin/meow++
