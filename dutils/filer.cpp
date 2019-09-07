@@ -14,7 +14,7 @@ using namespace std::filesystem;
 int main
 (int argc, char *argv[])
 {
-  const fs::path workdir = fs::current_path();
+  const path workdir = current_path();
   string dirs;
   cout << "How many directories to create? ";
   dirs << cin;
