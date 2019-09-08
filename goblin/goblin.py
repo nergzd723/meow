@@ -1,8 +1,8 @@
 from random import randint
 from time import time
 def domath(number):
-    d = pow(number, 20)
-    i = pow(d, 20)
+    d = pow(number, 5)
+    i = pow(d, 5)
     print(d,i)
 def main():
     r = time()
