@@ -3,10 +3,11 @@ from time import time
 def domath(number):
     d = pow(number, 20)
     i = pow(d, 20)
+    print(d,i)
 def main():
     r = time()
     i = 0
-    while(i < 50000000):
+    while(i < 5000000):
         n = randint(1, 10000000)
         domath(n)
         i += 1
