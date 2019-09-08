@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func domath(number float64) {
+func domath(number uint64) {
 	var d = math.Pow(number, 15)
 	var id = math.Pow(d, 15)
 	id++
@@ -20,7 +20,7 @@ func main() {
 	var n int
 	for i := 0; i < 5000000; i++ {
 		n = rand.Intn(10000000)
-		f := float64(n)
+		f := uint64(n)
 		domath(f)
 	}
 	elapsed := time.Since(start)
