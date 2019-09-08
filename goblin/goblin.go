@@ -8,8 +8,8 @@ import (
 )
 
 func domath(number uint64) {
-	var d = math.Pow(number, 15)
-	var id = math.Pow(d, 15)
+	var d = number * number * number * number * number
+	var id = d * d * d * d * d
 	id++
 	fmt.Println(d, id)
 	
