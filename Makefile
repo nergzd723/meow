@@ -20,6 +20,7 @@ copy:
 	cp bark/bark++ bin/meow++
 	cp mkdip/mkdip.bin bin/mkdip
 	cp no/no.bin bin/no
+	cp no/nogo bin/nogo
 	cp tap/tap.bin bin/tap
 	cp yedd/yedd bin/yedd
 do:
