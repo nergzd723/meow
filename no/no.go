@@ -5,7 +5,7 @@ import "os"
 
 func main(){
   arg := os.Args[1:]
-  a := os.Args[0]
+  a := arg[0]
   for i := 5; i>0; i++{
     fmt.Println(a)
   }
