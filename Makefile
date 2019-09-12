@@ -3,7 +3,7 @@ all: do clean copy
 copy:
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
-	mv bark/bark++ bin/bark++
+	cp bark/bark++ bin/bark++
 	mv bark/bark.bin bin/barkpy
 	mv cpy/cpy++ bin/cpy++
 	mv cpy/cpy.bin bin/cpypy
