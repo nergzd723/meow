@@ -16,12 +16,12 @@ class Block:
     ver = platform.python_version()
 if __name__ == "__main__":
     b = Block()
-    print(b.sysd, b.name, b.kver, "running on", b.ma)
+    print(b.sysd, b.name, b.kmver, "running on", b.ma)
     if '-d' in sys.argv:
         print(b.cc)
         print(b.cdc)
         print(b.ver)
-        print(b.kmver)
+        print(b.kver)
         print("processor:", b.proc)
         print("DEBUGGING INFO. nergzd723")
     
