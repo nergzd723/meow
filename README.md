@@ -1,5 +1,5 @@
 # meow
-![alt text] (https://github.com/nergzd723/meow/releases/download/0.001/94373f3b-0849-421a-8383-9461ef50d89e_200x200.png)
+![alt text]
 # Multiple C++ utils
 
 `bark` for removing,`meow` for reading from file, `lt` for showing file list in directory and `tap` to create new file or to change its access date to newer one
