@@ -13,6 +13,6 @@ void ctrl_handler(int s) {
 
 int main(int argc, char *argv[]) {
   while(true) {
-    cout << "yes ";
+    cout << "yes\n";
   }
 }
