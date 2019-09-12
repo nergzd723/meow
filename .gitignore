@@ -2,3 +2,15 @@
 .vscode/*
 meow.kdev4
 bin/*
+bark/bark.build/*
+cpy/cpy.build/*
+dip/dip.build/*
+dutils/gendir.build/*
+dutils/stenc.build/*
+exo/exo.build/*
+goblin/goblin.build/*
+lt/lt.build/*
+mkdip/mkdip.build/*
+no/no.build/*
+tap/tap.build/*
+*/*.bin
