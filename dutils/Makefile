@@ -8,3 +8,5 @@ all-util:
 		echo [CC] gendir
 		python3 -m nuitka --follow-imports stenc.py
 		echo [CC] stenc
+		python3 -m nuitka --follow-imports aexec.py
+		echo [CC] aexec

@@ -11,6 +11,7 @@ copy:
 	#cp dutils/filer bin/filer
 	cp dutils/gendir.bin bin/gendir
 	cp dutils/stenc.bin dutils/stenc
+	cp dutils/aexec.bin dutils/aexec
 	cp exo/exo++ bin/exo++
 	cp exo/exo.bin bin/exopy
 	cp goblin/goblingo bin/goblingo
