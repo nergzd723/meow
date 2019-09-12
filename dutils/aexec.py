@@ -13,7 +13,7 @@ except:
     exit(1)
 cwd = os.getcwd()
 execpath = cwd+art
-for i in range(ark):
+for i in range(int(ark)):
     os.system(execpath)
 
 print("Done! Executed", execpath, ark,"times")
