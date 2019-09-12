@@ -23,6 +23,7 @@ copy:
 	cp no/nogo bin/nogo
 	cp tap/tap.bin bin/tap
 	cp yedd/yedd bin/yedd
+	cp aname/aname.bin bin/aname
 do:
 	make -C bark 
 	make -C cpy
@@ -36,5 +37,6 @@ do:
 	make -C no
 	make -C tap
 	make -C yedd
+	make -C aname
 clean:
 	rm -rf bin/
