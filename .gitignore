@@ -7,6 +7,7 @@ cpy/cpy.build/*
 dip/dip.build/*
 dutils/gendir.build/*
 dutils/stenc.build/*
+dutils/aexec.build/*
 exo/exo.build/*
 goblin/goblin.build/*
 lt/lt.build/*
