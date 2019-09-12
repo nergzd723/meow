@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
         cout << "Usage: yadd path_from path_to size_of_transaction(K,M,G)" << endl;
         return 0;
     };
-    int bufsize = 1024;
+    const int bufsize = 1024;
 
     char buf[bufsize]; // buffer for readed data
     
