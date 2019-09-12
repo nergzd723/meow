@@ -2,6 +2,7 @@
 .vscode/*
 meow.kdev4
 bin/*
+aname/aname.build/*
 bark/bark.build/*
 cpy/cpy.build/*
 dip/dip.build/*
