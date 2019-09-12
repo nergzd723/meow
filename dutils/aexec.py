@@ -12,7 +12,7 @@ except:
     print("aexec: invalid args!")
     exit(1)
 cwd = os.getcwd()
-execpath = cwd+art
+execpath = cwd+'/'+art
 for i in range(int(ark)):
     os.system(execpath)
 
