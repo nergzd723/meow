@@ -25,6 +25,7 @@ copy:
 	mv tap/tap.bin bin/tap
 	mv yedd/yedd bin/yedd
 	mv aname/aname.bin bin/aname
+	mv forker/forker bin/forker
 do:
 	make -C bark 
 	make -C cpy
@@ -39,5 +40,6 @@ do:
 	make -C tap
 	make -C yedd
 	make -C aname
+	make -C forker
 clean:
 	rm -rf bin/
