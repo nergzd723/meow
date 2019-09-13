@@ -17,10 +17,13 @@ except:
 f = open(fpath, "w+")
 counter = 0
 filer = 0
-print(size)
 if '-r' in art:
   filer = "r"
   for n in range(size):
+    if os.path.size(fpath) == size:
+      break
+    else:
+      pass
     f.write(str(random.randint(0, 1000000)))
     counter += 1
 else:
