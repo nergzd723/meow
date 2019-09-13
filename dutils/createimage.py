@@ -15,6 +15,7 @@ except:
 f = open(fpath, "w+")
 counter = 0
 filer = 0
+print(size)
 if '-r' in art:
   filer = "r"
   while(os.path.getsize(fpath) < size):
@@ -22,6 +23,6 @@ if '-r' in art:
     counter += 1
 else:
   while(os.path.getsize(fpath) < size):
-    f.write("0")
+    f.write(filer)
     counter += 1
 print(counter, "records, writing with", filer)
