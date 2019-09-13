@@ -9,7 +9,7 @@ cwd = os.getcwd()
 fpath = cwd + '/' + art[0]
 size = 512
 try:
-  size = art[1]
+  size = int(art[1])
 except:
   pass
 f = open(fpath, "w+")
