@@ -14,6 +14,9 @@ void ctrl_handler(int s) {
 
 int main(int argc, char *argv[]) {
   bool is_yes;
+  cout << argv[1] << endl;
+  cout << argv[0] << endl;
+  cout << argv[2] << endl;
   if(argc == 1) is_yes = false;
   if(argv[1] == "-h") {
     cout << "NO: GNU yes analog" << endl;
