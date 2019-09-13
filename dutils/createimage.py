@@ -12,7 +12,7 @@ try:
   size = art[1]
 except:
   pass
-f = open(fpath, w+)
+f = open(fpath, "w+")
 counter = 0
 filer = 0
 if 'r' in art:
