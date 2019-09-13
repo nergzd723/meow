@@ -1,6 +1,6 @@
 targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 .SILENT all:
-all: $(targets)
+all: bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 
 
 copy:
