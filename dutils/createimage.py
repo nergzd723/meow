@@ -1,7 +1,7 @@
 import sys
 import os
 art = sys.argv[1:]
-if not a:
+if not art:
   print("createimage utility. Creates empty file with specified size(in bytes) then arguments\n Arguments = -r write with random\n Part of MEOW project")
   exit(0)
 
