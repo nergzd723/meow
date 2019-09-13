@@ -20,7 +20,7 @@ filer = 0
 if '-r' in art:
   filer = "r"
   for n in range(size):
-    if os.path.size(fpath) == size:
+    if os.path.getsize(fpath) == size:
       break
     else:
       pass
