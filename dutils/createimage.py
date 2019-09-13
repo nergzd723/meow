@@ -18,11 +18,11 @@ filer = 0
 print(size)
 if '-r' in art:
   filer = "r"
-  while(os.path.getsize(fpath) < size):
+  for n in range(size):
     f.write(random.randint(0, 1000000))
     counter += 1
 else:
-  while(os.path.getsize(fpath) < size):
+  for n in range(size):
     f.write(str(filer))
     counter += 1
 print(counter, "records, writing with", filer)
