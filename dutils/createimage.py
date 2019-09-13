@@ -19,12 +19,11 @@ counter = 0
 filer = 0
 if '-r' in art:
   filer = "r"
+  print("createimage: WARNING random write does not work as expected now. Use zero writing")
   for n in range(size):
     if os.path.getsize(fpath) == size:
       break
     else:
-      print(os.path.getsize(fpath))
-      print(fpath)
       pass
     f.write(str(random.randint(0, 1000000)))
     counter += 1
