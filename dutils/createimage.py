@@ -24,6 +24,7 @@ if '-r' in art:
       break
     else:
       print(os.path.getsize(fpath))
+      print(fpath)
       pass
     f.write(str(random.randint(0, 1000000)))
     counter += 1
