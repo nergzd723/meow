@@ -23,6 +23,6 @@ if '-r' in art:
     counter += 1
 else:
   while(os.path.getsize(fpath) < size):
-    f.write(filer)
+    f.write(str(filer))
     counter += 1
 print(counter, "records, writing with", filer)
