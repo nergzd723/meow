@@ -10,3 +10,6 @@ all-util:
 		echo [CC] stenc
 		python3 -m nuitka --follow-imports aexec.py
 		echo [CC] aexec
+		python3 -m nuitka --follow-imports createimage.py
+		echo [CC] createimage
+		
