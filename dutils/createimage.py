@@ -15,8 +15,8 @@ except:
 f = open(fpath, "w+")
 counter = 0
 filer = 0
-if 'r' in art:
-  filer = r
+if '-r' in art:
+  filer = "r"
   while(os.path.getsize(fpath) < size):
     f.write(random.randint(0, 1000000))
     counter += 1
