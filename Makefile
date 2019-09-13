@@ -1,6 +1,8 @@
 targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 .SILENT all:
-all: $(targets) copy
+all: $(targets)
+
+
 copy:
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
