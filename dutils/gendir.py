@@ -11,8 +11,8 @@ try:
 except:
   pass
 dirp = ap+'/'+'ndir'+'/'
-
+l = open(dirp+"log", "w+")
 for i in range(a):  
   f = open(dirp+str(i),"w+")
   f.close()
-  print(i)
+  l.write(str(l))
