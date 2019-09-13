@@ -15,14 +15,14 @@ void ctrl_handler(int s) {
 int main(int argc, char *argv[]) {
   bool is_yes;
   if(argc == 1) is_yes = false;
-  if(argv[0] == "-h") {
+  if(argv[1] == "-h") {
     cout << "NO: GNU yes analog" << endl;
     cout << "Usage: no [OPTIONS]" << endl;
     cout << "Options:" << endl;
     cout << "-y            flood by yes(floods no by default)" << endl;
     return 0;
   };
-  if(argv[0] == "-y") {
+  if(argv[1] == "-y") {
     is_yes = true;
   };
 
