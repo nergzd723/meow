@@ -21,7 +21,7 @@ print(size)
 if '-r' in art:
   filer = "r"
   for n in range(size):
-    f.write(random.randint(0, 1000000))
+    f.write(str(random.randint(0, 1000000)))
     counter += 1
 else:
   for n in range(size):
