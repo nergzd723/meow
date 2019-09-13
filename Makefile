@@ -1,5 +1,6 @@
+targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 .SILENT all:
-all: do clean copy
+all: $(targets) copy
 copy:
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
@@ -26,20 +27,33 @@ copy:
 	mv yedd/yedd bin/yedd
 	mv aname/aname.bin bin/aname
 	mv forker/forker bin/forker
-do:
-	make -C bark 
-	make -C cpy
-	make -C dip 
-	make -C dutils 
-	make -C exo
-	make -C goblin 
-	make -C lt
-	make -C meow
-	make -C mkdip
-	make -C no
-	make -C tap
-	make -C yedd
-	make -C aname
-	make -C forker
 clean:
-	rm -rf bin/
+	rm -rf bin/* */*.build/* */*.bin */*.exe
+bark: 
+	make -C bark
+cpy: 
+	make -C cpy
+dip: 
+	make -C dip
+dutils: 
+	make -C dutils
+exo: 
+	make -C exo
+goblin: 
+	make -C goblin
+lt: 
+	make -C lt
+meow: 
+	make -C meow
+mkdip: 
+	make -C mkdip
+no: 
+	make -C no
+tap: 
+	make -C tap
+yedd: 
+	make -C yedd
+aname: 
+	make -C aname
+forker: 
+	make -C forker
