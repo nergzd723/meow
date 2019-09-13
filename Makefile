@@ -1,4 +1,33 @@
 targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
+bark: 
+	make -C bark
+cpy: 
+	make -C cpy
+dip: 
+	make -C dip
+dutils: 
+	make -C dutils
+exo: 
+	make -C exo
+goblin: 
+	make -C goblin
+lt: 
+	make -C lt
+meow: 
+	make -C meow
+mkdip: 
+	make -C mkdip
+no: 
+	make -C no
+tap: 
+	make -C tap
+yedd: 
+	make -C yedd
+aname: 
+	make -C aname
+forker: 
+	make -C forker
+	
 .SILENT all:
 all: bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 
@@ -31,31 +60,3 @@ copy:
 	mv forker/forker bin/forker
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
-bark: 
-	make -C bark
-cpy: 
-	make -C cpy
-dip: 
-	make -C dip
-dutils: 
-	make -C dutils
-exo: 
-	make -C exo
-goblin: 
-	make -C goblin
-lt: 
-	make -C lt
-meow: 
-	make -C meow
-mkdip: 
-	make -C mkdip
-no: 
-	make -C no
-tap: 
-	make -C tap
-yedd: 
-	make -C yedd
-aname: 
-	make -C aname
-forker: 
-	make -C forker
