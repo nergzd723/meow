@@ -24,6 +24,7 @@ else:
     pass
   else:
     if not os.path.exists(p):
+      print(p)
       print("yedd: path do not exist!")
       exit(1)
     else:
