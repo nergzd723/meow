@@ -23,7 +23,7 @@ else:
   if os.path.exists(p) and os.path.exists(pa):
     pass
   else:
-    if !os.path.exists(p):
+    if not os.path.exists(p):
       print("yedd: path do not exist!")
       exit(1)
     else:
