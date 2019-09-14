@@ -12,11 +12,11 @@ int main(int argc, char *argv[]) {
         cout << "Usage: yadd path_from path_to size_of_transaction(in bytes, 4K) count_of_blocks" << endl;
         return 0;
     };
-    const int bufsize;
+    int bufnsize;
     if(isdigit(atoi(argv[3]))) {
-      bufsize = atoi(argv[3]);
+      bufnsize = atoi(argv[3]);
     } else {
-      bufsize = 4096;
+      bufnsize = 4096;
     }
 
     if(isdigit(atoi(argv[4]))) {
@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
     } else {
       const int count = 1;
     }
+    const int bufsize = bufnsize;
     char buf[bufsize]; // buffer for readed data
 
     try {
