@@ -23,8 +23,12 @@ else:
   if os.path.exists(p) and os.path.exists(pa):
     pass
   else:
-    print("yedd: path do not exist!")
-    exit(1)
+    if !os.path.exists(p):
+      print("yedd: path do not exist!")
+      exit(1)
+    else:
+      f = open(pa, "w+")
+      f.close()
 
 if "-bs" in art:
   piece_size = art[art.index("-bs") + 1]
