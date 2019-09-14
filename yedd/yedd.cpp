@@ -1,6 +1,6 @@
 // Meow part
 // Copyrtight 2019, Oleg Sazonov(@x0r3d) in collaboration with Mark Hargreaves(@nergzd723)
-// YeDD: Yet another DD
+// YaDD: Yet another DD
 // 28.08.19: Initial write
 #include <stdio.h> // for fopen,fread,fwrite
 #include <iostream> // for IO management
@@ -9,13 +9,23 @@ using namespace std;
 int main(int argc, char *argv[]) {
     if(argc == 1) {
         cout << "YaDD: Yet another DD" << endl;
-        cout << "Usage: yadd path_from path_to size_of_transaction(K,M,G)" << endl;
+        cout << "Usage: yadd path_from path_to size_of_transaction(in bytes, 4K) count_of_blocks" << endl;
         return 0;
     };
-    const int bufsize = 1024;
 
+    if(isdigit(atoi(argv[3]))) {
+      const int bufsize = atoi(argv[3]);
+    } else {
+      const int bufsize = 4096;
+    }
+
+    if(isdigit(atoi(argv[4]))) {
+      const int count = atoi(argv[4]);
+    } else {
+      const int count = 1;
+    }
     char buf[bufsize]; // buffer for readed data
-    
+
     try {
         FILE *read = fopen64(argv[1], "r");
         if(!read) {
@@ -27,7 +37,7 @@ int main(int argc, char *argv[]) {
         if(!read) cerr << "read: Failed to open file!" << endl;
         return 0;
     };
-    
+
     try {
         FILE *write = fopen64(argv[2], "w");
         if(!write) {
@@ -41,8 +51,13 @@ int main(int argc, char *argv[]) {
             return 0;
         };
     };
-    
-//     
-    
+ int i;
+while(!feof(read) || count < i) {
+  fread(buf, bufsize, 1, read);
+  fwrite(buf, bufsize, 1, write);
+  ++i;
+}
+
+
     return 0;
 }
