@@ -34,7 +34,7 @@ else:
       f.close()
 
 if "-bs" in art:
-  piece_size = art[art.index("-bs") + 1]
+  piece_size = int(art[art.index("-bs") + 1])
 else:
   piece_size = 4096 # userdefined block size defaults to 4096
 
