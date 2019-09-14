@@ -40,8 +40,11 @@ else:
 
 with open(p, "rb") as in_file, open(pa, "wb") as out_file:
     while True:
+      try:
         piece = in_file.read(piece_size)
         if piece == "":
             break # end of file
         print(piece)
         out_file.write(piece)
+      except:
+        pass
