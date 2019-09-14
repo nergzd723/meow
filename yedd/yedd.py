@@ -47,4 +47,4 @@ with open(p, "rb") as in_file, open(pa, "wb") as out_file:
         print(piece)
         out_file.write(piece)
       except:
-        pass
+        exit(1)
