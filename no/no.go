@@ -4,8 +4,7 @@ import "fmt"
 import "os"
 
 func main(){
-  arg := os.Args[1:]
-  a := arg[0]
+  a := os.Args[1]
   for{
     fmt.Println(a)
   }
