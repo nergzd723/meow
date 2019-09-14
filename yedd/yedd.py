@@ -24,9 +24,11 @@ else:
     pass
   else:
     if not os.path.exists(p):
-      print(p)
-      print("yedd: path do not exist!")
-      exit(1)
+      if os.path.exists(art[ind]):
+        p = art[ind]
+      else:
+       print("yedd: path do not exist!")
+       exit(1)
     else:
       f = open(pa, "w+")
       f.close()
