@@ -21,7 +21,7 @@ def ls(void):
         print(entry)
     return
 def lexer(comm, args):
-    availmblecomms = []
+    availmblecomms = ['cd']
     if comm not in availmblecomms:
         try:
             os.system(comm+" "+args)
