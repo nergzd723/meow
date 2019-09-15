@@ -14,7 +14,7 @@ def cd(comm):
             print("No such file or directory", comm)
 
 def lexer(comm, args):
-    availmblecomms = ['cd', 'dir']
+    availmblecomms = ['cd']
     if comm not in availmblecomms:
         print("No such file or directory or command name")
     else:
