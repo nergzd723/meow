@@ -8,6 +8,13 @@
 
 using namespace std;
 
+__pid_t fork_function(const char *command) {
+  __pid_t pid;
+  system(command);
+  pid = fork();
+  return pid;
+}
+
 int main(int argc, char *argv[]) {
   if(argc == 1) {
     cout << "Forker: gen new processes" << endl;
@@ -15,15 +22,12 @@ int main(int argc, char *argv[]) {
     return 0;
   }
   int count = atoi(argv[2]);
-  __pid_t pid[count];
   int i;
   ofstream fout("forker.txt");
+  for(int i; i < count; i++) {
+    fout << "Created fork with pid: " << fork_function(argv[1]) << endl;
+  }
 
-    system(argv[1]);
-while(i < count) {
-  pid[i] = fork();
-  fout << "Created fork with pid: " << pid[i] << endl;
-}
 
   fout.close();
   return 0;
