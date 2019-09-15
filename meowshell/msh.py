@@ -19,7 +19,7 @@ def mainstream():
             arg = ""
         if l == 0:
             continue
-        arg = arg+" "+comms[l]
+        arg = arg+comms[l]
     comd = comms[0]
     lexer(comd, arg)
 if __name__ == "__main__":
