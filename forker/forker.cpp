@@ -4,15 +4,13 @@
 // 12.09.19: Initial write
 #include <iostream>
 #include <unistd.h>
-#include <fstream>
+#include <thread>
 
 using namespace std;
 
-__pid_t fork_function(const char *command) {
-  __pid_t pid;
-  system(command);
-  pid = fork();
-  return pid;
+void fork_function(const char *command) {
+  thread thr(system, command);
+  thr.join();
 }
 
 int main(int argc, char *argv[]) {
@@ -23,12 +21,10 @@ int main(int argc, char *argv[]) {
   }
   int count = atoi(argv[2]);
   int i;
-  ofstream fout("forker.txt");
-  for(int i; i < count; i++) {
-    fout << "Created fork with pid: " << fork_function(argv[1]) << endl;
+  while(i < count) {
+    fork_function(argv[1]);
+    ++i;
   }
 
-
-  fout.close();
   return 0;
 }
