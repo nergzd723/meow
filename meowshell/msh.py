@@ -14,14 +14,16 @@ def cd(comm):
             print("No such file or directory", comm)
 def ls(void):
     m = mshh.Vars
-    print(os.listdir(m.cwd))
+    lt = os.listdir(m.cwd)
+    for entry in lt:
+        print(entry)
+    return
 def lexer(comm, args):
     availmblecomms = ['cd', 'ls']
     if comm not in availmblecomms:
         print("No such file or directory or command name")
     else:
         i = availmblecomms.index(comm)
-        print(availmblecomms[i]+"({})".format(args))
         exec(availmblecomms[i]+"({})".format('"'+args+'"'))
         return
     return
@@ -32,9 +34,12 @@ def mainstream():
     comm = input(v.pcname+' $ '+v.cwd+" ")
     comms = comm.split(' ')
     lenght = len(comms)
-    if lenght == 1:
-        lexer(comms[0], "")
+    arg = ""
+    if lenght == 0:
+        return
     for l in range(lenght):
+        if lenght == 1:
+            arg = ""
         if l == 0:
             continue
         arg = comms[l]+arg
