@@ -12,7 +12,7 @@ def cd(comm):
             os.chdir(Vars.cwd+comm)
         except:
             print("No such file or directory", comm)
-def ls():
+def ls(void):
     m = mshh.Vars
     print(os.listdir(m.cwd))
 def lexer(comm, args):
