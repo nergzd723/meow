@@ -10,7 +10,7 @@ using namespace std;
 
 void fork_function(const char *command) {
   thread thr(system, command);
-  thr.join();
+  thr.detach();
 }
 
 int main(int argc, char *argv[]) {
