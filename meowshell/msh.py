@@ -14,7 +14,7 @@ def cd(comm):
             print("No such file or directory", comm)
 def ls():
     m = mshh.Vars
-    os.listdir(m.cwd)
+    print(os.listdir(m.cwd))
 def lexer(comm, args):
     availmblecomms = ['cd', 'ls']
     if comm not in availmblecomms:
