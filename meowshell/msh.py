@@ -1,14 +1,16 @@
 import sys
 import os
 import platform
+from 
 from mshh import cd, ls, lexer
 import mshh
 from importlib import reload
+from termcolor import colored
 
 def mainstream():
     reload(mshh)
     v = mshh.Vars()
-    comm = input(v.pcname+' $ '+v.cwd+" ")
+    comm = input(colored(v.pcname, 'green')+' $ '+colored(v.cwd, 'red')+" ")
     comms = comm.split(' ')
     lenght = len(comms)
     arg = ""
