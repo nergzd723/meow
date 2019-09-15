@@ -12,9 +12,11 @@ def cd(comm):
             os.chdir(Vars.cwd+comm)
         except:
             print("No such file or directory", comm)
-
+def ls():
+    m = mshh.Vars
+    os.listdir(m.cwd)
 def lexer(comm, args):
-    availmblecomms = ['cd']
+    availmblecomms = ['cd', 'ls']
     if comm not in availmblecomms:
         print("No such file or directory or command name")
     else:
@@ -31,11 +33,11 @@ def mainstream():
     comms = comm.split(' ')
     lenght = len(comms)
     if lenght == 1:
-        return
+        lexer(comms[0], "")
     for l in range(lenght):
         if l == 0:
             continue
-        arg = comms[l]
+        arg = comms[l]+arg
     comd = comms[0]
     lexer(comd, arg)
 if __name__ == "__main__":
