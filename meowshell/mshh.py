@@ -23,7 +23,10 @@ def ls(void):
 def lexer(comm, args):
     availmblecomms = ['cd', 'ls']
     if comm not in availmblecomms:
-        print("No such file or directory or command name")
+        try:
+            os.system(comm+" "+args)
+        except:
+            print("No such file or directory or command name")
     else:
         i = availmblecomms.index(comm)
         exec(availmblecomms[i]+"({})".format('"'+args+'"'))
