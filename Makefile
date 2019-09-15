@@ -26,6 +26,7 @@ copy:
 	mv yedd/yedd bin/yedd
 	mv aname/aname.bin bin/aname
 	mv forker/forker bin/forker
+	mv meowshell/msh.bin bin/msh
 do:
 	make -C bark 
 	make -C cpy
@@ -41,5 +42,6 @@ do:
 	make -C yedd
 	make -C aname
 	make -C forker
+	make -C meowshell
 clean:
 	rm -rf bin/
