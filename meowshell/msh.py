@@ -9,7 +9,11 @@ from termcolor import colored
 def mainstream():
     reload(mshh)
     v = mshh.Vars()
-    comm = input(colored(v.pcname, 'green')+' $ '+colored(v.cwd, 'red')+" ")
+    try:
+        comm = input(colored(v.pcname, 'green')+' $ '+colored(v.cwd, 'red')+" ")
+    except KeyboardInterrupt:
+        print("Ctrl^C")
+        return
     comms = comm.split(' ')
     lenght = len(comms)
     arg = ""
