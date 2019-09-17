@@ -5,11 +5,11 @@ all-util:
 		#$(cc) filer.cpp -o filer -I$(currentdir)include  -lboost_filesystem -lboost_system
 		#echo [CC] filer
 		python3 -m nuitka --follow-imports gendir.py
-		echo [CC] gendir
+		echo [PY] gendir
 		python3 -m nuitka --follow-imports stenc.py
-		echo [CC] stenc
+		echo [PY] stenc
 		python3 -m nuitka --follow-imports aexec.py
-		echo [CC] aexec
+		echo [PY] aexec
 		python3 -m nuitka --follow-imports createimage.py
-		echo [CC] createimage
+		echo [PY] createimage
 		

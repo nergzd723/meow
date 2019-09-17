@@ -21,10 +21,10 @@ int main(int argc, char *argv[]) {
   }
   int count = atoi(argv[2]);
   int i;
-  while(i < count) {
-    fork_function(argv[1]);
-    ++i;
-  }
 
+while(i < count) {
+  fork_function(argv[1]);
+  i++;
+}
   return 0;
 }
