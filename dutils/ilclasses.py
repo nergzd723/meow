@@ -2,7 +2,7 @@
 class TransmitVeryImportantmsg:
   def enc(self):
     m = 'Hello World'
-    result = ''
+    result = m
     return result
 class Main:
   def printl(self, arg):
