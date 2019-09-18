@@ -1,4 +1,4 @@
-.SILENT build-meow
+.SILENT build-meow:
 build-meow:
 	rm -rf meowproj_0.10-1
 	mkdir -p meowproj_0.10-1
