@@ -2,6 +2,7 @@
 // Copyrtight 2019, Oleg Sazonov(@x0r3d) in collaboration with Mark Hargreaves(@nergzd723)
 // YaDD: Yet another DD
 // 28.08.19: Initial write
+// 18.09.19: Grand fixes                    signoff: nergzd723
 #include <stdio.h> // for fopen,fread,fwrite
 #include <iostream> // for IO management
 using namespace std;
@@ -33,11 +34,8 @@ int main(int argc, char *argv[]) {
     int i;
     for (int counter = 0; counter < i; counter++)
     {
-        if(!feof(read))
-        {
-            fread(buf, bufsize, 1, read);
-            fwrite(buf, bufsize, 1, write);
-        }
+        fread(buf, bufsize, 1, read);
+        fwrite(buf, bufsize, 1, write);
     }
     return 0;
 }
