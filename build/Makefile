@@ -1,6 +1,5 @@
 .SILENT build-meow:
 build-meow:
-	rm -rf meowproj_0.10-1
 	mkdir -p meowproj_0.10-1
 	mkdir -p meowproj_0.10-1/DEBIAN/
 	mkdir -p meowproj_0.10-1/usr
