@@ -28,39 +28,9 @@ int main(int argc, char *argv[]) {
     }
 
     char buf[bufsize];
-
-    try {
-      FILE* read = fopen64(argv[1],"r");
-      if(!read) {
-        cerr << "read: failed to open by fopen64(), try fopen()";
-        throw 1;
-      }
-    }
-      catch(int a) {
-        FILE* read = fopen(argv[1], "r");
-        if(!read) {
-          cerr << "read: FAILED to open by fopen(), closing...";
-          return 1;
-        }
-      };
-
-      try {
-        FILE* write = fopen64(argv[2], "w");
-        if(!write) {
-          cerr << "write: failed to open by fopen64(), try fopen()";
-          throw 1;
-        }
-      }
-      catch(int a) {
-        FILE* write = fopen(argv[2], "w");
-        if(!write) {
-          cerr << "write: FAILED to open by fopen64(), closing...";
-          return 1;
-        }
-      };
-
+    FILE* read = fopen(argv[1], "r");
+    FILE* write = fopen(argv[2], "w");
 int i;
-
 while(!feof(read) || count < i) {
   fread(buf, bufsize, 1, read);
   fwrite(buf, bufsize, 1, write);
