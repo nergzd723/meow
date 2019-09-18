@@ -33,12 +33,11 @@ int main(int argc, char *argv[]) {
     int i;
     for (int counter = 0; counter < i; counter++)
     {
-        if(feof(read))
+        if(!feof(read))
         {
-            return 0;
+            fread(buf, bufsize, 1, read);
+            fwrite(buf, bufsize, 1, write);
         }
-        fread(buf, bufsize, 1, read);
-        fwrite(buf, bufsize, 1, write);
     }
     return 0;
 }
