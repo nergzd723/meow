@@ -30,11 +30,15 @@ int main(int argc, char *argv[]) {
     char buf[bufsize];
     FILE* read = fopen(argv[1], "r");
     FILE* write = fopen(argv[2], "w");
-int i;
-while(!feof(read) || count < i) {
-  fread(buf, bufsize, 1, read);
-  fwrite(buf, bufsize, 1, write);
-  ++i;
-}
+    int i;
+    for (int counter = 0; counter < i; counter++)
+    {
+        if(feof(read))
+        {
+            return 0;
+        }
+        fread(buf, bufsize, 1, read);
+        fwrite(buf, bufsize, 1, write);
+    }
     return 0;
 }
