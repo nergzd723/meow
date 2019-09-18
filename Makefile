@@ -45,5 +45,5 @@ do:
 	make -C meowshell
 clean:
 	rm -rf bin/
-build:
+build: all
 	make -C build
