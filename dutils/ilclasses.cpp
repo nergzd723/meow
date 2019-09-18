@@ -7,13 +7,37 @@ int main(void) {
         string m = "Hello World";
         string out = m;
     };
-    class Hello {
+    class h {
         public:
-        Hello(void) {
-            struct hello fuck;
-            cout << fuck.m << endl;
+        struct hello fuck;
+        h(void) {
+        };
+        void print(void) {
+            cout << fuck.out << endl;
+        }
+    };
+
+    class e {
+        public:
+        e(void) {
+            class h;
         };
     };
-    Hello a;
+
+    class l {
+        public:
+        l(void) {
+            class e;
+        };
+    };
+    class o {
+        public:
+        o(void) {
+            class l;
+        };
+    };
+
+    class o;
+    o.print();
     return 0;
 }
