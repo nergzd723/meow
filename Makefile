@@ -67,4 +67,4 @@ build: all
 	make -C build
 
 install: build
-	dpkg -i build/meowproj_0.11-1
+	dpkg -i build/meowproj_$(version).deb
