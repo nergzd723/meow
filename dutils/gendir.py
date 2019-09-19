@@ -15,4 +15,4 @@ l = open(dirp+"log", "w+")
 for i in range(a):  
   f = open(dirp+str(i),"w+")
   f.close()
-  l.write(str(l))
+  l.write(str(i))
