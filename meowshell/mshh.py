@@ -20,8 +20,10 @@ def ls(void):
     for entry in lt:
         print(entry)
     return
+def rabbid():
+    print("Yay! You find an easter egg!\n msh brought to you by Mark Hargreaves, 19 years old blue haired MGU student from Moscow. Enjoy!")
 def lexer(comm, args):
-    availmblecomms = ['cd']
+    availmblecomms = ['cd', 'rabbid']
     if comm not in availmblecomms:
         try:
             os.system(comm+" "+args)
