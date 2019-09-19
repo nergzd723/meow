@@ -19,14 +19,15 @@ int main(int argc, char *argv[]) {
         cout << "-r                                 detete 'em recursivily" << endl;
         return 0;
     };
-    if(!strcmp(argv[1], "-r")) { // check for -r key
+    if(strcmp(argv[1], "-r")) { // check for -r key
     Recursive = true;
     };
     
-    if(strcmp(argv[1], "-r")) path need_to_remove = argv[1];
+    if(!strcmp(argv[1], "-r")) path need_to_remove = argv[1];
+    else{
     
-path need_to_remove = argv[2]; // main part start, setup path to files
-    
+    path need_to_remove = argv[2]; // main part start, setup path to files
+    }
     if(is_directory(need_to_remove) == true && Recursive == false) { // checks for key and directory comparation
         cout << "Is a directory(use -r to delete 'em recursivily" << endl;
         return 1;
