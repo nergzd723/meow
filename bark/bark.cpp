@@ -9,7 +9,6 @@
 using namespace std;
 using namespace boost::filesystem;
 int main(int argc, char *argv[]) {
-    path need_to_remove;
     bool Recursive = false; // bool for -r key
     
     if(argc == 1) { // if no arguments, write help
@@ -19,15 +18,12 @@ int main(int argc, char *argv[]) {
         cout << "-r                                 detete 'em recursivily" << endl;
         return 0;
     };
-    if(strcmp(argv[1], "-r")) { // check for -r key
+    if(!strcmp(argv[1], "-r")) { // check for -r key
     Recursive = true;
     };
     
-    if(!strcmp(argv[1], "-r")) path need_to_remove = argv[1];
-    else{
-    
+    if(strcmp(argv[1], "-r")) path need_to_remove = argv[1];
     path need_to_remove = argv[2]; // main part start, setup path to files
-    }
     if(is_directory(need_to_remove) == true && Recursive == false) { // checks for key and directory comparation
         cout << "Is a directory(use -r to delete 'em recursivily" << endl;
         return 1;
