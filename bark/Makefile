@@ -7,3 +7,4 @@ all-bark:
 	python3 -m nuitka --follow-imports bark.py
 	echo [CC] barkpy
 	mcs bark.cs
+	echo [MCS] barkcs
