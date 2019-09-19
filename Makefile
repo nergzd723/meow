@@ -1,5 +1,5 @@
 .SILENT all:
-.PHONY all:
+.PHONY: all bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 all: $(targets)
 bark: bark/bark.cpp
