@@ -1,9 +1,9 @@
 .SILENT all:
 targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 all: $(targets)
-bark: bark.cpp bark.py bark.cs
+bark: bark/bark.cpp
 	make -C bark
-cpy: cpy.cpp cpy.py
+cpy: cpy/cpy.py
 	make -C cpy
 dip: dip.py
 	make -C dip
@@ -56,7 +56,7 @@ copy:
 	mv yedd/yedd bin/yedd
 	mv aname/aname.bin bin/aname
 	mv forker/forker bin/forker
-	
+
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
 
