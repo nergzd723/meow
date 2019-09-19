@@ -22,6 +22,7 @@ def ls(void):
     return
 def rabbid():
     print("Yay! You find an easter egg!\n msh brought to you by Mark Hargreaves, 19 years old blue haired MGU student from Moscow. Enjoy!")
+    return
 def lexer(comm, args):
     availmblecomms = ['cd', 'rabbid']
     if comm not in availmblecomms:
