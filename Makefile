@@ -36,8 +36,8 @@ forker: forker/forker.cpp
 copy: $(targets)
 	mkdir -p bin
 	cp bark/bark.exe bin/barkcs
-	cp bark/bark++ bin/bark
-	cp bark/bark.bin bin/barkpy
+	cp bark/bark++ bin/bark++
+	cp bark/bark.bin bin/bark
 	cp cpy/cpy++ bin/cpy++
 	cp cpy/cpy.bin bin/cpy
 	cp dip/dip.bin bin/dip
