@@ -3,9 +3,9 @@ all: do clean copy
 copy:
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
-	cp bark/bark++ bin/bark++
+	cp bark/bark++ bin/bark
 	mv bark/bark.bin bin/barkpy
-	mv cpy/cpy++ bin/cpy++
+	mv cpy/cpy++ bin/cpy
 	mv cpy/cpy.bin bin/cpypy
 	mv dip/dip.bin bin/dip
 	#mv dutils/filer bin/filer
@@ -13,12 +13,12 @@ copy:
 	mv dutils/stenc.bin bin/stenc
 	mv dutils/aexec.bin bin/aexec
 	mv exo/exo++ bin/exo++
-	mv exo/exo.bin bin/exopy
+	mv exo/exo.bin bin/exo
 	mv goblin/goblingo bin/goblingo
 	mv goblin/goblin.bin bin/goblinpy
 	mv lt/lt.bin bin/lt
 	mv meow/meow.exe bin/meowcs
-	mv bark/bark++ bin/meow++
+	mv meow/meow++ bin/meow
 	mv mkdip/mkdip.bin bin/mkdip
 	mv no/no.bin bin/no
 	mv no/nogo bin/nogo
@@ -45,3 +45,5 @@ do:
 	make -C meowshell
 clean:
 	rm -rf bin/
+build: all
+	make -C build

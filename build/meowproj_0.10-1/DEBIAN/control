@@ -1,0 +1,10 @@
+Package: meowproj 
+Version: 0.10-1 
+Section: base 
+Priority: optional 
+Architecture: amd64 
+Depends: python3.7, python3-pip, python, python-pip, clang, g++, build-essential, mono-mcs, gccgo 
+Maintainer: nergzd723 <clashclanacc2602@gmail.com> 
+Description: Meow 
+    Meow is simple python and c++ coreutils alternative! 
+    Need nuitka as depedency to build
