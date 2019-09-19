@@ -1,3 +1,4 @@
+version = 0.11-1
 .SILENT all:
 .PHONY: all bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
@@ -63,3 +64,6 @@ clean:
 
 build: all
 	make -C build
+
+install: build
+	dpkg -i build/meowproj_0.11-1
