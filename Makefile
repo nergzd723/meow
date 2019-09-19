@@ -58,7 +58,7 @@ copy: $(targets)
 	cp tap/tap.bin bin/tap
 	cp yedd/yedd bin/yedd
 	cp aname/aname.bin bin/aname
-	cp forker/forker bin/forker
+	#cp forker/forker bin/forker
 
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
