@@ -9,7 +9,7 @@
 using namespace std;
 using namespace boost::filesystem;
 int main(int argc, char *argv[]) {
-    
+    path need_to_remove;
     bool Recursive = false; // bool for -r key
     
     if(argc == 1) { // if no arguments, write help
