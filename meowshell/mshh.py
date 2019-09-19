@@ -45,7 +45,7 @@ def lexer(comm, args):
             availmblecomms[i] = 'arrowp'
         exec(availmblecomms[i]+"({})".format('"'+args+'"'))
         lastcomm = availmblecomms[i]
-        lastarg
+        lastarg = args
         return
     lastcomm = comm
     lastarg = args
