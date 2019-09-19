@@ -9,6 +9,7 @@ int main(void) {
     };
     class h {
         public:
+        int i = 0;
         struct hello fuck;
         h(void) {
         };
@@ -16,28 +17,26 @@ int main(void) {
             cout << fuck.out << endl;
         }
     };
-
-    class e {
+    class e : public h {
         public:
         e(void) {
-            class h;
+            i++;
         };
     };
-
-    class l {
+    class l : public e {
         public:
         l(void) {
-            class e;
+            i++;
         };
     };
-    class o {
+    class o : public l {
         public:
         o(void) {
-            class l;
+            i++;
         };
     };
 
-    class o;
-    o.print();
+    o hell;
+    hell.print();
     return 0;
 }
