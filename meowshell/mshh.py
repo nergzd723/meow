@@ -20,7 +20,7 @@ def ls(void):
     for entry in lt:
         print(entry)
     return
-def rabbid():
+def rabbid(void):
     print("Yay! You find an easter egg!\n msh brought to you by Mark Hargreaves, 19 years old blue haired MGU student from Moscow. Enjoy!")
     return
 def lexer(comm, args):
