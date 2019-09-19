@@ -2,7 +2,7 @@ version = 0.11-1
 .SILENT all:
 .PHONY: all bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
-all: $(targets)
+all: clean $(targets) copy
 bark: bark/bark.cpp
 	make -C bark
 cpy: cpy/cpy.py
