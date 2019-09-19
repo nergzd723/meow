@@ -7,27 +7,27 @@ cpy: cpy/cpy.py
 	make -C cpy
 dip: dip.py
 	make -C dip
-dutils: dutils
+dutils: dutils/createimage.py
 	make -C dutils
-exo: exo.py exo.cpp exo.cs
+exo: exo/exo.py
 	make -C exo
-goblin: goblin.go goblin.py
+goblin: goblin/goblin.go
 	make -C goblin
-lt: lt.py
+lt: lt/lt.py
 	make -C lt
-meow: meow.cpp meow.cs
+meow: meow/meow.cpp
 	make -C meow
-mkdip: mkdip.py
+mkdip: mkdip/mkdip.py
 	make -C mkdip
-no: no.go no.py no.cpp
+no: no/no.go
 	make -C no
-tap: tap.py
+tap: tap/tap.py
 	make -C tap
-yedd: yedd.cpp
+yedd: yedd/yedd.cpp
 	make -C yedd
-aname: aname.py aname.cpp
+aname: aname/aname.py #aname.cpp it is not good to cheat!
 	make -C aname
-forker: forker.cpp
+forker: forker/forker.cpp
 	make -C forker
 
 copy:
