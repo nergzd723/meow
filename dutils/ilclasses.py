@@ -19,5 +19,7 @@ if __name__ == "__main__":
   except:
     class Error:
       def __init__(self):
-        print('Lol you just screwed up your Hello World Program\n Who might even thought')
+       errorh('Lol you just screwed up your Hello World Program\n Who might even thought')
+      def errorh(self, error):
+        print(error)
     e = Error()
