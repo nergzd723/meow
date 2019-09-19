@@ -5,33 +5,33 @@ targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
 all: clean do copy
 do: $(targets)
 bark: bark/bark.cpp
-	make -C bark
+	make -C -j1 bark
 cpy: cpy/cpy.py
-	make -C cpy
+	make -C -j1 cpy
 dip: dip/dip.py
-	make -C dip
+	make -C -j1 dip
 dutils: dutils/createimage.py
-	make -C dutils
+	make -C dutils -j1
 exo: exo/exo.py
-	make -C exo
+	make -C exo -j1
 goblin: goblin/goblin.go
-	make -C goblin
+	make -C goblin -j1
 lt: lt/lt.py
-	make -C lt
+	make -C lt -j1
 meow: meow/meow.cpp
-	make -C meow
-mkdip: mkdip/mkdip.py
-	make -C mkdip
+	make -C meow -j1
+mkdip: mkdip/mkdip.py 
+	make -C mkdip -j1
 no: no/no.go
-	make -C no
+	make -C no -j1
 tap: tap/tap.py
-	make -C tap
+	make -C tap -j1
 yedd: yedd/yedd.cpp
-	make -C yedd
+	make -C yedd -j1
 aname: aname/aname.py #aname.cpp it is not good to cheat!
-	make -C aname
+	make -C aname -j1
 forker: forker/forker.cpp
-	make -C forker
+	make -C forker -j1
 
 copy: $(targets)
 	mkdir -p bin
