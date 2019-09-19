@@ -36,22 +36,22 @@ forker: forker/forker.cpp
 copy: $(targets)
 	mkdir -p bin
 	cp bark/bark.exe bin/barkcs
-	cp bark/bark++ bin/bark++
+	cp bark/bark++ bin/bark
 	cp bark/bark.bin bin/barkpy
 	cp cpy/cpy++ bin/cpy++
-	cp cpy/cpy.bin bin/cpypy
+	cp cpy/cpy.bin bin/cpy
 	cp dip/dip.bin bin/dip
 	#cp dutils/filer bin/filer
 	cp dutils/gendir.bin bin/gendir
 	cp dutils/stenc.bin bin/stenc
 	cp dutils/aexec.bin bin/aexec
 	cp exo/exo++ bin/exo++
-	cp exo/exo.bin bin/exopy
-	cp goblin/goblingo bin/goblingo
+	cp exo/exo.bin bin/exo
+	cp goblin/goblingo bin/goblin
 	cp goblin/goblin.bin bin/goblinpy
 	cp lt/lt.bin bin/lt
 	cp meow/meow.exe bin/meowcs
-	cp bark/bark++ bin/meow++
+	cp meow/meow++ bin/meow
 	cp mkdip/mkdip.bin bin/mkdip
 	cp no/no.bin bin/no
 	cp no/nogo bin/nogo
