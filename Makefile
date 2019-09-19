@@ -5,7 +5,7 @@ bark: bark/bark.cpp
 	make -C bark
 cpy: cpy/cpy.py
 	make -C cpy
-dip: dip.py
+dip: dip/dip.py
 	make -C dip
 dutils: dutils/createimage.py
 	make -C dutils
