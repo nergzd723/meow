@@ -3,15 +3,16 @@
 // Basic Auto Remove toolKit
 // 25.08.19: Inital write
 // 26.08.19: Moved to Boost library
+// 20.09.19: Fix for one file
 #include <iostream> // for IO management
 #include <cstring> // for strcmp
 #include <boost/filesystem.hpp> // for filesystem management
 using namespace std;
 using namespace boost::filesystem;
 int main(int argc, char *argv[]) {
-    
+
     bool Recursive = false; // bool for -r key
-    
+
     if(argc == 1) { // if no arguments, write help
         cout << "Basic Auto Remove toolKit" << endl;
         cout << "Usage: bark [OPTIONS] paths_to_remove" << endl;
@@ -22,11 +23,17 @@ int main(int argc, char *argv[]) {
     if(!strcmp(argv[1], "-r")) { // check for -r key
     Recursive = true;
     };
-    
-    if(strcmp(argv[1], "-r")) path need_to_remove = argv[1];
-    
-path need_to_remove = argv[2]; // main part start, setup path to files
-    
+
+    if(argv[1] != "-r") {
+        #define LOCK
+    }
+    #ifdef LOCK
+    path need_to_remove = argv[1];
+    #else
+    path need_to_remove = argv[2];
+    #endif
+
+
     if(is_directory(need_to_remove) == true && Recursive == false) { // checks for key and directory comparation
         cout << "Is a directory(use -r to delete 'em recursivily" << endl;
         return 1;
@@ -60,7 +67,3 @@ path need_to_remove = argv[2]; // main part start, setup path to files
     }; // main part end
    return 0;
 };
-    
-    
-
-
