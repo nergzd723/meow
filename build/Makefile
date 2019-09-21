@@ -1,4 +1,4 @@
-include ./../Makefile
+include ./../Makeheader
 .SILENT build-meow:
 build-meow:
 	mkdir -p meowproj_$(version)
