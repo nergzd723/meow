@@ -1,4 +1,4 @@
-import ./../Makefile
+include ./../Makefile
 .SILENT build-meow:
 build-meow:
 	mkdir -p meowproj_$(version)
