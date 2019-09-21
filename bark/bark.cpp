@@ -24,14 +24,12 @@ int main(int argc, char *argv[]) {
     Recursive = true;
     };
 
-    if(argv[1] != "-r") {
-        #define LOCK
+    path need_to_remove;
+    if(!Recursive) {
+        need_to_remove = argv[1];
+    } else {
+        need_to_remove = argv[2];
     }
-    #ifdef LOCK
-    path need_to_remove = argv[1];
-    #else
-    path need_to_remove = argv[2];
-    #endif
 
 
     if(is_directory(need_to_remove) == true && Recursive == false) { // checks for key and directory comparation
