@@ -31,7 +31,8 @@ aname: aname/aname.py #aname.cpp it is not good to cheat!
 	make -C aname
 forker: forker/forker.cpp
 	make -C forker
-
+kid: kid/kid:
+	make -C kid
 copy:
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
