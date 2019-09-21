@@ -1,5 +1,4 @@
-version = 0.12-1
-targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker kid
+include Makeheader
 .SILENT all:
 .PHONY: $(targets) changelog
 all: $(targets)
