@@ -1,7 +1,7 @@
-version = 0.11-1
+version = 0.12-1
+targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker kid
 .SILENT all:
-.PHONY: all bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
-targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker
+.PHONY: $(targets) changelog
 all: $(targets)
 bark: bark/bark.cpp
 	make -C bark
@@ -66,4 +66,7 @@ build: all
 	make -C build
 
 install: build
-	dpkg -i build/meowproj_0.11-1
+	dpkg -i build/meowproj_$(version)
+
+changelog:
+	echo 21.09.19 Create kid module. Kills a process
