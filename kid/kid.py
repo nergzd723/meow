@@ -15,7 +15,7 @@ if '-n' in ar:
     for proc in psutil.process_iter():
         if proc.name() == ar[1]:
             proc.kill()
-            print("Killed", proc.name(), 'with PID', proc.pid())
+            print("Killed", proc.name(), 'with PID', proc.pid)
 else:
     if 'term' in ar:
         ar = ar[1:]
