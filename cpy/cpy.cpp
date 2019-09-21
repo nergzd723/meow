@@ -17,12 +17,12 @@ int main(int argc, char* argv[]) {
     };
     bool Recursive = false;
     if(!strcmp(argv[1], "-r")) Recursive = true;
-    
+
     path from_to_copy = argv[2];
     path to_copy = argv[3];
-    
+
     bool directory = is_directory(from_to_copy);
-    
+
     if(directory == true && Recursive == false) {
         cout << "cpy: is a directory" << endl;
         return 1;
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
         copy_directory(from_to_copy, to_copy);
         return 0;
     } else {
-        copy_file(from_to_copy, to_copy);
+        copy(from_to_copy, to_copy);
         return 0;
     };
     return 0;
