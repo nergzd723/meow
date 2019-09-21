@@ -19,14 +19,9 @@ if '-n' in ar:
 else:
     if 'term' in ar:
         ar = ar[1:]
-        try:
-            os.kill(ar[0], signal.SIGTERM)
-            print("Killed! pid = {} signal = SIGTERM".format(ar[0]))
-        except:
-            print("No such process or access denied!")
+        os.kill(ar[0], signal.SIGTERM)
+        print("Killed! pid = {} signal = SIGTERM".format(ar[0]))
     else:
-        try:
-            os.kill(ar[0], signal.SIGKILL)
-            print("Killed! pid = {} signal = SIGKILL".format(ar[0]))
-        except:
-            print("No such process or access denied!")
+        os.kill(ar[0], signal.SIGKILL)
+        print("Killed! pid = {} signal = SIGKILL".format(ar[0]))
+        print("No such process or access denied!")
