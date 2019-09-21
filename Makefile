@@ -58,7 +58,8 @@ copy:
 	mv yedd/yedd bin/yedd
 	mv aname/aname.bin bin/aname
 	mv forker/forker bin/forker
-
+	mv kid/kid.bin bin/kid
+	mv kid/pit.bin bin/pit
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
 
@@ -69,4 +70,4 @@ install: build
 	dpkg -i build/meowproj_$(version)
 
 changelog:
-	echo 21.09.19 Create kid module. Kills a process
+	echo 0.12-1 Create kid module. Kills a process. Add pit module. Bugfixes.
