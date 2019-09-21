@@ -1,7 +1,7 @@
 include Makeheader
 .SILENT all:
-.PHONY: $(targets) changelog
-all: $(targets)
+.PHONY: $(targets) changelog copy
+all: $(targets) copy
 bark:
 	make -C bark
 cpy:
