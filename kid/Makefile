@@ -1,4 +1,4 @@
 .SILENT all-kid:
 all-kid:
-	python3 -m nuitka kid.py
+	python3 -m nuitka --follow-imports kid.py
 	echo [PY] kid
