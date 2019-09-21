@@ -57,7 +57,7 @@ copy: $(targets)
 	mv tap/tap.bin bin/tap
 	mv yedd/yedd bin/yedd
 	mv aname/aname.bin bin/aname
-	mv forker/forker bin/forker
+	#mv forker/forker bin/forker
 	mv kid/kid.bin bin/kid
 	mv kid/pit.bin bin/pit
 clean:
