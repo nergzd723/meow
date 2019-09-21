@@ -32,7 +32,7 @@ forker:
 	make -C forker
 kid:
 	make -C kid
-copy:
+copy: $(targets)
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
 	cp bark/bark++ bin/bark++
