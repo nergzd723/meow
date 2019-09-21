@@ -5,8 +5,11 @@
 import shutil
 import sys
 import psutil
-ps = sys.argv[1]
+try:
+    ps = sys.argv[1]
+except:
+    print("pit: usage= pit name_of_process")
+    exit(0)
 for proc in psutil.process_iter():
         if proc.name() == ps:
-            print(proc.name(), '    ', proc.pid())
-            
+            print(proc.name(), '    ', proc.pid)

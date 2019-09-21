@@ -1,39 +1,38 @@
-version = 0.12-1
-targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker kid
+include Makeheader
 .SILENT all:
-.PHONY: $(targets) changelog
-all: $(targets)
-bark: bark/bark.cpp
+.PHONY: $(targets) changelog copy
+all: $(targets) copy
+bark:
 	make -C bark
-cpy: cpy/cpy.py
+cpy:
 	make -C cpy
-dip: dip/dip.py
+dip:
 	make -C dip
-dutils: dutils/createimage.py
+dutils:
 	make -C dutils
-exo: exo/exo.py
+exo:
 	make -C exo
-goblin: goblin/goblin.go
+goblin:
 	make -C goblin
-lt: lt/lt.py
+lt:
 	make -C lt
-meow: meow/meow.cpp
+meow:
 	make -C meow
-mkdip: mkdip/mkdip.py
+mkdip:
 	make -C mkdip
-no: no/no.go
+no:
 	make -C no
-tap: tap/tap.py
+tap:
 	make -C tap
-yedd: yedd/yedd.cpp
+yedd:
 	make -C yedd
-aname: aname/aname.py #aname.cpp it is not good to cheat!
+aname:
 	make -C aname
-forker: forker/forker.cpp
+forker:
 	make -C forker
-kid: kid/kid:
+kid:
 	make -C kid
-copy:
+copy: $(targets)
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
 	cp bark/bark++ bin/bark++
@@ -58,7 +57,7 @@ copy:
 	mv tap/tap.bin bin/tap
 	mv yedd/yedd bin/yedd
 	mv aname/aname.bin bin/aname
-	mv forker/forker bin/forker
+	#mv forker/forker bin/forker
 	mv kid/kid.bin bin/kid
 	mv kid/pit.bin bin/pit
 clean:
