@@ -3,35 +3,35 @@ targets = bark cpy dip dutils exo goblin lt meow mkdip no tap yedd aname forker 
 .SILENT all:
 .PHONY: $(targets) changelog
 all: $(targets)
-bark: bark/bark.cpp
+bark:
 	make -C bark
-cpy: cpy/cpy.py
+cpy:
 	make -C cpy
-dip: dip/dip.py
+dip:
 	make -C dip
-dutils: dutils/createimage.py
+dutils:
 	make -C dutils
-exo: exo/exo.py
+exo:
 	make -C exo
-goblin: goblin/goblin.go
+goblin:
 	make -C goblin
-lt: lt/lt.py
+lt:
 	make -C lt
-meow: meow/meow.cpp
+meow:
 	make -C meow
-mkdip: mkdip/mkdip.py
+mkdip:
 	make -C mkdip
-no: no/no.go
+no:
 	make -C no
-tap: tap/tap.py
+tap:
 	make -C tap
-yedd: yedd/yedd.cpp
+yedd:
 	make -C yedd
-aname: aname/aname.py #aname.cpp it is not good to cheat!
+aname:
 	make -C aname
-forker: forker/forker.cpp
+forker:
 	make -C forker
-kid: kid/kid.py
+kid:
 	make -C kid
 copy:
 	mkdir -p bin
