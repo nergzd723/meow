@@ -10,6 +10,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script: sudo apt install libboost-all-dev
+- script: pip3 install nuitka termcolor platform importlib
 - script: |
     make
   displayName: 'make'
