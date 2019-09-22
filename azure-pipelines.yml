@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: sudo apt install libboost-all-dev python pip
+- script: sudo apt install libboost-all-dev python python-pip
 - script: pip install setuptools nuitka
 - script: pip3 install setuptools nuitka termcolor platform importlib 
 - script: |
