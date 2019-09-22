@@ -13,7 +13,7 @@ steps:
 - script: sudo apt install libboost-all-dev python python-pip
 - script: sudo apt install -y python-setuptools python3-setuptools
 - script: pip install setuptools
-- script: pip3 install nuitka termcolor importlib 
+- script: pip3 install nuitka termcolor
 - script: |
     make
   displayName: 'make'
