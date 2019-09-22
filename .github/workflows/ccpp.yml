@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: install_dep
-      run: sudo apt install libboost-all-dev python-setuputils python3 python-pip
+      run: sudo apt install libboost-all-dev python-setuptools python3-setuptools python3 python-pip
     - name: install_py
       run: pip3 install nuitka termcolor
     - name: make
