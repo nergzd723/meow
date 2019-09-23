@@ -88,16 +88,16 @@ def lex():
     avcomm = ['patmit', 'pat', 'log']
 
     if arg[0] in avcomm:
-        if "log" in arg:
+        if 'log' in arg:
             log()
-        elif "patmit" in arg:
+        elif 'patmit' == arg[0]:
             patmitmsg = ""
             try:
                 patmitmsg = arg[1]
             except:
                 print("W: No patmit message")
             patmit(patmitmsg)
-        elif "pat" in arg:
+        elif 'pat' == arg[0]:
             patmitname = ""
             try:
                 patmitname = arg[1]
@@ -105,7 +105,7 @@ def lex():
                 print("patrat see no arguments with pat. Do patrat pat _PATMITNAME_")
                 exit(1)
             pat(patmitname)
-        elif "init" in arg:
+        elif 'init' == arg[0]:
             patrat_init()
     else:
         print("patrat: yet another VCS. Do patrat init to init patrat repository")
