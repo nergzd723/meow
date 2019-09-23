@@ -46,7 +46,7 @@ def genpatmitname():
 
 #registers patmit in PATLOG, PATLOG is nessesary sometimes
 def register(patmit, patmitmsg):
-    f = open(PATRAT_PATLOG, "w")
+    f = open(PATRAT_PATLOG, "a")
     f.write(str(time.time())+" "+patmit+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
     f.close()
     
