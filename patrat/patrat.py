@@ -35,7 +35,9 @@ def tarball(patmit):
 
 #unzips tar patmit in the tempdir
 def detar(patmit):
-    os.system("tar -xzvf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat "+PATRAT_TEMPF+" >/dev/null")
+    os.rename(cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat", cwd+"/"+"RAT")
+    os.system("tar -xvf RAT")
+    os.remove(cwd+"RAT")
 
 #generates name for patmit, 5 symbols
 def genpatmitname():
@@ -81,9 +83,7 @@ def patrat_init():
 #going to state of specific commit    
 def pat(patmitname):
     detar(patmitname)
-    os.system('rm -rf !(".patrat") > /dev/null')
-    shutil.copytree(cwd+'/'+PATRAT_TEMPF, cwd)
-    print("patrat: you are on "+patmit+" patmit now")
+    print("patrat: you are on "+patmitname+" patmit now")
 
 #recognizes CLI commands
 def lex():
