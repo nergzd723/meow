@@ -85,7 +85,7 @@ def pat(patmitname):
 
 #recognizes CLI commands
 def lex():
-    avcomm = ['patmit', 'pat', 'log']
+    avcomm = ['patmit', 'init', 'pat', 'log']
 
     if arg[0] in avcomm:
         if 'log' in arg:
