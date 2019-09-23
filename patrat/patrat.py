@@ -86,9 +86,6 @@ def pat(patmitname):
 #recognizes CLI commands
 def lex():
     avcomm = ['patmit', 'pat', 'log']
-    if not arg:
-        print("patrat: yet another VCS. Do patrat init to init patrat repository")
-        exit(0)
     if arg[0] in avcomm:
         if "log" in arg:
             log()
