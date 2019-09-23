@@ -37,9 +37,9 @@ def tarball(patmit):
 def detar(patmit):
     f = open("RAT", "w+")
     f.close()
-    os.rename(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RAT")
+    os.rename(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RAT > /dev/null")
     os.system("tar -xvf RAT")
-    os.remove(cwd+"RAT")
+    os.remove(cwd+"/RAT")
 
 #generates name for patmit, 5 symbols
 def genpatmitname():
