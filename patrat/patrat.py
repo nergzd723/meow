@@ -47,7 +47,7 @@ def genpatmitname():
 #registers patmit in PATLOG, PATLOG is nessesary sometimes
 def register(patmit, patmitmsg):
     f = open(PATRAT_PATLOG, "w")
-    f.write(time.time()+" "+patmit+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
+    f.write(str(time.time())+" "+patmit+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
     f.close()
     
 #generates PATRAT patmit with specific name
@@ -86,7 +86,7 @@ def pat(patmitname):
 #recognizes CLI commands
 def lex():
     avcomm = ['patmit', 'pat', 'log']
-    print(arg)
+
     if arg[0] in avcomm:
         if "log" in arg:
             log()
