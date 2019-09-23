@@ -32,6 +32,8 @@ forker:
 	make -C forker
 kid:
 	make -C kid
+patrat:
+        make -C patrat
 copy: $(targets)
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
