@@ -35,7 +35,7 @@ def tarball(patmit):
 
 #unzips tar patmit in the tempdir
 def detar(patmit):
-    os.system("tar -xzf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" -C "+PATRAT_TEMPF+" >/dev/null")
+    os.system("tar -xzvf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat "+PATRAT_TEMPF+" >/dev/null")
 
 #generates name for patmit, 5 symbols
 def genpatmitname():
@@ -47,7 +47,8 @@ def genpatmitname():
 #registers patmit in PATLOG, PATLOG is nessesary sometimes
 def register(patmit, patmitmsg):
     f = open(PATRAT_PATLOG, "a")
-    f.write(str(time.time())+" "+patmit+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
+    f.write("\n")
+    f.write(str(time.time())+" "+patmit+" "+patmit+patmitmsg)#implement md5 hash here
     f.close()
     
 #generates PATRAT patmit with specific name
@@ -71,6 +72,7 @@ def patrat_init():
         exit(1)
     os.mkdir(PATRAT_PATRAT)
     os.mkdir(PATRAT_PATRAT+"patmit")
+    os.mkdir(PATRAT_TEMPF)
     f = open(PATRAT_PATLOG, "w+")
     f.close()
     patmit("Initial patmit")
@@ -88,6 +90,8 @@ def lex():
     avcomm = ['patmit', 'init', 'pat', 'log']
 
     if arg[0] in avcomm:
+        if not arg:
+            print("patrat: yet another VCS. Do patrat init to init patrat repository")
         if 'log' in arg:
             log()
         elif 'patmit' == arg[0]:
