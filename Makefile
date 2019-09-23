@@ -73,3 +73,4 @@ install: build
 
 changelog:
 	echo 0.12-1 Create kid module. Kills a process. Add pit module. Bugfixes.
+	echo 0.13-1 Add patrat module. VCS on Python.

@@ -8,7 +8,8 @@
 import sys
 import os
 import random
-import subprocess
+import time
+import shutil
 
 #init
 cwd = os.getcwd()
@@ -17,25 +18,99 @@ PATRAT_MAJOR = 0
 PATRAT_MINOR = 1
 PATRAT_PATRAT = ".patrat/"
 PATRAT_PATMIT = "patmit/"
+PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
+PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
 PATRAT_PATCHLEVEL = 1
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 
 #main part
+
+#cleans temporary directory
+def cleantempf():
+    shutil.rmtree(PATRAT_TEMPF)
+
+#generates a tarball for patmit
 def tarball(patmit):
-    os.system("tar -cvzf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
-    print("New patrat patmit - patmit", patmit[:5])
+    os.system("tar -czf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
+
+#unzips tar patmit in the tempdir
+def detar(patmit):
+    os.system("tar -czf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" -C "+PATRAT_TEMPF+" >/dev/null")
+
+#generates name for patmit, 5 symbols
 def genpatmitname():
     patmit_name = ""
-    for i in range(56):
+    for i in range(5):
         patmit_name = patmit_name + allowed_patmit_id[random.randint(0, 35)]
     return patmit_name
+
+#registers patmit in PATLOG, PATLOG is nessesary sometimes
+def register(patmit, patmitmsg):
+    f = open(PATRAT_PATLOG, "w")
+    f.write(time.time()+" "+patmit+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
+    f.close()
+    
+#generates PATRAT patmit with specific name
+def patmit(patmitmsg):
+    patmit = genpatmitname()   
+    os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+patmit)
+    tarball(patmit)
+    register(patmit, patmitmsg)
+    print("New patmit - "+patmit)
+
+#opens PATLOG and reads entities from it
+def log():
+    f = open(PATRAT_PATLOG, "r")
+    for line in f:
+        print(line)
+
+#inits PATRAT repository
 def patrat_init():
     if os.path.exists(cwd+'/'+PATRAT_PATRAT):
         print("Patrat repository is already init!")
         exit(1)
     os.mkdir(PATRAT_PATRAT)
-    initpatmit = genpatmitname()
     os.mkdir(PATRAT_PATRAT+"patmit")
-    os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+initpatmit)
-    tarball(initpatmit)
-patrat_init()
+    f = open(PATRAT_PATLOG, "w+")
+    f.close()
+    patmit("Initial patmit")
+    print("Empty PATRAT repository init at "+cwd)
+
+#going to state of specific commit    
+def pat(patmitname):
+    detar(patmitname)
+    os.system('rm -rf !(".patrat") > /dev/null')
+    shutil.copytree(cwd+'/'+PATRAT_TEMPF, cwd)
+    print("patrat: you are on "+patmit+" patmit now")
+
+#recognizes CLI commands
+def lex():
+    avcomm = ['patmit', 'pat', 'log']
+    if not arg:
+        print("patrat: yet another VCS. Do patrat init to init patrat repository")
+        exit(0)
+    if arg[0] in avcomm:
+        if "log" in arg:
+            log()
+        elif "patmit" in arg:
+            patmitmsg = ""
+            try:
+                patmitmsg = arg[1]
+            except:
+                print("W: No patmit message")
+            patmit(patmitmsg)
+        elif "pat" in arg:
+            patmitname = ""
+            try:
+                patmitname = arg[1]
+            except:
+                print("patrat see no arguments with pat. Do patrat pat _PATMITNAME_")
+                exit(1)
+            pat(patmitname)
+        elif "init" in arg:
+            patrat_init()
+    else:
+        print("patrat: yet another VCS. Do patrat init to init patrat repository")
+#nothing should be there
+if __name__ == "__main__":
+    lex()
