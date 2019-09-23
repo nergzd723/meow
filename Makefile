@@ -33,7 +33,7 @@ forker:
 kid:
 	make -C kid
 patrat:
-        make -C patrat
+	make -C patrat
 copy: $(targets)
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
@@ -62,6 +62,7 @@ copy: $(targets)
 	#mv forker/forker bin/forker
 	mv kid/kid.bin bin/kid
 	mv kid/pit.bin bin/pit
+	mv patrat/patrat.bin bin/patrat
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
 
