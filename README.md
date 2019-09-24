@@ -13,6 +13,6 @@ Rewrite of build system might affect it. Checkout another branch.
 
 # Dependencies
 In Arch Linux it's in two commands:
-`sudo pacman -S gcc-go mono python-pip base-devel boost`
-`sudo pip install nuitka`
+`sudo pacman -S gcc-go mono python-pip base-devel boost` and
+`sudo pip install nuitka`...
 It's simple
