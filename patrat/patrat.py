@@ -35,7 +35,7 @@ def tarball(patmit):
 
 #unzips tar patmit in the tempdir
 def detar(patmit):
-    os.rename(cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat", cwd+"/"+"RAT")
+    os.rename(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat", cwd+"/"+"RAT")
     os.system("tar -xvf RAT > /dev/null")
     os.rename(cwd+"/"+"RAT" ,cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat")
 
