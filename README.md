@@ -10,3 +10,9 @@ Do `make` to build all supported modules and targets. Then `make install` to ins
 It means that Python modules cannot be run on systems with no Python installed. Do `make target-py` to compile in standalone mode. No guarantees it will work, but it's worth trying.
 ## Something isnt right!
 Rewrite of build system might affect it. Checkout another branch.
+
+# Dependencies
+In Arch Linux it's in two commands:
+`sudo pacman -S gcc-go mono python-pip base-devel boost`
+`sudo pip install nuitka`
+It's simple
