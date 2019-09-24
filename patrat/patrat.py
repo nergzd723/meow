@@ -20,7 +20,7 @@ PATRAT_PATRAT = ".patrat/"
 PATRAT_PATMIT = "patmit/"
 PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
 PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
-PATRAT_PATCHLEVEL = 1
+PATRAT_PATCHLEVEL = 2
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 
 #main part
@@ -50,7 +50,7 @@ def genpatmitname():
 def register(patmit, patmitmsg):
     f = open(PATRAT_PATLOG, "a")
     f.write("\n")
-    f.write(str(time.time())+" "+patmit+patmitmsg+"\n")#implement md5 hash here
+    f.write(str(time.time())+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
     f.close()
     
 #generates PATRAT patmit with specific name
