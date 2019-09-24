@@ -18,13 +18,13 @@ int main
   string dirs;
   cout << "How many directories to create? ";
   dirs << cin;
-  int n = stoi(dirs);
+  int n = atoi(dirs);
   for (int i; i!=n; i++)
   {
-    return 0;
+    
     //not ready yet
   }
-  
+  return 0;
 }
 
 

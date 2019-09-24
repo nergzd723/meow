@@ -26,21 +26,14 @@ int main(int argc, char *argv[]) {
     is_yes = true;
   };
 
-try{
-  if(is_yes == false) {
+  if(is_yes) {
     while(true) {
-      signal(SIGINT,ctrl_handler);
-      cout << "no" << endl;
-    }
-  } 
-  else {
-    while(true) {
-      signal(SIGINT,ctrl_handler);
       cout << "yes" << endl;
-    }
-  }
-} catch(int a) {
-  cout << "Got ctrl-c!" << endl;
+    };
+  } else {
+    while(true) {
+    cout << "no" << endl;
+    };
+  };
   return 0;
-}
 }

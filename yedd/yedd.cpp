@@ -29,8 +29,8 @@ int main(int argc, char *argv[]) {
     }
 
     char buf[bufsize];
-    FILE* read = fopen(argv[1], "r");
-    FILE* write = fopen(argv[2], "w");
+    FILE* read = fopen64(argv[1], "r");
+    FILE* write = fopen64(argv[2], "w");
     int i;
     for (int counter = 0; counter < i; counter++)
     {
