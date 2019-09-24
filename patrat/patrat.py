@@ -35,9 +35,8 @@ def tarball(patmit):
 
 #unzips tar patmit in the tempdir
 def detar(patmit):
-    os.rename(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat", cwd+"/"+"RAT")
+    os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat", cwd+"/"+"RAT")
     os.system("tar -xvf RAT > /dev/null")
-    os.rename(cwd+"/"+"RAT" ,cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat")
 
 #generates name for patmit, 5 symbols
 def genpatmitname():
@@ -93,9 +92,8 @@ def pat(patmitname):
 
 #detars to PATT tempf
 def tempdetar(patmit):
-    os.rename(cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat", cwd+"/"+PATRAT_TEMPF+"RAT")
+    os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat",cwd+"/"+PATRAT_TEMPF+"RAT")
     os.system("cd .patrat/PATT/ && tar -xvf RAT > /dev/null")
-    os.rename(cwd+PATRAT_TEMPF+"RAT", cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat")
  
 #recognizes CLI commands
 def lex():
@@ -133,6 +131,7 @@ def lex():
             flow(patmitname)
     else:
         print("patrat: yet another VCS. Do patrat init to init patrat repository")
+        
 #nothing should be there
 if __name__ == "__main__":
     lex()
