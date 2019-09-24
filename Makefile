@@ -61,6 +61,7 @@ copy: $(targets)
 	mv kid/kid.bin bin/kid
 	mv kid/pit.bin bin/pit
 	mv patrat/patrat.bin bin/patrat
+	mv aname/aname++ bin/aname++
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
 
