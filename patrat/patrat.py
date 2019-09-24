@@ -35,11 +35,9 @@ def tarball(patmit):
 
 #unzips tar patmit in the tempdir
 def detar(patmit):
-    f = open("RAT", "w+")
-    f.close()
-    os.rename(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RAT")
+    os.rename(cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat", cwd+"/"+"RAT")
     os.system("tar -xvf RAT > /dev/null")
-    os.remove(cwd+"/RAT")
+    os.rename(cwd+"/"+"RAT" ,cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat")
 
 #generates name for patmit, 5 symbols
 def genpatmitname():
@@ -51,7 +49,8 @@ def genpatmitname():
 #registers patmit in PATLOG, PATLOG is nessesary sometimes
 def register(patmit, patmitmsg):
     f = open(PATRAT_PATLOG, "a")
-    f.write(str(time.time())+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
+    f.write("\n")
+    f.write(str(time.time())+" "+patmit+patmitmsg+"\n")#implement md5 hash here
     f.close()
     
 #generates PATRAT patmit with specific name
@@ -81,11 +80,23 @@ def patrat_init():
     patmit("Initial patmit")
     print("Empty PATRAT repository init at "+cwd)
 
+#merges patmit into working tree. Overwrites old patmit, but keep entities that werent in patmit
+def flow(patmitname):
+    detar(patmitname)
+    print("patrat: merged patmit "+patmitname+" into current working tree")
+
 #going to state of specific commit    
 def pat(patmitname):
+    os.system("rm -rf !(.patrat)")
     detar(patmitname)
     print("patrat: you are on "+patmitname+" patmit now")
 
+#detars to PATT tempf
+def tempdetar(patmit):
+    os.rename(cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat", cwd+"/"+PATRAT_TEMPF+"RAT")
+    os.system("cd .patrat/PATT/ && tar -xvf RAT > /dev/null")
+    os.rename(cwd+PATRAT_TEMPF+"RAT", cwd+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+".pat")
+ 
 #recognizes CLI commands
 def lex():
     avcomm = ['patmit', 'init', 'pat', 'log']
@@ -112,6 +123,14 @@ def lex():
             pat(patmitname)
         elif 'init' == arg[0]:
             patrat_init()
+        elif 'flow' == arg[0]:
+            patmitname = ""
+            try:
+                patmitname = arg[1]
+            except:
+                print("patrat see no arguments with flow. Do patrat flow _PATMITNAME_")
+                exit(1)
+            flow(patmitname)
     else:
         print("patrat: yet another VCS. Do patrat init to init patrat repository")
 #nothing should be there
