@@ -99,7 +99,7 @@ def tempdetar(patmit):
  
 #recognizes CLI commands
 def lex():
-    avcomm = ['patmit', 'init', 'pat', 'log']
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow']
 
     if arg[0] in avcomm:
         if not arg:
