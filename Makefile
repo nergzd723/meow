@@ -28,8 +28,6 @@ yedd:
 	make -C yedd
 aname:
 	make -C aname
-forker:
-	make -C forker
 kid:
 	make -C kid
 patrat:
