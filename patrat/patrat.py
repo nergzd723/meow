@@ -98,10 +98,15 @@ def em():
     
 #going to state of specific commit    
 def pat(patmitname):
-    hotb()
-    os.system("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
-    detar(patmitname)
-    print("patrat: you are on "+patmitname+" patmit now")
+    if patmitname == "HOTB":
+        os.system("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
+        detar(patmitname)
+        print("patrat: recovered HOTB")
+    else:    
+        hotb()
+        os.system("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
+        detar(patmitname)
+        print("patrat: you are on "+patmitname+" patmit now")
 
 #detars to PATT tempf
 def tempdetar(patmit):
