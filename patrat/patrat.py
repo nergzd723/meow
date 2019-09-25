@@ -88,6 +88,7 @@ def patrat_init():
 
 #merges patmit into working tree. Overwrites old patmit, but keep entities that werent in patmit
 def flow(patmitname):
+    hotb()
     detar(patmitname)
     print("patrat: merged patmit "+patmitname+" into current working tree")
     
@@ -110,10 +111,10 @@ def tempdetar(patmit):
 #recognizes CLI commands
 def lex():
     avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em']
-
+    if not arg:
+        print("patrat: yet another VCS. Do patrat init to init patrat repository")
+        exit(0)
     if arg[0] in avcomm:
-        if not arg:
-            print("patrat: yet another VCS. Do patrat init to init patrat repository")
         if 'log' in arg:
             log()
         elif 'patmit' == arg[0]:
@@ -142,7 +143,7 @@ def lex():
                 exit(1)
             flow(patmitname)
           elif 'em' == arg[0]:
-            em()
+              em()
     else:
         print("patrat: yet another VCS. Do patrat init to init patrat repository")
         
