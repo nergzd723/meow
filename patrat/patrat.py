@@ -54,11 +54,18 @@ def register(patmit, patmitmsg):
     
 #generates PATRAT patmit with specific name
 def patmit(patmitmsg):
+    hotb()
     patmit = genpatmitname()   
     os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+patmit)
     tarball(patmit)
     register(patmit, patmitmsg)
     print("New patmit - "+patmit)
+
+#hotbackup
+def hotb():
+    patmit = "HOTB" 
+    os.system("mkdir -p {} > /dev/null".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit))
+    tarball(patmit)
 
 #opens PATLOG and reads entities from it
 def log():
@@ -83,9 +90,14 @@ def patrat_init():
 def flow(patmitname):
     detar(patmitname)
     print("patrat: merged patmit "+patmitname+" into current working tree")
-
+    
+#restore from latest hotbackup
+def em():
+    pat("HOTB")
+    
 #going to state of specific commit    
 def pat(patmitname):
+    hotb()
     os.system("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
     detar(patmitname)
     print("patrat: you are on "+patmitname+" patmit now")
@@ -97,7 +109,7 @@ def tempdetar(patmit):
  
 #recognizes CLI commands
 def lex():
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow']
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em']
 
     if arg[0] in avcomm:
         if not arg:
@@ -129,6 +141,8 @@ def lex():
                 print("patrat see no arguments with flow. Do patrat flow _PATMITNAME_")
                 exit(1)
             flow(patmitname)
+          elif 'em' == arg[0]:
+            em()
     else:
         print("patrat: yet another VCS. Do patrat init to init patrat repository")
         
