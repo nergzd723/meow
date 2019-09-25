@@ -141,9 +141,9 @@ def lex():
             except:
                 print("patrat see no arguments with flow. Do patrat flow _PATMITNAME_")
                 exit(1)
-            flow(patmitname)
-          elif 'em' == arg[0]:
-              em()
+            flow(patmitname) 
+        elif 'em' == arg[0]:
+            em()
     else:
         print("patrat: yet another VCS. Do patrat init to init patrat repository")
         
