@@ -86,7 +86,7 @@ def flow(patmitname):
 
 #going to state of specific commit    
 def pat(patmitname):
-    os.system("rm -rf !(.patrat)")
+    os.system("find . -type d,f ! -name '.patrat' -exec rm -rf {} +")
     detar(patmitname)
     print("patrat: you are on "+patmitname+" patmit now")
 
