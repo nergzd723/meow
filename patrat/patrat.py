@@ -36,7 +36,7 @@ def tarball(patmit):
 #unzips tar patmit in the tempdir
 def detar(patmit):
     os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RAT"))
-    os.system("tar -xvf RAT > /dev/null")
+    os.system("tar -xzf {} > /dev/null".format(cwd+"/"+"RAT"))
 
 #generates name for patmit, 5 symbols
 def genpatmitname():
