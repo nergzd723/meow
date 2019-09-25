@@ -15,4 +15,9 @@ Rewrite of build system might affect it. Checkout another branch.
 In Arch Linux it's in two commands:
 `sudo pacman -S gcc-go mono python-pip base-devel boost` and
 `sudo pip install nuitka`...
-It's simple
+
+In Debian-like systems with apt and dpkg do
+` sudo apt install libboost-all-dev python python-pip gccgo
+  sudo apt install -y python-setuptools python3-setuptools
+  pip install setuptools
+  pip3 install nuitka termcolor`
