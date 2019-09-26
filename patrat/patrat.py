@@ -34,6 +34,7 @@ def returnpokemon():
 #cleans temporary directory
 def cleantempf():
     shutil.rmtree(PATRAT_TEMPF)
+    os.mkdir(PATRAT_TEMPF)
 
 #generates a tarball for patmit
 def tarball(patmit):
