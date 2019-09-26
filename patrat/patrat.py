@@ -127,7 +127,7 @@ def renew(filen, patmit, projfilepath):
 
 #recognizes CLI commands
 def lex():
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em']
+    avcomm = ['patmit','renew', 'init', 'pat', 'log', 'flow', 'em']
     if not arg:
         print("patrat: yet another VCS. Do patrat init to init patrat repository")
         exit(0)
