@@ -116,7 +116,7 @@ def pat(patmitname):
 
 #detars to PATT tempf
 def tempdetar(patmit):
-    os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat", cwd+"/"+PATRAT_TEMPF+"RAT"))
+    os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+'/'+patmit+".pat", cwd+"/"+PATRAT_TEMPF+"RAT"))
     os.system("cd .patrat/PATT/ && tar -xzf RAT > /dev/null")
 
 #does recover file from patmit *now need projfilepath, dunno how to fix
