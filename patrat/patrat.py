@@ -22,8 +22,14 @@ PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
 PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
 PATRAT_PATCHLEVEL = 2
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
+power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 
 #main part
+
+#nice text for nice people
+def returnpokemon():
+    l = len(power)
+    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random(0, l)])
 
 #cleans temporary directory
 def cleantempf():
@@ -110,9 +116,15 @@ def pat(patmitname):
 
 #detars to PATT tempf
 def tempdetar(patmit):
-    os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat",cwd+"/"+PATRAT_TEMPF+"RAT"))
-    os.system("cd .patrat/PATT/ && tar -xvf RAT > /dev/null")
- 
+    os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat", cwd+"/"+PATRAT_TEMPF+"RAT"))
+    os.system("cd .patrat/PATT/ && tar -xzf RAT > /dev/null")
+
+#does recover file from patmit *now need projfilepath, dunno how to fix
+def renew(filen, patmit, projfilepath):
+    tempdetar(patmit)
+    os.system("cp {} {} > /dev/null".format(PATRAT_TEMPF+filen, projfilepath))
+    cleantempf()
+
 #recognizes CLI commands
 def lex():
     avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em']
@@ -135,6 +147,7 @@ def lex():
                 patmitname = arg[1]
             except:
                 print("patrat see no arguments with pat. Do patrat pat _PATMITNAME_")
+                returnpokemon()
                 exit(1)
             pat(patmitname)
         elif 'init' == arg[0]:
@@ -145,13 +158,34 @@ def lex():
                 patmitname = arg[1]
             except:
                 print("patrat see no arguments with flow. Do patrat flow _PATMITNAME_")
+                returnpokemon()
                 exit(1)
             flow(patmitname) 
         elif 'em' == arg[0]:
             em()
+        elif 'renew' == arg[0]:
+            patmitname = ""
+            filename = ""
+            try:
+                filename = arg[1]
+                try:
+                    patmitname = arg[2]
+                except:
+                    patmitname = "HOTB"
+            except:
+                print("patrat see no arguments with renew. Do patrat flow filename _PATMITNAME_")
+                returnpokemon()
+                exit(1)
+            if os.path.exists(cwd+'/'+filename):
+                renew(filename, patmitname, cwd+'/'+filename)
+            else:
+                print("patrat: path is not correct!")
+                returnpokemon()
+                exit(1)                
     else:
         print("patrat: yet another VCS. Do patrat init to init patrat repository")
-        
+        returnpokemon()
+
 #nothing should be there
 if __name__ == "__main__":
     lex()
