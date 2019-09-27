@@ -26,6 +26,23 @@ power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EM
 
 #main part
 
+#tells user to init
+def reportnorepo():
+    print('patrat: it seems that no PATRAT repo is there!')
+    returnpokemon()
+
+#searches .patrat directory up to 5 levels down
+def searchpokemon():
+    for i in range(5):
+        if os.path.exists(PATRAT_PATRAT):
+            break
+        PATRAT_PATRAT = '../'+PATRAT_PATRAT
+    #we found patrat path!
+    if os.path.exists(PATRAT_PATRAT):
+        return 0
+    else:
+        reportnorepo()
+
 #nice text for nice people
 def returnpokemon():
     l = len(power)
@@ -117,7 +134,7 @@ def pat(patmitname):
 #detars to PATT tempf
 def tempdetar(patmit):
     os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat", cwd+"/"+PATRAT_TEMPF+"RAT"))
-    os.system("cd .patrat/PATT/ && tar -xzf RAT > /dev/null")
+    os.system("cd {} && tar -xzf RAT > /dev/null".format(PATRAT_TEMPF))
 
 #does recover file from patmit *now need projfilepath, dunno how to fix
 def renew(filen, patmit, projfilepath):
@@ -125,11 +142,16 @@ def renew(filen, patmit, projfilepath):
     os.system("cp {} {} > /dev/null".format(PATRAT_TEMPF+filen, projfilepath))
     cleantempf()
 
+#interactive patmit creation. will replace patmit or will be along with it
+def senorita(patmit):
+    returnpokemon()
+
 #recognizes CLI commands
 def lex():
+    searchpokemon()
     avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em']
     if not arg:
-        print("patrat: yet another VCS. Do patrat init to init patrat repository")
+        print("patrat: no command")
         exit(0)
     if arg[0] in avcomm:
         if 'log' in arg:
@@ -183,7 +205,7 @@ def lex():
                 returnpokemon()
                 exit(1)                
     else:
-        print("patrat: yet another VCS. Do patrat init to init patrat repository")
+        print("patrat: no such action, "+arg[0])
         returnpokemon()
 
 #nothing should be there
