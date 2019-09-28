@@ -34,14 +34,14 @@ def reportnorepo():
 
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
-    PATRAT_PATRAT = PATRAT_PATRAT
+    p = './patrat'
     for i in range(5):
-        if os.path.exists(PATRAT_PATRAT):
+        if os.path.exists(p):
             break
-        PATRAT_PATRAT = '../'+PATRAT_PATRAT
+        p = '../'+p
     #we found patrat path!
-    if os.path.exists(PATRAT_PATRAT):
-        return 0
+    if os.path.exists(p):
+        return p
     else:
         reportnorepo()
 
@@ -151,7 +151,8 @@ def senorita(patmit):
 
 #recognizes CLI commands
 def lex():
-    searchpokemon()
+    papath = searchpokemon()
+    PATRAT_PATRAT = papath
     avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em']
     if not arg:
         print("patrat: no command")
