@@ -25,13 +25,13 @@ PATRAT_PATCHLEVEL = 2
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
+PATRAT_PATLIST = ""
 
 #main part
 
 #tells user to init
 def reportnorepo():
-    print('patrat: it seems that no PATRAT repo is there!')
-    returnpokemon()
+    raise Error("No PATRAT repository there or 5 levels down")
 
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
@@ -46,11 +46,23 @@ def searchpokemon():
     else:
         reportnorepo()
 
+#throws patrat folder to the disk
+def throwpatratstack(nameof):
+    os.system("tar -czf {}"+PATRAT_PATRAT+" >/dev/null".format(nameof))
+
 #nice text for nice people
 def returnpokemon():
     l = len(power)
     print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
 
+#enhanced error handler
+class Error(Exception):
+    print("PATRAT: ERROR HANDLER")
+    l = len(power)
+    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+    print("That`s all I know")
+    throwpatratstack(cwd+"/"+"callstack")
+    print(".patrat directory image dumped on disk")
 #cleans temporary directory
 def cleantempf():
     shutil.rmtree(PATRAT_TEMPF)
@@ -91,6 +103,13 @@ def patmit(patmitmsg):
     register(patmit, patmitmsg)
     print("New patmit - "+patmit)
 
+def getpatmitlist():
+    r = open(PATRAT_RATTLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    return patlist
+
 #hotbackup
 def hotb():
     patmit = "HOTB" 
@@ -130,6 +149,8 @@ def em():
     
 #going to state of specific commit    
 def pat(patmitname):
+    if patmitname not in PATRAT_PATLIST:
+        raise Error("No such patmit "+patmitname)
     if patmitname == "HOTB":
         os.system("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
         detar(patmitname)
@@ -153,13 +174,14 @@ def renew(filen, patmit, projfilepath):
 
 #interactive patmit creation. will replace patmit or will be along with it
 def senorita(patmit):
-    returnpokemon()
+    raise Error('Not yet implemented')
 
 #recognizes CLI commands
 def lex():
     papath = searchpokemon()
     PATRAT_PATRAT = papath
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em']
+    PATRAT_PATLIST = getpatmitlist()
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup']
     if not arg:
         print("patrat: no command")
         exit(0)
@@ -178,8 +200,7 @@ def lex():
             try:
                 patmitname = arg[1]
             except:
-                print("patrat see no arguments with pat. Do patrat pat _PATMITNAME_")
-                returnpokemon()
+                raise Error("No pat arguments")
                 exit(1)
             pat(patmitname)
         elif 'init' == arg[0]:
@@ -189,8 +210,7 @@ def lex():
             try:
                 patmitname = arg[1]
             except:
-                print("patrat see no arguments with flow. Do patrat flow _PATMITNAME_")
-                returnpokemon()
+                raise Error("No flow arguments")
                 exit(1)
             flow(patmitname) 
         elif 'em' == arg[0]:
@@ -205,18 +225,15 @@ def lex():
                 except:
                     patmitname = "HOTB"
             except:
-                print("patrat see no arguments with renew. Do patrat flow filename _PATMITNAME_")
-                returnpokemon()
+                raise Error("No renew arguments")
                 exit(1)
             if os.path.exists(cwd+'/'+filename):
                 renew(filename, patmitname, cwd+'/'+filename)
             else:
-                print("patrat: path is not correct!")
-                returnpokemon()
+                raise Error("Bad renew path")
                 exit(1)                
     else:
         print("patrat: no such action, "+arg[0])
-        returnpokemon()
 
 #nothing should be there
 if __name__ == "__main__":
