@@ -13,9 +13,7 @@ import shutil
 
 #enhanced error handler
 class Error(Exception):
-    def __init__(self, error):
-        errorh(error)
-    def errorh(self, error):
+    def reporterr(self, error):
         print("PATRAT: ERROR HANDLER")
         l = len(power)
         print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
@@ -23,7 +21,8 @@ class Error(Exception):
         throwpatratstack(cwd+"/"+"callstack")
         print(".patrat directory image dumped on disk")
         print(error)
-    
+        exit(1)
+        
 #init
 cwd = os.getcwd()
 arg = sys.argv[1:]
@@ -43,7 +42,7 @@ PATRAT_PATLIST = ""
 
 #tells user to init
 def reportnorepo():
-    raise Error("No PATRAT repository there or 5 levels down")
+    Error.reporterr("No PATRAT repository there or 5 levels down")
 
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
@@ -154,7 +153,7 @@ def em():
 #going to state of specific commit    
 def pat(patmitname):
     if patmitname not in PATRAT_PATLIST:
-        raise Error("No such patmit "+patmitname)
+        Error.reporterr("No such patmit "+patmitname)
     if patmitname == "HOTB":
         os.system("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
         detar(patmitname)
@@ -178,7 +177,7 @@ def renew(filen, patmit, projfilepath):
 
 #interactive patmit creation. will replace patmit or will be along with it
 def senorita(patmit):
-    raise Error('Not yet implemented')
+    Error.reporterr('Not yet implemented')
 
 #recognizes CLI commands
 def lex():
@@ -204,7 +203,7 @@ def lex():
             try:
                 patmitname = arg[1]
             except:                
-                raise Error("No pat arguments")
+                Error.reporterr("No pat arguments")
                 exit(1)
             pat(patmitname)
         elif 'init' == arg[0]:
@@ -214,7 +213,7 @@ def lex():
             try:
                 patmitname = arg[1]
             except:
-                raise Error("No flow arguments")
+                Error.reporterr("No flow arguments")
                 exit(1)
             flow(patmitname) 
         elif 'em' == arg[0]:
@@ -229,12 +228,12 @@ def lex():
                 except:
                     patmitname = "HOTB"
             except:
-                raise Error("No renew arguments")
+                Error.reporterr("No renew arguments")
                 exit(1)
             if os.path.exists(cwd+'/'+filename):
                 renew(filename, patmitname, cwd+'/'+filename)
             else:
-                raise Error("Bad renew path")
+                Error.reporterr("Bad renew path")
                 exit(1)                
     else:
         print("patrat: no such action, "+arg[0])
