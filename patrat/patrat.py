@@ -11,6 +11,7 @@ import random
 import time
 import shutil
 
+
 #init
 cwd = os.getcwd()
 arg = sys.argv[1:]
@@ -33,6 +34,7 @@ def reportnorepo():
 
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
+    PATRAT_PATRAT = PATRAT_PATRAT
     for i in range(5):
         if os.path.exists(PATRAT_PATRAT):
             break
