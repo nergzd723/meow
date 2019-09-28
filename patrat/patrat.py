@@ -11,6 +11,15 @@ import random
 import time
 import shutil
 
+#enhanced error handler
+class Error(Exception):
+    print("PATRAT: ERROR HANDLER")
+    l = len(power)
+    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+    print("That`s all I know")
+    throwpatratstack(cwd+"/"+"callstack")
+    print(".patrat directory image dumped on disk")
+    
 #init
 cwd = os.getcwd()
 arg = sys.argv[1:]
@@ -190,8 +199,7 @@ def lex():
             patmitname = ""
             try:
                 patmitname = arg[1]
-            except:
-                raise Error("No pat arguments")
+            except:                raise Error("No pat arguments")
                 exit(1)
             pat(patmitname)
         elif 'init' == arg[0]:
@@ -230,12 +238,4 @@ def lex():
 if __name__ == "__main__":
     lex()
     exit(0)
-    
-#enhanced error handler
-class Error(Exception):
-    print("PATRAT: ERROR HANDLER")
-    l = len(power)
-    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-    print("That`s all I know")
-    throwpatratstack(cwd+"/"+"callstack")
-    print(".patrat directory image dumped on disk")
+   
