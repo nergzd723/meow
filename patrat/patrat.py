@@ -54,15 +54,6 @@ def throwpatratstack(nameof):
 def returnpokemon():
     l = len(power)
     print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-
-#enhanced error handler
-class Error(Exception):
-    print("PATRAT: ERROR HANDLER")
-    l = len(power)
-    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-    print("That`s all I know")
-    throwpatratstack(cwd+"/"+"callstack")
-    print(".patrat directory image dumped on disk")
     
 #cleans temporary directory
 def cleantempf():
@@ -239,3 +230,12 @@ def lex():
 #nothing should be there
 if __name__ == "__main__":
     lex()
+    
+#enhanced error handler
+class Error(Exception):
+    print("PATRAT: ERROR HANDLER")
+    l = len(power)
+    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+    print("That`s all I know")
+    throwpatratstack(cwd+"/"+"callstack")
+    print(".patrat directory image dumped on disk")
