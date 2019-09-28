@@ -11,7 +11,6 @@ import random
 import time
 import shutil
 
-
 #init
 cwd = os.getcwd()
 arg = sys.argv[1:]
@@ -230,6 +229,7 @@ def lex():
 #nothing should be there
 if __name__ == "__main__":
     lex()
+    exit(0)
     
 #enhanced error handler
 class Error(Exception):
