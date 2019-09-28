@@ -199,7 +199,8 @@ def lex():
             patmitname = ""
             try:
                 patmitname = arg[1]
-            except:                raise Error("No pat arguments")
+            except:                
+                raise Error("No pat arguments")
                 exit(1)
             pat(patmitname)
         elif 'init' == arg[0]:
@@ -238,4 +239,4 @@ def lex():
 if __name__ == "__main__":
     lex()
     exit(0)
-   
+    
