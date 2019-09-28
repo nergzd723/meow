@@ -24,6 +24,7 @@ PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
 PATRAT_PATCHLEVEL = 2
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
+PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
 
 #main part
 
@@ -77,7 +78,10 @@ def register(patmit, patmitmsg):
     f.write("\n")
     f.write(str(time.time())+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
     f.close()
-    
+    ratlog = open(PATRAT_RATTLOG, "a")
+    ratlog.write(" "+patmit)
+    ratlog.close()
+
 #generates PATRAT patmit with specific name
 def patmit(patmitmsg):
     hotb()
@@ -109,6 +113,8 @@ def patrat_init():
     os.mkdir(PATRAT_TEMPF)
     f = open(PATRAT_PATLOG, "w+")
     f.close()
+    rat = open(PATRAT_RATTLOG, "w+")
+    rat.close()
     patmit("Initial patmit")
     print("Empty PATRAT repository init at "+cwd)
 
