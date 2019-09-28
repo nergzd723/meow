@@ -48,7 +48,7 @@ def searchpokemon():
 
 #throws patrat folder to the disk
 def throwpatratstack(nameof):
-    os.system("tar -czf {}"+PATRAT_PATRAT+" >/dev/null".format(nameof))
+    os.system("tar -czf "+nameof+" "+PATRAT_PATRAT+" >/dev/null")
 
 #nice text for nice people
 def returnpokemon():
@@ -63,6 +63,7 @@ class Error(Exception):
     print("That`s all I know")
     throwpatratstack(cwd+"/"+"callstack")
     print(".patrat directory image dumped on disk")
+    
 #cleans temporary directory
 def cleantempf():
     shutil.rmtree(PATRAT_TEMPF)
