@@ -13,12 +13,16 @@ import shutil
 
 #enhanced error handler
 class Error(Exception):
-    print("PATRAT: ERROR HANDLER")
-    l = len(power)
-    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-    print("That`s all I know")
-    throwpatratstack(cwd+"/"+"callstack")
-    print(".patrat directory image dumped on disk")
+    def __init__(self, error):
+        errorh(error)
+    def errorh(self, error):
+        print("PATRAT: ERROR HANDLER")
+        l = len(power)
+        print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+        print("That`s all I know")
+        throwpatratstack(cwd+"/"+"callstack")
+        print(".patrat directory image dumped on disk")
+        print(error)
     
 #init
 cwd = os.getcwd()
