@@ -97,7 +97,12 @@ def reporterr(mess):
     print("That`s all I know")
     throwpartstack(cwd+"/"+"callstack")
     print(".patrat directory image dumped on disk")
-
+    pr = input("Proceed with error? Things may crash!")
+    if pr == "y":
+        pass
+    else:
+        exit(1)
+        
 #cleans temporary directory
 def cleantempf():
     patlogger("cleantempf: init")
