@@ -155,6 +155,10 @@ def patmit(patmitmsg):
     print("New patmit - "+patmit)
 
 def getpatmitlist():
+    if os.path.exists(PATRAT_RATLOG):
+        pass
+    else:
+        return []
     patlogger("genpatmitlist: generating list from RATLOG")
     r = open(PATRAT_RATTLOG, "r")
     stri = r.read()
