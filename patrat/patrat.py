@@ -51,7 +51,7 @@ def searchpokemon():
     patlogger("Start searchpokemon()")
     p = './patrat'
     for i in range(5):
-        if os.path.exists(p):
+        if os.path.exists(cwd+"/"+p):
             break
         p = '../'+p
     #we found patrat path!
