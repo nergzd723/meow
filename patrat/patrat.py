@@ -87,7 +87,7 @@ def returnpokemon():
 def reporterr(mess):
     patlogger("Reported error = "+mess)
     print("PATRAT: ERROR HANDLER")
-    print("Error "+message)
+    print("Error "+mess)
     l = len(power)
     print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
     print("That`s all I know")
