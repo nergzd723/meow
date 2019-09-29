@@ -155,7 +155,7 @@ def patmit(patmitmsg):
     print("New patmit - "+patmit)
 
 def getpatmitlist():
-    if os.path.exists(PATRAT_RATLOG):
+    if os.path.exists(PATRAT_RATTLOG):
         pass
     else:
         return []
