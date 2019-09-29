@@ -10,42 +10,45 @@ import os
 import random
 import time
 import shutil
+import subprocess
 
 #enhanced error handler
-class Error(Exception):
-    def reporterr(self, error):
-        print("PATRAT: ERROR HANDLER")
-        l = len(power)
-        print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-        print("That`s all I know")
-        throwpatratstack(cwd+"/"+"callstack")
-        print(".patrat directory image dumped on disk")
-        print(error)
-        exit(1)
+def reporterr(self, error):
+    print("PATRAT: ERROR HANDLER")
+    l = len(power)
+    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+    print("That`s all I know")
+    throwpatratstack(cwd+"/"+"callstack")
+    print(".patrat directory image dumped on disk")
+    print(error)
+    exit(1)
         
 #init
 cwd = os.getcwd()
 arg = sys.argv[1:]
 PATRAT_MAJOR = 0
-PATRAT_MINOR = 1
+PATRAT_MINOR = 3
 PATRAT_PATRAT = ".patrat/"
 PATRAT_PATMIT = "patmit/"
 PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
 PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
-PATRAT_PATCHLEVEL = 2
+PATRAT_PATCHLEVEL = 0
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
 PATRAT_PATLIST = ""
+PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
 
 #main part
 
 #tells user to init
 def reportnorepo():
-    Error.reporterr("No PATRAT repository there or 5 levels down")
+    patlogger("reportnorepo init, reporting error")
+    reporterr("No PATRAT repository there or 5 levels down")
 
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
+    patlogger("Start searchpokemon()")
     p = './patrat'
     for i in range(5):
         if os.path.exists(p):
@@ -53,46 +56,81 @@ def searchpokemon():
         p = '../'+p
     #we found patrat path!
     if os.path.exists(p):
+        patlogger("Found patrat "+p)
         return p
     else:
+        patlogger("Havent found patrat, reporting error")
         reportnorepo()
+
+#logs ALL the actions. you cant even think what is it doing
+def patlogger(rattymessage):
+    logg = open(PATRAT_DEBUGLOG, "a+")
+    logg.write(str(time.time())+" "+rattymessage+"\n")
+    logg.close()
 
 #throws patrat folder to the disk
 def throwpatratstack(nameof):
-    os.system("tar -czf "+nameof+" "+PATRAT_PATRAT+" >/dev/null")
+    patlogger("throwpatratstack init, throwing patrat stack(full) on disk, path = "+nameof)
+    syscall("tar -czf "+nameof+" "+PATRAT_PATRAT+" >/dev/null")
+
+#throws logs to the disk
+def throwpartstack(nameof):
+    patlogger("throwpatratstack init, throwing patrat stack(log) on disk, path = "+nameof)
+    syscall("tar -czf"+nameof+" "+PATRAT_DEBUGLOG+" "+PATRAT_PATLOG+" "+PATRAT_RATTLOG)
 
 #nice text for nice people
 def returnpokemon():
     l = len(power)
     print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-    
+
+#enhanced error handler
+def reporterr(mess):
+    patlogger("Reported error = "+mess)
+    print("PATRAT: ERROR HANDLER")
+    print("Error "+message)
+    l = len(power)
+    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+    print("That`s all I know")
+    throwpartstack(cwd+"/"+"callstack")
+    print(".patrat directory image dumped on disk")
+
 #cleans temporary directory
 def cleantempf():
+    patlogger("cleantempf: init")
     shutil.rmtree(PATRAT_TEMPF)
+    patlogger("removed tree")
     os.mkdir(PATRAT_TEMPF)
+    patlogger("recovered tree")
 
 #generates a tarball for patmit
 def tarball(patmit):
-    os.system("tar -czf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
+    patlogger("tarball: generating tarball for patmit "+patmit)
+    syscall("tar -czf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
 
 #unzips tar patmit in the tempdir
 def detar(patmit):
-    os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RAT"))
-    os.system("tar -xzf {} > /dev/null".format(cwd+"/"+"RAT"))
+    patlogger("detar: detarring for patmit "+patmit)
+    syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RAT"))
+    syscall("tar -xzf {} > /dev/null".format(cwd+"/"+"RAT"))
 
 #generates name for patmit, 5 symbols
 def genpatmitname():
+    patlogger("genpatmitname: init")
     patmit_name = ""
     for i in range(5):
         patmit_name = patmit_name + allowed_patmit_id[random.randint(0, 35)]
+    genpatmitname("New patmit name "+patmit_name)
     return patmit_name
 
 #registers patmit in PATLOG, PATLOG is nessesary sometimes
 def register(patmit, patmitmsg):
+    patlogger("register: init")
     f = open(PATRAT_PATLOG, "a")
     f.write("\n")
     f.write(str(time.time())+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
+    patlogger("register: writing for "+patmit+" with "+patmitmsg+" message")
     f.close()
+    patlogger("register: writing to ratlog")
     ratlog = open(PATRAT_RATTLOG, "a")
     ratlog.write(" "+patmit)
     ratlog.close()
@@ -103,33 +141,39 @@ def patmit(patmitmsg):
     patmit = genpatmitname()   
     os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+patmit)
     tarball(patmit)
+    patlogger("patmit: new patmit "+patmit+" with patmitmsg "+patmitmsg)
     register(patmit, patmitmsg)
     print("New patmit - "+patmit)
 
 def getpatmitlist():
+    patlogger("genpatmitlist: generating list from RATLOG")
     r = open(PATRAT_RATTLOG, "r")
     stri = r.read()
     patlist = stri.split(" ")
     patlist = patlist[1:]
+    patlogger("genpatmitmsg: here is list "+stri)
     return patlist
 
 #hotbackup
 def hotb():
+    patlogger("hotb: generating hotb")
     patmit = "HOTB" 
-    os.system("mkdir -p {} > /dev/null".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit))
+    syscall("mkdir -p {} > /dev/null".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit))
     tarball(patmit)
 
 #opens PATLOG and reads entities from it
 def log():
+    patlogger("log: writing PATLOG to screen")
     f = open(PATRAT_PATLOG, "r")
     for line in f:
         print(line)
 
 #inits PATRAT repository
 def patrat_init():
+    patlogger("patrat_init: got init command")
     if os.path.exists(cwd+'/'+PATRAT_PATRAT):
-        print("Patrat repository is already init!")
-        exit(1)
+        patlogger("patrat_init: repo at "+cwd+'/'+PATRAT_PATRAT+" is already init")
+        reporterr("Patrat repository is already init!")
     os.mkdir(PATRAT_PATRAT)
     os.mkdir(PATRAT_PATRAT+"patmit")
     os.mkdir(PATRAT_TEMPF)
@@ -137,47 +181,68 @@ def patrat_init():
     f.close()
     rat = open(PATRAT_RATTLOG, "w+")
     rat.close()
+    l = open(PATRAT_DEBUGLOG, "w+")
+    l.close()
     patmit("Initial patmit")
     print("Empty PATRAT repository init at "+cwd)
+    patlogger("patrat_init: done initing the repository")
 
 #merges patmit into working tree. Overwrites old patmit, but keep entities that werent in patmit
 def flow(patmitname):
+    patlogger("flow: flowing patmit "+patmitname)
     hotb()
+    patlogger("flow: generating hotb")
     detar(patmitname)
     print("patrat: merged patmit "+patmitname+" into current working tree")
-    
+    patlogger("flow: flow of patmit "+patmitname+" complete")
+
 #restore from latest hotbackup
 def em():
+    patlogger("em: got EM command, recovering tree")
     pat("HOTB")
     
 #going to state of specific commit    
 def pat(patmitname):
+    patlogger("pat: recovering to state "+patmitname+" patmit")
     if patmitname not in PATRAT_PATLIST:
-        Error.reporterr("No such patmit "+patmitname)
+        patlogger("pat: no such patmit "+patmitname)
+        reporterr("No such patmit "+patmitname)
     if patmitname == "HOTB":
-        os.system("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
+        syscall("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
         detar(patmitname)
         print("patrat: recovered HOTB")
-    else:    
+        patlogger("pat: recovered hotb")
+    else:
+        patlogger("pat: ready-to-fly")
         hotb()
-        os.system("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
+        syscall("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
         detar(patmitname)
         print("patrat: you are on "+patmitname+" patmit now")
+        patlogger("pat: done recovering to "+patmitname)
 
 #detars to PATT tempf
 def tempdetar(patmit):
-    os.system("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat", cwd+"/"+PATRAT_TEMPF+"RAT"))
-    os.system("cd {} && tar -xzf RAT > /dev/null".format(PATRAT_TEMPF))
+    patlogger("tempdetar: detarring to "+PATRAT_TEMPF+" patmit "+patmit)
+    syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+".pat", cwd+"/"+PATRAT_TEMPF+"RAT"))
+    syscall("cd {} && tar -xzf RAT > /dev/null".format(PATRAT_TEMPF))
 
 #does recover file from patmit *now need projfilepath, dunno how to fix
 def renew(filen, patmit, projfilepath):
+    patlogger("renew: got request, recovering "+filen+" with path "+projfilepath+" to state of patmit "+patmit)
     tempdetar(patmit)
-    os.system("cp {} {} > /dev/null".format(PATRAT_TEMPF+filen, projfilepath))
+    syscall("cp {} {} > /dev/null".format(PATRAT_TEMPF+filen, projfilepath))
+    patlogger("renew: done, cleaning tempf")
     cleantempf()
 
 #interactive patmit creation. will replace patmit or will be along with it
 def senorita(patmit):
-    Error.reporterr('Not yet implemented')
+    reporterr('Not yet implemented')
+
+#os.system call and log
+def syscall(call):
+    patlogger(call)
+    out = subprocess.check_output(call, shell=True)
+    patlogger(out)
 
 #recognizes CLI commands
 def lex():
@@ -203,7 +268,7 @@ def lex():
             try:
                 patmitname = arg[1]
             except:                
-                Error.reporterr("No pat arguments")
+                reporterr("No pat arguments")
                 exit(1)
             pat(patmitname)
         elif 'init' == arg[0]:
@@ -213,7 +278,7 @@ def lex():
             try:
                 patmitname = arg[1]
             except:
-                Error.reporterr("No flow arguments")
+                reporterr("No flow arguments")
                 exit(1)
             flow(patmitname) 
         elif 'em' == arg[0]:
@@ -228,12 +293,12 @@ def lex():
                 except:
                     patmitname = "HOTB"
             except:
-                Error.reporterr("No renew arguments")
+                reporterr("No renew arguments")
                 exit(1)
             if os.path.exists(cwd+'/'+filename):
                 renew(filename, patmitname, cwd+'/'+filename)
             else:
-                Error.reporterr("Bad renew path")
+                reporterr("Bad renew path")
                 exit(1)                
     else:
         print("patrat: no such action, "+arg[0])
