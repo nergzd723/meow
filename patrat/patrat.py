@@ -208,9 +208,9 @@ def em():
 #going to state of specific commit    
 def pat(patmitname):
     patlogger("pat: recovering to state "+patmitname+" patmit")
-    if patmitname not in PATRAT_PATLIST:
-        patlogger("pat: no such patmit "+patmitname)
-        reporterr("No such patmit "+patmitname)
+    #if patmitname not in PATRAT_PATLIST:
+       # patlogger("pat: no such patmit "+patmitname) do not work, dunno why
+        #reporterr("No such patmit "+patmitname)
     if patmitname == "HOTB":
         syscall("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
         detar(patmitname)
