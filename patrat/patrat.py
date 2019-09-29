@@ -59,8 +59,8 @@ def searchpokemon():
         patlogger("Found patrat "+p)
         return p
     else:
-        patlogger("Havent found patrat, reporting error")
-        reportnorepo()
+        patlogger("Havent found patrat, reporting")
+        return ".patrat"
 
 #logs ALL the actions. you cant even think what is it doing
 def patlogger(rattymessage):
