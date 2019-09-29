@@ -65,7 +65,7 @@ def searchpokemon():
 #logs ALL the actions. you cant even think what is it doing
 def patlogger(rattymessage):
     logg = open(PATRAT_DEBUGLOG, "a+")
-    logg.write(str(time.time())+" "+rattymessage+"\n")
+    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
     logg.close()
 
 #throws patrat folder to the disk
