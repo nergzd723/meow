@@ -64,6 +64,10 @@ def searchpokemon():
 
 #logs ALL the actions. you cant even think what is it doing
 def patlogger(rattymessage):
+    if os.path.exists(PATRAT_DEBUGLOG):
+        pass
+    else:
+        return
     logg = open(PATRAT_DEBUGLOG, "a+")
     logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
     logg.close()
