@@ -123,7 +123,7 @@ def genpatmitname():
     patmit_name = ""
     for i in range(5):
         patmit_name = patmit_name + allowed_patmit_id[random.randint(0, 35)]
-    genpatmitname("New patmit name "+patmit_name)
+    patlogger("genpatmitname: New patmit name "+patmit_name)
     return patmit_name
 
 #registers patmit in PATLOG, PATLOG is nessesary sometimes
