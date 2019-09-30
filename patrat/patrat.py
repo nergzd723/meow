@@ -11,18 +11,8 @@ import random
 import time
 import shutil
 import subprocess
+import patratgit
 
-#enhanced error handler
-def reporterr(self, error):
-    print("PATRAT: ERROR HANDLER")
-    l = len(power)
-    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-    print("That`s all I know")
-    throwpatratstack(cwd+"/"+"callstack")
-    print(".patrat directory image dumped on disk")
-    print(error)
-    exit(1)
-        
 #init
 cwd = os.getcwd()
 arg = sys.argv[1:]
@@ -97,7 +87,7 @@ def reporterr(mess):
     print("That`s all I know")
     throwpartstack(cwd+"/"+"callstack")
     print(".patrat directory image dumped on disk")
-    pr = input("Proceed with error? Things may crash!")
+    pr = input("Proceed with error? Things may crash! ")
     if pr == "y":
         pass
     else:
@@ -184,9 +174,15 @@ def log():
 #inits PATRAT repository
 def patrat_init():
     patlogger("patrat_init: got init command")
+    git = input("Enable patrat-git support?(you can always change it) ")
     if os.path.exists(cwd+'/'+PATRAT_PATRAT):
         patlogger("patrat_init: repo at "+cwd+'/'+PATRAT_PATRAT+" is already init")
         reporterr("Patrat repository is already init!")
+    if git == "y":
+        patlogger("Enabling patrat-git")
+        PATRAT_PATRAT_GIT = True
+    else:
+        PATRAT_PATRAT_GIT = False
     os.mkdir(PATRAT_PATRAT)
     os.mkdir(PATRAT_PATRAT+"patmit")
     os.mkdir(PATRAT_TEMPF)
@@ -196,6 +192,10 @@ def patrat_init():
     rat.close()
     l = open(PATRAT_DEBUGLOG, "w+")
     l.close()
+    if PATRAT_PATRAT_GIT:
+        os.mkdir(patratgit.PATRAT_GIT)
+        GIT = open(patratgit.PATRAT_GITFILE, 'w+')
+        GIT.close()
     patmit("Initial patmit")
     print("Empty PATRAT repository init at "+cwd)
     patlogger("patrat_init: done initing the repository")
@@ -307,17 +307,14 @@ def lex():
                     patmitname = "HOTB"
             except:
                 reporterr("No renew arguments")
-                exit(1)
             if os.path.exists(cwd+'/'+filename):
                 renew(filename, patmitname, cwd+'/'+filename)
             else:
                 reporterr("Bad renew path")
-                exit(1)                
     else:
         print("patrat: no such action, "+arg[0])
 
 #nothing should be there
 if __name__ == "__main__":
     lex()
-    exit(0)
     
