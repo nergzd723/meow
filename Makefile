@@ -62,6 +62,8 @@ copy: $(targets)
 	mv kid/pit.bin bin/pit
 	mv patrat/patrat.bin bin/patrat
 	mv aname/aname++ bin/aname++
+	mv patrat/patratgit.bin bin/patratgit
+
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
 
@@ -75,3 +77,4 @@ changelog:
 	echo 0.12-1 Create kid module. Kills a process. Add pit module. Bugfixes.
 	echo 0.13-1 Add patrat module. VCS on Python.
 	echo 0.14-1 Finish patrat. Add patrat-branch.
+	echo 0.15-1 Add patrat-git(experimental)
