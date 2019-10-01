@@ -60,7 +60,7 @@ def patratgitshell():
         if 'cd' in n:
             os.chdir(cwd+"/"+n[1])
         else:
-            patlogger(sep.join(n))
+            patrat.patlogger(sep.join(n))
             os.system(sep.join(n))
 
 def lex():
