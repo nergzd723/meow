@@ -14,13 +14,14 @@ import time
 #init
 arg = sys.argv[1:]
 cwd = os.getcwd()
-PATRAT_GIT = patrat.PATRAT_PATRAT+"patrat-git/"
-PATRAT_GITFILE = patrat.PATRAT_PATRAT+"PATRAT-GIT"
 PATRAT_PATRAT = patrat.searchpokemon()
 PATRAT_PATMIT = PATRAT_PATRAT+"patmit/"
+PATRAT_GIT = PATRAT_PATRAT+"patrat-git/"
+PATRAT_GITFILE = PATRAT_PATRAT+"PATRAT-GIT"
 
 #main part
 
+def patrat 
 #enables patrat-git via empty files
 def patratgitenable():
     patrat.patlogger("patrat-git enable: init")
@@ -46,6 +47,8 @@ def patratgitinit():
     if not os.path.exists(PATRAT_GITFILE):
         patrat.reporterr("Repository init without patrat-git support")
     patratgitrefresh("HOTB")
+    patrat.patlogger("patratgitinit: init git repository")
+    syscall("cd {} && git init".format(PATRAT_GIT))
     print("patrat-git ready")
 
 #opens MEOWSHELL seance at PATRAT_GIT folder
