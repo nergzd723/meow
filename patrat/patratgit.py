@@ -34,7 +34,7 @@ def patratgitenable():
 #moves specifical patmit to PATRAT_GIT
 def patratgitrefresh(patmit):
     patrat.patlogger("patrat-git refresh: detarring patmit "+patmit+" to "+PATRAT_GIT)
-    patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+PATRAT_GIT+"TEMPD"))
+    patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+".patrat/"+patmit+"/"+patmit+".pat", cwd+"/"+PATRAT_GIT+"TEMPD"))
     patrat.syscall("cd {} && tar -xzf TEMPD > /dev/null && rm TEMPD".format(PATRAT_GIT))
     patrat.patlogger("patrat-git refresh: detarred to "+PATRAT_GIT+" patmit "+patmit)
     patrat.patlogger("patrat-git refresh: ---------------------------------------")
