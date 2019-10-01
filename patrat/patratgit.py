@@ -60,7 +60,8 @@ def patratgitshell():
         if 'cd' in n:
             os.chdir(cwd+"/"+n[1])
         else:
-            patrat.syscall(sep.join(n))
+            patlogger(sep.join(n))
+            os.system(sep.join(n))
 
 def lex():
     avcomm = ['enable', 'init', 'refresh', 'shell']
