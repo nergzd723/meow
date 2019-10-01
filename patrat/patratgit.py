@@ -47,7 +47,7 @@ def patratgitinit():
         patrat.reporterr("Repository init without patrat-git support")
     patratgitrefresh("HOTB")
     patrat.patlogger("patratgitinit: init git repository")
-    syscall("cd {} && git init".format(PATRAT_GIT))
+    patrat.syscall("cd {} && git init".format(PATRAT_GIT))
     print("patrat-git ready")
 
 #opens MEOWSHELL seance at PATRAT_GIT folder
