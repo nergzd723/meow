@@ -16,6 +16,8 @@ arg = sys.argv[1:]
 cwd = os.getcwd()
 PATRAT_GIT = patrat.PATRAT_PATRAT+"patrat-git/"
 PATRAT_GITFILE = patrat.PATRAT_PATRAT+"PATRAT-GIT"
+PATRAT_PATRAT = patrat.searchpokemon()
+PATRAT_PATMIT = PATRAT_PATRAT+"patmit/"
 
 #main part
 
@@ -32,7 +34,7 @@ def patratgitenable():
 #moves specifical patmit to PATRAT_GIT
 def patratgitrefresh(patmit):
     patrat.patlogger("patrat-git refresh: detarring patmit "+patmit+" to "+PATRAT_GIT)
-    patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+patrat.PATRAT_PATRAT+patrat.PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+PATRAT_GIT+"TEMPD"))
+    patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+.PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+PATRAT_GIT+"TEMPD"))
     patrat.syscall("cd {} && tar -xzf TEMPD > /dev/null && rm TEMPD".format(PATRAT_GIT))
     patrat.patlogger("patrat-git refresh: detarred to "+PATRAT_GIT+" patmit "+patmit)
     patrat.patlogger("patrat-git refresh: ---------------------------------------")
@@ -43,15 +45,29 @@ def patratgitinit():
         patrat.reporterr("Tried to patrat-git init without patrat repository")
     if not os.path.exists(PATRAT_GITFILE):
         patrat.reporterr("Repository init without patrat-git support")
-    patratgitrefresh()
+    patratgitrefresh("HOTB")
     print("patrat-git ready")
 
 #opens MEOWSHELL seance at PATRAT_GIT folder
 def patratgitshell():
+    sep = " "
     patrat.patlogger("patratgitshell: start stream")
     while True:
         n = input(termcolor.colored("git $ ", "red"))
-        patrat.syscall(n)
+        n = n.split(" ")
+        if 'cd' in n:
+            os.chdir(cwd+"/"+n[1])
+        else:
+            patrat.syscall(sep.join(n))
 
 def lex():
     avcomm = ['enable', 'init', 'refresh', 'shell']
+    if arg[0] in avcomm:
+        if arg[0] == 'enable':
+            patratgitenable()
+        if arg[0] == 'init':
+            patratgitinit()
+        if arg[0] == 'refresh':
+            patratgitrefresh()
+        if arg[0] == 'shell':
+            patratgitshell()
