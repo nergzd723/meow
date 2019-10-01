@@ -176,11 +176,6 @@ def patrat_init():
     if os.path.exists(cwd+'/'+PATRAT_PATRAT):
         patlogger("patrat_init: repo at "+cwd+'/'+PATRAT_PATRAT+" is already init")
         reporterr("Patrat repository is already init!")
-    if git == "y":
-        patlogger("Enabling patrat-git")
-        PATRAT_PATRAT_GIT = True
-    else:
-        PATRAT_PATRAT_GIT = False
     os.mkdir(PATRAT_PATRAT)
     os.mkdir(PATRAT_PATRAT+"patmit")
     os.mkdir(PATRAT_TEMPF)
