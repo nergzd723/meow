@@ -21,7 +21,6 @@ PATRAT_GITFILE = PATRAT_PATRAT+"PATRAT-GIT"
 
 #main part
 
-def patrat 
 #enables patrat-git via empty files
 def patratgitenable():
     patrat.patlogger("patrat-git enable: init")

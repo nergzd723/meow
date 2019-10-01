@@ -11,7 +11,6 @@ import random
 import time
 import shutil
 import subprocess
-import patratgit
 
 #init
 cwd = os.getcwd()
@@ -174,7 +173,6 @@ def log():
 #inits PATRAT repository
 def patrat_init():
     patlogger("patrat_init: got init command")
-    git = input("Enable patrat-git support?(you can always change it) ")
     if os.path.exists(cwd+'/'+PATRAT_PATRAT):
         patlogger("patrat_init: repo at "+cwd+'/'+PATRAT_PATRAT+" is already init")
         reporterr("Patrat repository is already init!")
@@ -192,10 +190,6 @@ def patrat_init():
     rat.close()
     l = open(PATRAT_DEBUGLOG, "w+")
     l.close()
-    if PATRAT_PATRAT_GIT:
-        os.mkdir(patratgit.PATRAT_GIT)
-        GIT = open(patratgit.PATRAT_GITFILE, 'w+')
-        GIT.close()
     patmit("Initial patmit")
     print("Empty PATRAT repository init at "+cwd)
     patlogger("patrat_init: done initing the repository")
