@@ -74,3 +74,6 @@ def lex():
             patratgitrefresh(patmit)
         if arg[0] == 'shell':
             patratgitshell()
+
+if __name__ == "__main__":
+    lex()
