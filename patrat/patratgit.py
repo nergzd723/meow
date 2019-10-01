@@ -16,7 +16,7 @@ arg = sys.argv[1:]
 cwd = os.getcwd()
 PATRAT_PATRAT = patrat.searchpokemon()
 PATRAT_PATMIT = PATRAT_PATRAT+"patmit/"
-PATRAT_GIT = PATRAT_PATRAT+"patrat-git/"
+PATRAT_GIT = "./patrat/patrat-git/"
 PATRAT_GITFILE = PATRAT_PATRAT+"PATRAT-GIT"
 
 #main part
