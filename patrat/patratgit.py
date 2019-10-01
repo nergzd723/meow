@@ -70,6 +70,7 @@ def lex():
         if arg[0] == 'init':
             patratgitinit()
         if arg[0] == 'refresh':
-            patratgitrefresh()
+            patmit = arg[1]
+            patratgitrefresh(patmit)
         if arg[0] == 'shell':
             patratgitshell()
