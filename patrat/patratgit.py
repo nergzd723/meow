@@ -27,6 +27,7 @@ def patratgitenable():
     if os.path.exists(PATRAT_GITFILE):
         patrat.reporterr("patrat-git support is present")
     os.mkdir(PATRAT_GIT)
+    os.mkdir(PATRAT_PATMIT+"PGIT/")
     open(PATRAT_GITFILE, "w+")
     patrat.patlogger("done enabling")
     print("patrat-git support enabled")
