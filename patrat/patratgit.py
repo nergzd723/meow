@@ -52,6 +52,7 @@ def patratgitinit():
 
 #opens MEOWSHELL seance at PATRAT_GIT folder
 def patratgitshell():
+    os.chdir(PATRAT_GIT)
     sep = " "
     patrat.patlogger("patratgitshell: start stream")
     while True:
