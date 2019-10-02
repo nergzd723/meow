@@ -71,17 +71,22 @@ def throwpartstack(nameof):
     patlogger("throwpatratstack init, throwing patrat stack(log) on disk, path = "+nameof)
     syscall("tar -czf"+nameof+" "+PATRAT_DEBUGLOG+" "+PATRAT_PATLOG+" "+PATRAT_RATTLOG)
 
-#nice text for nice people
-def returnpokemon():
-    l = len(power)
-    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+#prints debuglog to the screen 
+def debuglog():
+    patlogger("debuglog: printing DLOG to the screen")
+    f = open(PATRAT_DEBUGLOG, "r")
+    for line in f:
+        print(line)
+
+#def returnpokemon():
+    #deprecated, use reporterr
 
 #enhanced error handler
 def reporterr(mess):
     patlogger("Reported error = "+mess)
     print("PATRAT: ERROR HANDLER")
     print("Error "+mess)
-    l = len(power)
+    l = len(power) -1
     print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
     print("That`s all I know")
     throwpartstack(cwd+"/"+"callstack")

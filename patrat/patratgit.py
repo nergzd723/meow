@@ -50,6 +50,11 @@ def patratgitinit():
     patrat.syscall("cd {} && git init".format(PATRAT_GIT))
     print("patrat-git ready")
 
+#exec git code
+def patratgitexec(call):
+    patrat.patlogger("patratgitexec: got a call "+call)
+    patrat.syscall("cd {} && {}".format(PATRAT_GIT, call))
+
 #opens MEOWSHELL seance at PATRAT_GIT folder
 def patratgitshell():
     sep = " "
@@ -62,6 +67,30 @@ def patratgitshell():
         else:
             patrat.patlogger(sep.join(n))
             os.system(sep.join(n))
+
+#patratgit setup: setup repo origin and another
+def patratgitsetup():
+    print("patratgit setup utility\nYou can always change settings later")
+    origin = input("Origin of your repository, it`s remote(e.g. https://github.com/patrat/patrat-repo)")
+    branch = input("Branch where to push to repo")
+    patrat.patlogger("patratgitsetup: got from user: "+origin+" repo and "+branch+" branch")
+    patratgitexec("git checkout -b {}".format(branch))
+    patratgitexec("git remote add origin {}".format(origin))
+    print("Done setup!\nOrigin = "+origin+"\nbranch = "+branch)
+
+#doing patmit of current changes, refresh a patratgit, git commit and git push
+def patratgitapply(patmit):
+    patrat.patlogger("patratgitapply: creating tarball of PGIT")
+    patrat.tarball("PGIT")
+    patrat.patlogger("patratgitapply: refresh")
+    patratgitrefresh("PGIT")
+    msg = input("Enter git commit message ")
+    patratgitexec("git add .")
+    patrat.patlogger("patratgitapply: creating commit with message "+msg)
+    patratgitexec('git commit -m "{} (patratgit)"'.format(msg))
+    patratgitexec("git push origin master")
+    print("Done! If something is wrong, you can always use patratgit shell or watch DLOG for errors")
+    patrat.patlogger("patratgitapply: success")
 
 def lex():
     avcomm = ['enable', 'init', 'refresh', 'shell']
