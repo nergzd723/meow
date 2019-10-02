@@ -79,7 +79,7 @@ def patratgitsetup():
     print("Done setup!\nOrigin = "+origin+"\nbranch = "+branch)
 
 #doing patmit of current changes, refresh a patratgit, git commit and git push
-def patratgitapply(patmit):
+def patratgitapply():
     patrat.patlogger("patratgitapply: creating tarball of PGIT")
     patrat.tarball("PGIT")
     patrat.patlogger("patratgitapply: refresh")
@@ -93,7 +93,7 @@ def patratgitapply(patmit):
     patrat.patlogger("patratgitapply: success")
 
 def lex():
-    avcomm = ['enable', 'init', 'refresh', 'shell']
+    avcomm = ['enable', 'init', 'refresh', 'shell', 'setup', 'apply']
     if arg[0] in avcomm:
         if arg[0] == 'enable':
             patratgitenable()
@@ -104,6 +104,10 @@ def lex():
             patratgitrefresh(patmit)
         if arg[0] == 'shell':
             patratgitshell()
+        if arg[0] == 'setup':
+            patratgitsetup()
+        if arg[0] == 'apply':
+            patratgitapply()
 
 if __name__ == "__main__":
     lex()
