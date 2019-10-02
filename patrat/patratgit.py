@@ -14,7 +14,7 @@ import time
 #init
 arg = sys.argv[1:]
 cwd = os.getcwd()
-PATRAT_PATRAT = patrat.searchpokemon()
+PATRAT_PATRAT = '.patrat/'
 PATRAT_PATMIT = PATRAT_PATRAT+"patmit/"
 PATRAT_GIT = ".patrat/patrat-git/"
 PATRAT_GITFILE = PATRAT_PATRAT+"PATRAT-GIT"
@@ -57,6 +57,7 @@ def patratgitexec(call):
 
 #opens MEOWSHELL seance at PATRAT_GIT folder
 def patratgitshell():
+    os.chdir(PATRAT_GIT)
     sep = " "
     patrat.patlogger("patratgitshell: start stream")
     while True:
