@@ -248,7 +248,7 @@ def senorita(patmit):
 #os.system call and log
 def syscall(call):
     patlogger(call)
-    out = subprocess.check_output(call, shell=True)
+    out = subprocess.check_output(call, shell=False) #shell=False due to security issue
     patlogger(out)
 
 #recognizes CLI commands
