@@ -11,17 +11,16 @@ if '-r' in arg:
   recursive = True
 else:
   ar = arg
-i = 0
-for x in ar:
-  if os.path.exists(ar[i]):
+for elem in ar:
+  if os.path.exists(elem):
     try:
-      os.remove(ar[i])
+      os.remove(elem)
     except:
-      if os.path.isdir(ar[i]) and recursive:
-        shutil.rmtree(ar[i])
+      if os.path.isdir(elem) and recursive:
+        shutil.rmtree(elem)
       else:
-        print("bark: Is a directory,", ar[i])
+        print("bark: Is a directory,", elem)
                       
   else:
-    print("bark: No such file or directory,", ar[i]) 
-  i+=1
+    print("bark: No such file or directory,", elem) 
+    
