@@ -1,0 +1,7 @@
+A MEOW project is freely distributed under GNU GPLv3 license.
+
+MEOW project was started by nergzd723(Mark Hargreaves) and x0r3d(Oleg Sazonov). At start it was presented as coreutils-like tools, but with dutils and other modules
+it has been redesigned as package which contain some Python and C++ tools.
+
+The project build itself using Make. I do not use cmake because I do not see real reason to do that.
+Build structure is described better in meow_build.txt.

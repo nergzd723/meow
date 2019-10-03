@@ -1,0 +1,36 @@
+Python modules description
+
+aname
+It uses Platform package which collects info about system. Use with -d flag to display all info it can possibly collect.
+uname-like module.
+
+bark
+Bark utility removes files. Acts almost like rm, but there`re some difference. There`s not -f flag since it is not needed because bark do not ask delete file or not.
+It recurses through argument list and removes everything it can see. If -r flag is used, it also deletes directories.
+
+cpy
+INTENDED to copy files. Do not properly work.
+
+dip
+Windows dir command alt. Displays all files in directory, each from newline.
+Mechanism do not need to describe itself ^_^
+
+dutils
+Some fun and not only fun modules.
+
+exo
+Echoes some message to the shell or to the file
+On Python, it opens the file if there is > in argument, and writes text to file
+
+goblin
+Performance test. Do not work, probably will be deprecated.
+
+kid
+That`s more interesting. It kills the process by pid or by name. Uses psutil library.
+It just kills process with -9 signal or with SIGTERM if term specified in arguments.
+
+meowshell
+Opens sh shell which execs user commands. Not useful.
+
+patrat
+look at patrat.txt

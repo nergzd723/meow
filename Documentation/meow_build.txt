@@ -1,0 +1,11 @@
+Build system of meowproj
+
+It is Makefile-based build system. Each module has it`s own folder and in that folder there are some other Makefiles, which build a module.
+The build/ folder is config for dpkg to build Debian packages.
+
+Python modules are build using Nuitka. Nuitka assembles Python module to a binary file. Actually, Python modules still use system Python interpreter
+because of binary size. Nuitka is used to not follow imports. Why do? Because build speed is quite big if follow imports to e.g. sys Python module
+More about Python in the meow_pythonm.txt
+
+C, C++ modules are build using Clang. Clang uses LLVM as a backend and code produced by it is usually faster than the code on GCC.
+Go modules use gccgo. Go interpreter is too heavy and usually slower than gccgo.
