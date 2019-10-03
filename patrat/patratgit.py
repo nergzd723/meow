@@ -121,7 +121,7 @@ def patratgitmerge():
 #    patrat.patlogger("patratgitapply: success")
 
 def lex():
-    avcomm = ['enable', 'init', 'refresh', 'shell', 'setup', 'apply']
+    avcomm = ['enable', 'init', 'refresh', 'shell', 'setup', 'apply', 'merge']
     if arg[0] in avcomm:
         if arg[0] == 'enable':
             patratgitenable()
@@ -132,5 +132,7 @@ def lex():
             patratgitrefresh(patmit)
         if arg[0] == 'shell':
             patratgitshell()
+        if arg[0] == 'merge':
+            patratgitmerge()
 if __name__ == "__main__":
     lex()
