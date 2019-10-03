@@ -1,5 +1,6 @@
 import os
 import platform
+import subprocess
 lastcomm = ""
 lastarg = ""
 availmblecomms = ['cd', 'rabbid', '^[[A']
@@ -14,7 +15,7 @@ def arrowp(void):
         exec(lastcomm+"({})".format('"'+lastarg+'"'))
         return
     else:
-        os.system(lastcomm+" "+lastargs)
+        subprocess.call(lastcomm+" "+lastargs, shell=False)
 def cd(comm):
     try:
         os.chdir(comm)
@@ -35,7 +36,7 @@ def rabbid(void):
 def lexer(comm, args):
     if comm not in availmblecomms:
         try:
-            os.system(comm+" "+args)
+            subprocess.call(comm+" "+args, shell=False)
         except:
             print("No such file or directory or command name")
     
@@ -45,7 +46,6 @@ def lexer(comm, args):
             availmblecomms[i] = 'arrowp'
         exec(availmblecomms[i]+"({})".format('"'+args+'"'))
         lastcomm = availmblecomms[i]
-        lastarg
         return
     lastcomm = comm
     lastarg = args
