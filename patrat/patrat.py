@@ -12,12 +12,6 @@ import time
 import shutil
 import subprocess
 
-PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
-PATRAT_APILEVEL = 11
-PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
-PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
-PATRAT_API = PATRAT_PATRAT+"APILEVEL"
-
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
     p = '.patrat/'
@@ -29,7 +23,12 @@ def searchpokemon():
     if os.path.exists(p):
         return p
     return ".patrat/"
-
+PATRAT_PATRAT = searchpokemon()
+PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
+PATRAT_APILEVEL = 11
+PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
+PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
+PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 def getpatmitlist():
     r = open(PATRAT_RATTLOG, "r")
     stri = r.read()
