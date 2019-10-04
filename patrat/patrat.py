@@ -12,29 +12,6 @@ import time
 import shutil
 import subprocess
 
-#init
-cwd = os.getcwd()
-arg = sys.argv[1:]
-PATRAT_MAJOR = 0
-PATRAT_MINOR = 3
-PATRAT_PATRAT = ".patrat/"
-PATRAT_PATMIT = "patmit/"
-PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
-PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
-PATRAT_PATCHLEVEL = 0
-allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
-power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
-PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
-PATRAT_PATLIST = ""
-PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
-
-#main part
-
-#tells user to init
-def reportnorepo():
-    patlogger("reportnorepo init, reporting error")
-    reporterr("No PATRAT repository there or 5 levels down")
-
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
     patlogger("Start searchpokemon()")
@@ -47,9 +24,76 @@ def searchpokemon():
     if os.path.exists(p):
         patlogger("Found patrat "+p)
         return p
+    patlogger("Havent found patrat, reporting")
+    return ".patrat"
+
+def getpatmitlist():
+    if os.path.exists(PATRAT_RATTLOG):
+        pass
     else:
-        patlogger("Havent found patrat, reporting")
-        return ".patrat"
+        return []
+    patlogger("genpatmitlist: generating list from RATLOG")
+    r = open(PATRAT_RATTLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    patlogger("genpatmittime: here is list "+stri)
+    return patlist
+
+def gettimelist():
+    if os.path.exists(PATRAT_RATTLOG):
+        pass
+    else:
+        return []
+    patlogger("genpatmitlist: generating list from RATLOG")
+    r = open(PATRAT_RMLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    patlogger("genpatmittime: here is list "+stri)
+    return patlist
+
+def getmsglist():
+    if os.path.exists(PATRAT_RATTLOG):
+        pass
+    else:
+        return []
+    patlogger("genpatmitmsg: generating list from RATLOG")
+    r = open(PATRAT_TLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    patlogger("genpatmitmsg: here is list "+stri)
+    return patlist
+
+#init
+cwd = os.getcwd()
+arg = sys.argv[1:]
+PATRAT_MAJOR = 0
+PATRAT_MINOR = 3
+PATRAT_PATRAT = searchpokemon()
+PATRAT_PATMIT = "patmit/"
+PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
+PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
+PATRAT_PATCHLEVEL = 1
+allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
+power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
+PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
+PATRAT_PATLIST = getpatmitlist()
+PATRAT_TIMELIST = gettimelist()
+PATRAT_MSGLIST = getmsglist()
+PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
+PATRAT_APILEVEL = 1-1
+PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
+PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
+PATRAT_API = PATRAT_PATRAT+"APILEVEL"
+
+#main part
+
+#tells user to init
+def reportnorepo():
+    patlogger("reportnorepo init, reporting error")
+    reporterr("No PATRAT repository there or 5 levels down")
 
 #logs ALL the actions. you cant even think what is it doing
 def patlogger(rattymessage):
@@ -83,6 +127,7 @@ def debuglog():
 
 #enhanced error handler
 def reporterr(mess):
+    patlogger("reporterr: ------------------------------------Traceback at {}--------------------".format(str(time.time())))
     patlogger("Reported error = "+mess)
     print("PATRAT: ERROR HANDLER")
     print("Error "+mess)
@@ -93,8 +138,10 @@ def reporterr(mess):
     print(".patrat directory image dumped on disk")
     pr = input("Proceed with error? Things may crash! ")
     if pr == "y":
+        patlogger("-------------------------------------------User chose to proceed-----------------")
         pass
     else:
+        patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
         exit(1)
         
 #cleans temporary directory
@@ -130,13 +177,22 @@ def register(patmit, patmitmsg):
     patlogger("register: init")
     f = open(PATRAT_PATLOG, "a")
     f.write("\n")
-    f.write(str(time.time())+" "+patmit+"\n"+patmitmsg)#implement md5 hash here
+    f.write(str(time.time())+" "+patmit+"\n"+patmitmsg) #implement md5 hash here
     patlogger("register: writing for "+patmit+" with "+patmitmsg+" message")
     f.close()
     patlogger("register: writing to ratlog")
     ratlog = open(PATRAT_RATTLOG, "a")
-    ratlog.write(" "+patmit)
+    ratlog.write(patmit+" ")
     ratlog.close()
+    patlogger("register: writing to rmlog")
+    rlog = open(PATRAT_RMLOG, "a")
+    rlog.write(patmitmsg+" ")
+    rlog.close()
+    patlogger("register: saving timestamp")
+    tm = open(PATRAT_TLOG, "a")
+    tm.write(str(time.time())+" ")
+    tm.close()
+    patlogger("register: done writing to logs")
 
 #generates PATRAT patmit with specific name
 def patmit(patmitmsg):
@@ -147,19 +203,6 @@ def patmit(patmitmsg):
     patlogger("patmit: new patmit "+patmit+" with patmitmsg "+patmitmsg)
     register(patmit, patmitmsg)
     print("New patmit - "+patmit)
-
-def getpatmitlist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    patlogger("genpatmitlist: generating list from RATLOG")
-    r = open(PATRAT_RATTLOG, "r")
-    stri = r.read()
-    patlist = stri.split(" ")
-    patlist = patlist[1:]
-    patlogger("genpatmitmsg: here is list "+stri)
-    return patlist
 
 #hotbackup
 def hotb():
@@ -190,6 +233,13 @@ def patrat_init():
     rat.close()
     l = open(PATRAT_DEBUGLOG, "w+")
     l.close()
+    t = open(PATRAT_TLOG, "w+")
+    t.close()
+    m = open(PATRAT_RMLOG, "w+")
+    m.close()
+    api = open(PATRAT_API, "w+")
+    api.write(PATRAT_APILEVEL)
+    api.close()
     patmit("Initial patmit")
     print("Empty PATRAT repository init at "+cwd)
     patlogger("patrat_init: done initing the repository")
@@ -253,16 +303,19 @@ def syscall(call):
 
 #recognizes CLI commands
 def lex():
-    papath = searchpokemon()
-    PATRAT_PATRAT = papath
-    PATRAT_PATLIST = getpatmitlist()
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup']
+    with open(PATRAT_API, "r") as API:
+        API.read()
+        if API != PATRAT_APILEVEL:
+            reporterr("Old api or too new API. Do patrat apiupgrade")
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'apiupgrade']
     if not arg:
         print("patrat: no command")
         exit(0)
     if arg[0] in avcomm:
         if 'log' in arg:
             log()
+        if 'dlog' in arg:
+            debuglog()    
         elif 'patmit' == arg[0]:
             patmitmsg = ""
             try:
