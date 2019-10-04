@@ -64,21 +64,10 @@ def getmsglist():
     return patlist
 
 #init
-cwd = os.getcwd()
-arg = sys.argv[1:]
-PATRAT_MAJOR = 0
-PATRAT_MINOR = 3
-PATRAT_PATRAT = searchpokemon()
-PATRAT_PATMIT = "patmit/"
-PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
-PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
-PATRAT_PATCHLEVEL = 1
-allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
-power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
-PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
-PATRAT_PATLIST = getpatmitlist()
-PATRAT_TIMELIST = gettimelist()
-PATRAT_MSGLIST = getmsglist()
+if os.path.exists(PATRAT_PATRAT):
+    PATRAT_PATLIST = getpatmitlist()
+    PATRAT_TIMELIST = gettimelist()
+    PATRAT_MSGLIST = getmsglist()
 
 #main part
 
@@ -295,10 +284,11 @@ def syscall(call):
 
 #recognizes CLI commands
 def lex():
-    with open(PATRAT_API, "r") as API:
-        API.read()
-        if API != PATRAT_APILEVEL:
-            reporterr("Old api or too new API. Do patrat apiupgrade")
+    if os.path.exists(PATRAT_PATRAT):
+        with open(PATRAT_API, "r") as API:
+            API.read()
+            if API != PATRAT_APILEVEL:
+                reporterr("Old api or too new API. Do patrat apiupgrade")
     avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'apiupgrade']
     if not arg:
         print("patrat: no command")
