@@ -12,58 +12,43 @@ import time
 import shutil
 import subprocess
 
+PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
+PATRAT_APILEVEL = 11
+PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
+PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
+PATRAT_API = PATRAT_PATRAT+"APILEVEL"
+
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
-    patlogger("Start searchpokemon()")
-    p = './patrat'
+    p = '.patrat/'
     for i in range(5):
         if os.path.exists(cwd+"/"+p):
             break
         p = '../'+p
     #we found patrat path!
     if os.path.exists(p):
-        patlogger("Found patrat "+p)
         return p
-    patlogger("Havent found patrat, reporting")
-    return ".patrat"
+    return ".patrat/"
 
 def getpatmitlist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    patlogger("genpatmitlist: generating list from RATLOG")
     r = open(PATRAT_RATTLOG, "r")
     stri = r.read()
     patlist = stri.split(" ")
     patlist = patlist[1:]
-    patlogger("genpatmittime: here is list "+stri)
     return patlist
 
 def gettimelist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    patlogger("genpatmitlist: generating list from RATLOG")
     r = open(PATRAT_RMLOG, "r")
     stri = r.read()
     patlist = stri.split(" ")
     patlist = patlist[1:]
-    patlogger("genpatmittime: here is list "+stri)
     return patlist
 
 def getmsglist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    patlogger("genpatmitmsg: generating list from RATLOG")
     r = open(PATRAT_TLOG, "r")
     stri = r.read()
     patlist = stri.split(" ")
     patlist = patlist[1:]
-    patlogger("genpatmitmsg: here is list "+stri)
     return patlist
 
 #init
@@ -82,11 +67,6 @@ PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
 PATRAT_PATLIST = getpatmitlist()
 PATRAT_TIMELIST = gettimelist()
 PATRAT_MSGLIST = getmsglist()
-PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
-PATRAT_APILEVEL = 1-1
-PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
-PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
-PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 
 #main part
 
