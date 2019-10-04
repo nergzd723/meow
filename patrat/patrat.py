@@ -14,7 +14,7 @@ import subprocess
 
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
-    p = './patrat'
+    p = '.patrat/'
     for i in range(5):
         if os.path.exists(cwd+"/"+p):
             break
