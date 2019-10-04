@@ -12,69 +12,6 @@ import time
 import shutil
 import subprocess
 
-#logs ALL the actions. you cant even think what is it doing
-def patlogger(rattymessage):
-    if os.path.exists(PATRAT_DEBUGLOG):
-        pass
-    else:
-        return
-    logg = open(PATRAT_DEBUGLOG, "a+")
-    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
-    logg.close()
-    
-#searches .patrat directory up to 5 levels down
-def searchpokemon():
-    patlogger("Start searchpokemon()")
-    p = './patrat'
-    for i in range(5):
-        if os.path.exists(cwd+"/"+p):
-            break
-        p = '../'+p
-    #we found patrat path!
-    if os.path.exists(p):
-        patlogger("Found patrat "+p)
-        return p
-    patlogger("Havent found patrat, reporting")
-    return ".patrat"
-
-def getpatmitlist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    patlogger("genpatmitlist: generating list from RATLOG")
-    r = open(PATRAT_RATTLOG, "r")
-    stri = r.read()
-    patlist = stri.split(" ")
-    patlist = patlist[1:]
-    patlogger("genpatmittime: here is list "+stri)
-    return patlist
-
-def gettimelist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    patlogger("genpatmitlist: generating list from RATLOG")
-    r = open(PATRAT_RMLOG, "r")
-    stri = r.read()
-    patlist = stri.split(" ")
-    patlist = patlist[1:]
-    patlogger("genpatmittime: here is list "+stri)
-    return patlist
-
-def getmsglist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    patlogger("genpatmitmsg: generating list from RATLOG")
-    r = open(PATRAT_TLOG, "r")
-    stri = r.read()
-    patlist = stri.split(" ")
-    patlist = patlist[1:]
-    patlogger("genpatmitmsg: here is list "+stri)
-    return patlist
 
 #init
 cwd = os.getcwd()
@@ -100,6 +37,61 @@ PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 
 #main part
 
+#logs ALL the actions. you cant even think what is it doing
+def patlogger(rattymessage):
+    if os.path.exists(PATRAT_DEBUGLOG):
+        pass
+    else:
+        return
+    logg = open(PATRAT_DEBUGLOG, "a+")
+    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
+    logg.close()
+    
+#searches .patrat directory up to 5 levels down
+def searchpokemon():
+    p = './patrat'
+    for i in range(5):
+        if os.path.exists(cwd+"/"+p):
+            break
+        p = '../'+p
+    #we found patrat path!
+    if os.path.exists(p):
+        patlogger("Found patrat "+p)
+        return p
+    return ".patrat"
+
+def getpatmitlist():
+    if os.path.exists(PATRAT_RATTLOG):
+        pass
+    else:
+        return []
+    r = open(PATRAT_RATTLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    return patlist
+
+def gettimelist():
+    if os.path.exists(PATRAT_RATTLOG):
+        pass
+    else:
+        return []
+    r = open(PATRAT_RMLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    return patlist
+
+def getmsglist():
+    if os.path.exists(PATRAT_RATTLOG):
+        pass
+    else:
+        return []
+    r = open(PATRAT_TLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    return patlist
 #tells user to init
 def reportnorepo():
     patlogger("reportnorepo init, reporting error")
