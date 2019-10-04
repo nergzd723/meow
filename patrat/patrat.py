@@ -94,7 +94,7 @@ def throwpatratstack(nameof):
 #throws logs to the disk
 def throwpartstack(nameof):
     patlogger("throwpatratstack init, throwing patrat stack(log) on disk, path = "+nameof)
-    syscall("tar -czf"+nameof+" "+PATRAT_DEBUGLOG+" "+PATRAT_PATLOG+" "+PATRAT_RATTLOG)
+    syscall("tar -czf "+nameof+" "+PATRAT_DEBUGLOG+" "+PATRAT_PATLOG+" "+PATRAT_RATTLOG)
 
 #prints debuglog to the screen 
 def debuglog():
@@ -279,7 +279,7 @@ def senorita(patmit):
 #os.system call and log
 def syscall(call):
     patlogger(call)
-    out = subprocess.check_output(call, shell=False) #shell=False due to security issue
+    out = subprocess.check_output(call, shell=True) #shell=False due to security issue
     patlogger(out)
 
 #recognizes CLI commands
