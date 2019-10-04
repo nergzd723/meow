@@ -29,6 +29,7 @@ Full patrat folder structure
         PATLOG
 
 DLOG contains info collected by patlogger - ratty function that logs almost all the stuff in the patrat.
+PATLOG is a file, which contains some user logs. It is impossible to parse it, so in PATRAT API level 2 it will be deprecated and replaced with RATLOG RMLOG and TLOG - RATLOG stores patmits, RMLOG - messages, TLOG - unix time
 
 PAT
 PAT is a function that removes current tree, gets user-typed patmit and unzips it into tree. Used to fully recover a state of some patmit
