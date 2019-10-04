@@ -299,7 +299,7 @@ def lex():
         if 'dlog' in arg:
             debuglog()    
         elif 'patmit' == arg[0]:
-            patmitmsg = ""
+            patmitmsg = "empty"
             try:
                 patmitmsg = arg[1]
             except:
