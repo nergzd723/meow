@@ -12,6 +12,11 @@ import time
 import shutil
 import subprocess
 
+cwd = os.getcwd()
+arg = sys.argv[1:]
+PATRAT_MAJOR = 0
+PATRAT_MINOR = 3
+
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
     p = '.patrat/'
@@ -29,10 +34,6 @@ PATRAT_APILEVEL = 11
 PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
 PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
 PATRAT_API = PATRAT_PATRAT+"APILEVEL"
-cwd = os.getcwd()
-arg = sys.argv[1:]
-PATRAT_MAJOR = 0
-PATRAT_MINOR = 3
 PATRAT_PATRAT = searchpokemon()
 PATRAT_PATMIT = "patmit/"
 PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
