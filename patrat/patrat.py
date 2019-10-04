@@ -12,6 +12,16 @@ import time
 import shutil
 import subprocess
 
+#logs ALL the actions. you cant even think what is it doing
+def patlogger(rattymessage):
+    if os.path.exists(PATRAT_DEBUGLOG):
+        pass
+    else:
+        return
+    logg = open(PATRAT_DEBUGLOG, "a+")
+    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
+    logg.close()
+    
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
     patlogger("Start searchpokemon()")
@@ -94,16 +104,6 @@ PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 def reportnorepo():
     patlogger("reportnorepo init, reporting error")
     reporterr("No PATRAT repository there or 5 levels down")
-
-#logs ALL the actions. you cant even think what is it doing
-def patlogger(rattymessage):
-    if os.path.exists(PATRAT_DEBUGLOG):
-        pass
-    else:
-        return
-    logg = open(PATRAT_DEBUGLOG, "a+")
-    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
-    logg.close()
 
 #throws patrat folder to the disk
 def throwpatratstack(nameof):
