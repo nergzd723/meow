@@ -21,7 +21,7 @@ def searchpokemon():
         p = '../'+p
     #we found patrat path!
     if os.path.exists(p):
-        return p+"/"
+        return p
     return ".patrat/"
 
 def getpatmitlist():
