@@ -63,9 +63,10 @@ PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
-PATRAT_PATLIST = getpatmitlist()
-PATRAT_TIMELIST = gettimelist()
-PATRAT_MSGLIST = getmsglist()
+if os.path.exists(PATRAT_PATRAT):
+    PATRAT_PATLIST = getpatmitlist()
+    PATRAT_TIMELIST = gettimelist()
+    PATRAT_MSGLIST = getmsglist()
 
 #main part
 
