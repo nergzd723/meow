@@ -137,7 +137,6 @@ def reporterr(mess):
     pr = input("Proceed with error? Things may crash! ")
     if pr == "y":
         patlogger("-------------------------------------------User chose to proceed-----------------")
-        pass
     else:
         patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
         exit(1)
