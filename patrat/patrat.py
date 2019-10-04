@@ -12,6 +12,39 @@ import time
 import shutil
 import subprocess
 
+#searches .patrat directory up to 5 levels down
+def searchpokemon():
+    p = './patrat'
+    for i in range(5):
+        if os.path.exists(cwd+"/"+p):
+            break
+        p = '../'+p
+    #we found patrat path!
+    if os.path.exists(p):
+        patlogger("Found patrat "+p)
+        return p
+    return ".patrat"
+
+def getpatmitlist():
+    r = open(PATRAT_RATTLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    return patlist
+
+def gettimelist():
+    r = open(PATRAT_RMLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    return patlist
+
+def getmsglist():
+    r = open(PATRAT_TLOG, "r")
+    stri = r.read()
+    patlist = stri.split(" ")
+    patlist = patlist[1:]
+    return patlist
 
 #init
 cwd = os.getcwd()
@@ -47,51 +80,6 @@ def patlogger(rattymessage):
     logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
     logg.close()
     
-#searches .patrat directory up to 5 levels down
-def searchpokemon():
-    p = './patrat'
-    for i in range(5):
-        if os.path.exists(cwd+"/"+p):
-            break
-        p = '../'+p
-    #we found patrat path!
-    if os.path.exists(p):
-        patlogger("Found patrat "+p)
-        return p
-    return ".patrat"
-
-def getpatmitlist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    r = open(PATRAT_RATTLOG, "r")
-    stri = r.read()
-    patlist = stri.split(" ")
-    patlist = patlist[1:]
-    return patlist
-
-def gettimelist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    r = open(PATRAT_RMLOG, "r")
-    stri = r.read()
-    patlist = stri.split(" ")
-    patlist = patlist[1:]
-    return patlist
-
-def getmsglist():
-    if os.path.exists(PATRAT_RATTLOG):
-        pass
-    else:
-        return []
-    r = open(PATRAT_TLOG, "r")
-    stri = r.read()
-    patlist = stri.split(" ")
-    patlist = patlist[1:]
-    return patlist
 #tells user to init
 def reportnorepo():
     patlogger("reportnorepo init, reporting error")
