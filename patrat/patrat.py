@@ -287,7 +287,7 @@ def lex():
     if os.path.exists(PATRAT_PATRAT):
         with open(PATRAT_API, "r") as API:
             a = API.read()
-            if a != PATRAT_APILEVEL:
+            if a[:-1] != PATRAT_APILEVEL:
                 reporterr("Old api or too new API. Do patrat apiupgrade")
     avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'apiupgrade']
     if not arg:
