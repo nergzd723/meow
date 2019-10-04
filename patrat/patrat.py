@@ -22,7 +22,7 @@ def searchpokemon():
     #we found patrat path!
     if os.path.exists(p):
         return p
-    return ".patrat"
+    return ".patrat/"
 
 def getpatmitlist():
     r = open(PATRAT_RATTLOG, "r")
