@@ -93,7 +93,7 @@ def throwpatratstack(nameof):
 #throws logs to the disk
 def throwpartstack(nameof):
     patlogger("throwpatratstack init, throwing patrat stack(log) on disk, path = "+nameof)
-    syscall("tar -czf"+nameof+" "+PATRAT_DEBUGLOG+" "+PATRAT_PATLOG+" "+PATRAT_RATTLOG)
+    syscall("tar -czf "+nameof+" "+PATRAT_DEBUGLOG+" "+PATRAT_PATLOG+" "+PATRAT_RATTLOG)
 
 #prints debuglog to the screen 
 def debuglog():
@@ -188,7 +188,7 @@ def patmit(patmitmsg):
 def hotb():
     patlogger("hotb: generating hotb")
     patmit = "HOTB" 
-    syscall("mkdir -p {} > /dev/null".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit))
+    syscall("mkdir -p {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit))
     tarball(patmit)
 
 #opens PATLOG and reads entities from it
