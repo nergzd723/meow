@@ -28,9 +28,6 @@ def searchpokemon():
     if os.path.exists(p):
         return p
     return ".patrat/"
-<<<<<<< HEAD
-
-=======
 PATRAT_PATRAT = searchpokemon()
 PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
 PATRAT_APILEVEL = 11
@@ -45,7 +42,6 @@ PATRAT_PATCHLEVEL = 1
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
->>>>>>> d6d34cd39127afe426d4cd55f7896642b047f6ea
 def getpatmitlist():
     r = open(PATRAT_RATTLOG, "r")
     stri = r.read()
@@ -68,26 +64,6 @@ def getmsglist():
     return patlist
 
 #init
-<<<<<<< HEAD
-cwd = os.getcwd()
-arg = sys.argv[1:]
-PATRAT_MAJOR = 0
-PATRAT_MINOR = 3
-PATRAT_PATRAT = searchpokemon()
-PATRAT_PATMIT = "patmit/"
-PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
-PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
-PATRAT_PATCHLEVEL = 1
-PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
-PATRAT_APILEVEL = 11
-PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
-PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
-PATRAT_API = PATRAT_PATRAT+"APILEVEL"
-allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
-power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
-PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
-=======
->>>>>>> d6d34cd39127afe426d4cd55f7896642b047f6ea
 if os.path.exists(PATRAT_PATRAT):
     PATRAT_PATLIST = getpatmitlist()
     PATRAT_TIMELIST = gettimelist()
@@ -104,7 +80,7 @@ def patlogger(rattymessage):
     logg = open(PATRAT_DEBUGLOG, "a+")
     logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
     logg.close()
-    
+
 #tells user to init
 def reportnorepo():
     patlogger("reportnorepo init, reporting error")
@@ -120,7 +96,7 @@ def throwpartstack(nameof):
     patlogger("throwpatratstack init, throwing patrat stack(log) on disk, path = "+nameof)
     syscall("tar -czf "+nameof+" "+PATRAT_DEBUGLOG+" "+PATRAT_PATLOG+" "+PATRAT_RATTLOG)
 
-#prints debuglog to the screen 
+#prints debuglog to the screen
 def debuglog():
     patlogger("debuglog: printing DLOG to the screen")
     f = open(PATRAT_DEBUGLOG, "r")
@@ -148,7 +124,7 @@ def reporterr(mess):
     else:
         patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
         exit(1)
-        
+
 #cleans temporary directory
 def cleantempf():
     patlogger("cleantempf: init")
@@ -202,7 +178,7 @@ def register(patmit, patmitmsg):
 #generates PATRAT patmit with specific name
 def patmit(patmitmsg):
     hotb()
-    patmit = genpatmitname()   
+    patmit = genpatmitname()
     os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+patmit)
     tarball(patmit)
     patlogger("patmit: new patmit "+patmit+" with patmitmsg "+patmitmsg)
@@ -212,7 +188,7 @@ def patmit(patmitmsg):
 #hotbackup
 def hotb():
     patlogger("hotb: generating hotb")
-    patmit = "HOTB" 
+    patmit = "HOTB"
     syscall("mkdir -p {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit))
     tarball(patmit)
 
@@ -262,8 +238,8 @@ def flow(patmitname):
 def em():
     patlogger("em: got EM command, recovering tree")
     pat("HOTB")
-    
-#going to state of specific commit    
+
+#going to state of specific commit
 def pat(patmitname):
     patlogger("pat: recovering to state "+patmitname+" patmit")
     #if patmitname not in PATRAT_PATLIST:
@@ -310,13 +286,8 @@ def syscall(call):
 def lex():
     if os.path.exists(PATRAT_PATRAT):
         with open(PATRAT_API, "r") as API:
-<<<<<<< HEAD
-            a = API.read()
-            if a != PATRAT_APILEVEL:
-=======
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
->>>>>>> d6d34cd39127afe426d4cd55f7896642b047f6ea
                 reporterr("Old api or too new API. Do patrat apiupgrade")
     avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'apiupgrade']
     if not arg:
@@ -326,7 +297,7 @@ def lex():
         if 'log' in arg:
             log()
         if 'dlog' in arg:
-            debuglog()    
+            debuglog()
         elif 'patmit' == arg[0]:
             patmitmsg = "empty"
             try:
@@ -338,7 +309,7 @@ def lex():
             patmitname = ""
             try:
                 patmitname = arg[1]
-            except:                
+            except:
                 reporterr("No pat arguments")
                 exit(1)
             pat(patmitname)
@@ -351,7 +322,7 @@ def lex():
             except:
                 reporterr("No flow arguments")
                 exit(1)
-            flow(patmitname) 
+            flow(patmitname)
         elif 'em' == arg[0]:
             em()
         elif 'renew' == arg[0]:
@@ -375,4 +346,3 @@ def lex():
 #nothing should be there
 if __name__ == "__main__":
     lex()
-    
