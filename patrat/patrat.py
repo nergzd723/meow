@@ -286,8 +286,8 @@ def syscall(call):
 def lex():
     if os.path.exists(PATRAT_PATRAT):
         with open(PATRAT_API, "r") as API:
-            API.read()
-            if API != PATRAT_APILEVEL:
+            a = API.read()
+            if a != PATRAT_APILEVEL:
                 reporterr("Old api or too new API. Do patrat apiupgrade")
     avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'apiupgrade']
     if not arg:
