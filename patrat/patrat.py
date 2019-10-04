@@ -21,7 +21,6 @@ def searchpokemon():
         p = '../'+p
     #we found patrat path!
     if os.path.exists(p):
-        patlogger("Found patrat "+p)
         return p
     return ".patrat"
 
