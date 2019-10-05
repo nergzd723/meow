@@ -34,7 +34,7 @@ def patratgitexec(call):
 
 def updhead(patmit):
     p = open(PATRAT_HEAD, "w")
-    p.write(patmit+" ")
+    p.write(patmit)
     p.close()
     patrat.patlogger("HEAD is now on patmit "+patmit)
 
