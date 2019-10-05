@@ -73,6 +73,7 @@ def patratgitmergeall():
     for patmit in PATRAT_LIST:
         if patmit == " " or patmit == "":
             break
+        patratgitexec("rm -rf *")
         i = PATRAT_LIST.index(patmit)
         patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATMIT+patmit+"/"+patmit+".pat", PATRAT_GIT+"GITRAT"))
         print("Copy patmit "+patmit)
