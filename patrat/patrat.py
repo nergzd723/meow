@@ -366,8 +366,10 @@ def lex():
             flow(patmitname) 
         elif 'em' == arg[0]:
             em()
+        elif 'apiupgrade' == arg[0]:
+            apiupgrade()
         elif 'version' == arg[0]:
-            print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
+            print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
         elif 'renew' == arg[0]:
             patmitname = ""
             filename = ""
