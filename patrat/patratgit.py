@@ -18,12 +18,13 @@ PATRAT_PATRAT = patrat.searchpokemon()
 PATRAT_PATMIT = PATRAT_PATRAT+"patmit/"
 PATRAT_GIT = ".patrat/patrat-git/"
 PATRAT_GITFILE = PATRAT_PATRAT+"PATRAT-GIT"
-PATRAT_LIST = patrat.getpatmitlist()
-PATRAT_LPAT = PATRAT_LIST[len(PATRAT_LIST)-1]
-PATRAT_MERGESTARTPOINT = PATRAT_LIST[0]
-PATRAT_HEAD = PATRAT_PATRAT+"GITHEAD"
-PATRAT_PATLIST = patrat.gettimelist()
-PATRAT_MSGLIST = patrat.getmsglist()
+if os.path.exists(PATRAT_PATRAT):
+    PATRAT_LIST = patrat.getpatmitlist()
+    PATRAT_LPAT = PATRAT_LIST[len(PATRAT_LIST)-1]
+    PATRAT_MERGESTARTPOINT = PATRAT_LIST[0]
+    PATRAT_HEAD = PATRAT_PATRAT+"GITHEAD"
+    PATRAT_PATLIST = patrat.gettimelist()
+    PATRAT_MSGLIST = patrat.getmsglist()
 
 #main part
 
