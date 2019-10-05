@@ -33,13 +33,14 @@ def patratgitexec(call):
     patrat.patlogger("patratgitexec: got a call "+call)
     patrat.syscall("cd {} && {}".format(PATRAT_GIT, call))
 
+#updates HEAD file to a state of latest patmit merged to tree. Not used yet but WILL be used later
 def updhead(patmit):
     p = open(PATRAT_HEAD, "w")
     p.write(patmit)
     p.close()
     patrat.patlogger("HEAD is now on patmit "+patmit)
 
-#setup patrat-git
+#setup patrat-git (FOR REMOTE!, git init will be available later)
 def patratgitsetup():
     if os.path.exists(PATRAT_GITFILE):
         patrat.reporterr("patrat-git support present")
@@ -56,6 +57,11 @@ def patratgitsetup():
     print("Cloned origin to "+PATRAT_GIT)
     print("Patrat-git ready to work")
 
+#sync the tree with remote
+def patratgitsync():
+    patratgitexec("git pull")
+    patratgitexec("git push")
+
 #opens MEOWSHELL seance at PATRAT_GIT folder
 def patratgitshell():
     os.chdir(PATRAT_GIT)
@@ -70,10 +76,8 @@ def patratgitshell():
             patrat.patlogger(sep.join(n))
             os.system(sep.join(n))
 
-def patratgitmergeall():
-    for patmit in PATRAT_LIST:
-        if patmit == " " or patmit == "":
-            break
+#merges patmit x to a git tree
+def patratgitmerge(patmit):
         patratgitexec("rm -rf *")
         i = PATRAT_LIST.index(patmit)
         patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATMIT+patmit+"/"+patmit+".pat", ".patrat/GITRAT"))
@@ -85,6 +89,14 @@ def patratgitmergeall():
         print("Commit patmit "+patmit+" with message "+PATRAT_MSGLIST[i])
         updhead(patmit)
 
+#merges ALL patmits to a git tree
+def patratgitmergeall():
+    for patmit in PATRAT_LIST:
+        if patmit == " " or patmit == "":
+            break
+        patratgitmerge(patmit)
+
+#typical command recognizer
 def lex():
     avcomm = ['setup', 'mergeall', 'refresh', 'shell', 'setup', 'apply', 'merge']
     if arg[0] in avcomm:
@@ -94,5 +106,15 @@ def lex():
             patratgitshell()
         if arg[0] == 'mergeall':
             patratgitmergeall()
+        if arg[0] == 'merge':
+            try:
+                pat = arg[1]
+            except:
+                patrat.reporterr("No patmit info for merge")
+            patratgitmerge(arg[1])
+    else:
+        print("patrat-git: patrat extension module for integration with GIT")
+
+#usually code do not proceed beyound this line
 if __name__ == "__main__":
     lex()

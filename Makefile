@@ -78,3 +78,4 @@ changelog:
 	echo 0.13-1 Add patrat module. VCS on Python.
 	echo 0.14-1 Finish patrat. Add patrat-branch.
 	echo 0.15-1 Add patrat-git(experimental)
+	echo 0.16-1 Full patrat-git. Patrat v0.5

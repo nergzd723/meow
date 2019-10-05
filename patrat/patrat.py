@@ -67,7 +67,7 @@ def getmsglist():
 cwd = os.getcwd()
 arg = sys.argv[1:]
 PATRAT_MAJOR = 0
-PATRAT_MINOR = 3
+PATRAT_MINOR = 5
 PATRAT_PATRAT = searchpokemon()
 PATRAT_PATMIT = "patmit/"
 PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
@@ -128,7 +128,7 @@ def reporterr(mess):
     patlogger("reporterr: ------------------------------------Traceback at {}--------------------".format(str(time.time())))
     patlogger("Reported error = "+mess)
     print("PATRAT: ERROR HANDLER")
-    print("Error "+mess)
+    print(mess)
     l = len(power) -1
     print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
     print("That`s all I know")
@@ -300,14 +300,37 @@ def syscall(call):
     out = subprocess.check_output(call, shell=True) #shell=False due to security issue
     patlogger(out)
 
+#upgrades API if there`s a pattern to do that. Otherwise, backups logs/data and sets new environment
+def apiupgrade():
+    patlogger("apiupgrade: start tool")
+    pattern = []
+    print("You proceeded to upgrade patrat API. If there`s a pattern to fully upgrade api, your data and logs will be untouched")
+    ap = open(PATRAT_APILEVEL, "r")
+    a = int(ap.read())
+    if a in pattern:
+        pass
+    
+    print("No pattern found")
+    i = input("Do full api-upgrade? All data and logs will be sent to backup folder, then it will be patrat-init. Data wont be touched, but you may not access some patmits")
+    if not i == 'y':
+        patlogger("apiupgrade: escape")
+        print("Bailing out")
+        exit(0)
+    throwpatratstack("BAK")
+    syscall("rm -rf "+PATRAT_PATRAT)
+    patrat_init()
+    syscall("mv BAK "+PATRAT_PATRAT+"BAK")
+    print("Done apiupgrade. Backup of PATRAT folder is inside new PATRAT folder")
+    patlogger("apiupgrade: upgraded api "+a+" to api "+PATRAT_APILEVEL+" using force-update")
+
 #recognizes CLI commands
 def lex():
     if os.path.exists(PATRAT_PATRAT):
         with open(PATRAT_API, "r") as API:
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
-                reporterr("Old api or too new API. Do patrat apiupgrade")
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'apiupgrade']
+                reporterr("Old api or too new API. Do patrat apiupgrade(patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade']
     if not arg:
         print("patrat: no command")
         exit(0)
@@ -343,6 +366,8 @@ def lex():
             flow(patmitname) 
         elif 'em' == arg[0]:
             em()
+        elif 'version' == arg[0]:
+            print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
         elif 'renew' == arg[0]:
             patmitname = ""
             filename = ""
