@@ -75,9 +75,9 @@ def patratgitmergeall():
             break
         patratgitexec("rm -rf *")
         i = PATRAT_LIST.index(patmit)
-        patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATMIT+patmit+"/"+patmit+".pat", PATRAT_GIT+"GITRAT"))
+        patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATMIT+patmit+"/"+patmit+".pat", PATRAT_PATRAT+"GITRAT"))
         print("Copy patmit "+patmit)
-        patrat.syscall("cd {} && tar -xzf {} > /dev/null".format(PATRAT_GIT, "GITRAT"))
+        patrat.syscall("cd {} && tar -xzf {} > /dev/null".format(PATRAT_GIT, "../GITRAT"))
         print("Detar patmit "+patmit)
         patratgitexec("git add .")
         patratgitexec("git commit -m {}".format(PATRAT_MSGLIST[i]))
