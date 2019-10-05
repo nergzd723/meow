@@ -50,14 +50,14 @@ def getpatmitlist():
     return patlist
 
 def gettimelist():
-    r = open(PATRAT_RMLOG, "r")
+    r = open(PATRAT_TLOG, "r")
     stri = r.read()
     patlist = stri.split(" ")
     patlist = patlist[1:]
     return patlist
 
 def getmsglist():
-    r = open(PATRAT_TLOG, "r")
+    r = open(PATRAT_RMLOG, "r")
     stri = r.read()
     patlist = stri.split(" ")
     patlist = patlist[1:]
