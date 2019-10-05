@@ -72,7 +72,7 @@ def patratgitshell():
 def patratgitmergeall():
     for patmit in PATRAT_LIST:
         i = PATRAT_LIST.index(patmit)
-        patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", PATRAT_GIT+"GITRAT"))
+        patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATMIT+patmit+patmit+".pat", PATRAT_GIT+"GITRAT"))
         print("Copy patmit "+patmit)
         patrat.syscall("cd {} && tar -xzf {} > /dev/null".format(PATRAT_GIT, "GITRAT"))
         print("Detar patmit "+patmit)
