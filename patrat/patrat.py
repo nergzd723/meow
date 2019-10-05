@@ -305,7 +305,7 @@ def apiupgrade():
     patlogger("apiupgrade: start tool")
     pattern = []
     print("You proceeded to upgrade patrat API. If there`s a pattern to fully upgrade api, your data and logs will be untouched")
-    ap = open(PATRAT_APILEVEL, "r")
+    ap = open(PATRAT_API, "r")
     a = int(ap.read())
     if a in pattern:
         pass
