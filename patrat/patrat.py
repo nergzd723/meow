@@ -235,7 +235,7 @@ def patrat_init():
     m = open(PATRAT_RMLOG, "w+")
     m.close()
     api = open(PATRAT_API, "w+")
-    api.write(str(PATRAT_APILEVEL))
+    api.write(str(PATRAT_APILEVEL)+"\n")
     api.close()
     patmit("Initial patmit")
     print("Empty PATRAT repository init at "+cwd)
