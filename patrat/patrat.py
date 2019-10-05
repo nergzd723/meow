@@ -137,7 +137,6 @@ def reporterr(mess):
     pr = input("Proceed with error? Things may crash! ")
     if pr == "y":
         patlogger("-------------------------------------------User chose to proceed-----------------")
-        pass
     else:
         patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
         exit(1)
@@ -305,8 +304,6 @@ def syscall(call):
 def lex():
     if os.path.exists(PATRAT_PATRAT):
         with open(PATRAT_API, "r") as API:
-            a = API.read()
-            if a != PATRAT_APILEVEL:
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
                 reporterr("Old api or too new API. Do patrat apiupgrade")
