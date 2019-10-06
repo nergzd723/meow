@@ -74,7 +74,7 @@ PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
 PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
 PATRAT_PATCHLEVEL = 1
 PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
-PATRAT_APILEVEL = 11
+PATRAT_APILEVEL = 12
 PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
 PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
 PATRAT_API = PATRAT_PATRAT+"APILEVEL"
@@ -198,6 +198,8 @@ def patmit(patmitmsg):
     os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+patmit)
     tarball(patmit)
     patlogger("patmit: new patmit "+patmit+" with patmitmsg "+patmitmsg)
+    if os.path.exists(PATRAT_PATLIST):
+        syscall("cp -r {} {} {} {}".format(PATRAT_RMLOG, PATRAT_PATLOG, PATRAT_TLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"))
     register(patmit, patmitmsg)
     print("New patmit - "+patmit)
 
@@ -273,6 +275,7 @@ def pat(patmitname):
         hotb()
         syscall("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
         detar(patmitname)
+        syscall("cp -r {} {} {} {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_RMLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_PATLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_TLOG, PATRAT_PATRAT)) #api 12 - add storing logs
         print("patrat: you are on "+patmitname+" patmit now")
         patlogger("pat: done recovering to "+patmitname)
 
