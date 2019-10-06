@@ -324,7 +324,7 @@ def apiupgrade():
 
 #do backup of .patrat dir and throws it in cwd+"BAK"
 def backuppatrat():
-    patlogger("backup: doing backup, patmits - "+PATRAT_PATLIST)
+    patlogger("backup: doing backup, patmits - "+" ".join(PATRAT_PATLIST))
     print("Proceeding with backup")
     path = input("Directory where to put backup?(e.g /usr or meow/meowproj) ")
     patlogger("backup - user defined location as "+path)
