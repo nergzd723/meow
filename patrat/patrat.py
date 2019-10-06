@@ -275,7 +275,7 @@ def pat(patmitname):
         hotb()
         syscall("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
         detar(patmitname)
-        syscall("cp -r {} {} {} {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_RMLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_PATLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_TLOG, ".patrat/")) #api 12 - add storing logs
+        # dont work??? syscall("cp -r {} {} {} {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_RMLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_PATLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_TLOG, ".patrat/")) #api 12 - add storing logs
         print("patrat: you are on "+patmitname+" patmit now")
         patlogger("pat: done recovering to "+patmitname)
 
