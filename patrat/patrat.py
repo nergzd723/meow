@@ -375,7 +375,6 @@ def lex():
                 patmitname = arg[1]
             except:                
                 reporterr("No pat arguments")
-                exit(1)
             pat(patmitname)
         elif 'init' == arg[0]:
             patrat_init()
@@ -385,7 +384,6 @@ def lex():
                 patmitname = arg[1]
             except:
                 reporterr("No revert arguments")
-                exit(1)
             revert(patmitname)             
         elif 'flow' == arg[0]:
             patmitname = ""
@@ -393,7 +391,6 @@ def lex():
                 patmitname = arg[1]
             except:
                 reporterr("No flow arguments")
-                exit(1)
             flow(patmitname) 
         elif 'em' == arg[0]:
             em()
