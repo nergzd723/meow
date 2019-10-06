@@ -351,7 +351,7 @@ def lex():
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
                 reporterr("Old api or too new API. Do patrat apiupgrade(patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade']
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade', 'revert']
     if not arg:
         print("patrat: no command")
         exit(0)
