@@ -57,10 +57,10 @@ def gettimelist():
     return patlist
 
 def getmsglist():
-    r = open(PATRAT_RMLOG, "r")
-    stri = r.read()
-    patlist = stri.split(" ")
-    patlist = patlist[1:]
+    with open(PATRAT_RMLOG) as f:
+        content = f.readlines()
+        content = [x.strip() for x in content] 
+    patlist = content[1:]
     return patlist
 
 #init
@@ -183,7 +183,7 @@ def register(patmit, patmitmsg):
     ratlog.close()
     patlogger("register: writing to rmlog")
     rlog = open(PATRAT_RMLOG, "a")
-    rlog.write(patmitmsg+" ")
+    rlog.write(patmitmsg+"\n")
     rlog.close()
     patlogger("register: saving timestamp")
     tm = open(PATRAT_TLOG, "a")
