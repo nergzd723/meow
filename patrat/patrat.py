@@ -334,7 +334,7 @@ def backuppatrat():
             pass
         else:
             reporterr("No such path "+path)
-    throwpatratstack(path)
+    throwpatratstack(path+"/BAK"+)
 
 #reverts to state of patmit before patmit x, patmits changes
 def revert(patmit):
