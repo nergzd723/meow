@@ -198,7 +198,7 @@ def patmit(patmitmsg):
     os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+patmit)
     tarball(patmit)
     patlogger("patmit: new patmit "+patmit+" with patmitmsg "+patmitmsg)
-    if os.path.exists(PATRAT_PATLIST):
+    if os.path.exists(PATRAT_RATTLOG):
         syscall("cp -r {} {} {} {}".format(PATRAT_RMLOG, PATRAT_PATLOG, PATRAT_TLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"))
     register(patmit, patmitmsg)
     print("New patmit - "+patmit)
