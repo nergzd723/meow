@@ -85,7 +85,7 @@ def patratgitmerge(patmit):
         patrat.syscall("cd {} && tar -xzf {} > /dev/null".format(PATRAT_GIT, "../GITRAT"))
         print("Detar patmit "+patmit)
         patratgitexec("git add .")
-        patratgitexec("git commit -m {}".format(PATRAT_MSGLIST[i]))
+        patratgitexec('git commit -m "{}"'.format(PATRAT_MSGLIST[i]))
         print("Commit patmit "+patmit+" with message "+PATRAT_MSGLIST[i])
         updhead(patmit)
 
