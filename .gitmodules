@@ -1,6 +1,0 @@
-[submodule "patrat/libgit2cpp"]
-	path = patrat/libgit2cpp
-	url = https://github.com/AndreyG/libgit2cpp
-[submodule "patrat/libgit--"]
-	path = patrat/libgit--
-	url = https://github.com/Izanami/libgit--.git
