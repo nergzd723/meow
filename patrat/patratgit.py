@@ -107,11 +107,12 @@ def lex():
         if arg[0] == 'mergeall':
             patratgitmergeall()
         if arg[0] == 'merge':
+            patr = ""
             try:
-                pat = arg[1]
+                patr = arg[1]
             except:
                 patrat.reporterr("No patmit info for merge")
-            patratgitmerge(arg[1])
+            patratgitmerge(patr)
     else:
         print("patrat-git: patrat extension module for integration with GIT")
 
