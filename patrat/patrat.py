@@ -309,7 +309,6 @@ def apiupgrade():
     a = int(ap.read())
     if a in pattern:
         pass
-    
     print("No pattern found")
     i = input("Do full api-upgrade? All data and logs will be sent to backup folder, then it will be patrat-init. Data wont be touched, but you may not access some patmits")
     if not i == 'y':
@@ -322,6 +321,28 @@ def apiupgrade():
     syscall("mv BAK "+PATRAT_PATRAT+"BAK")
     print("Done apiupgrade. Backup of PATRAT folder is inside new PATRAT folder")
     patlogger("apiupgrade: upgraded api "+a+" to api "+PATRAT_APILEVEL+" using force-update")
+
+#do backup of .patrat dir and throws it in cwd+"BAK"
+def backuppatrat():
+    patlogger("backup: doing backup, patmits - "+PATRAT_PATLIST)
+    print("Proceeding with backup")
+    path = input("Directory where to put backup?(e.g /usr or meow/meowproj) ")
+    patlogger("backup - user defined location as "+path)
+    if not os.path.exists(path):
+        path = cwd+"/"+path
+        if os.path.exists(path):
+            pass
+        else:
+            reporterr("No such path "+path)
+    throwpatratstack(path)
+
+#reverts to state of patmit before patmit x, patmits changes
+def revert(patmit):
+    patlogger("revert patmit "+patmit)
+    i = PATRAT_PATLIST.index(patmit)
+    pat(PATRAT_PATLIST[i-1])
+    patmit("Revert patmit "+patmit)
+    print("Patmit "+patmit+" reverted")
 
 #recognizes CLI commands
 def lex():
@@ -338,7 +359,9 @@ def lex():
         if 'log' in arg:
             log()
         if 'dlog' in arg:
-            debuglog()    
+            debuglog()
+        elif 'backup' == arg[0]:
+            backuppatrat()    
         elif 'patmit' == arg[0]:
             patmitmsg = "empty"
             try:
@@ -356,6 +379,14 @@ def lex():
             pat(patmitname)
         elif 'init' == arg[0]:
             patrat_init()
+        elif 'revert' == arg[0]:
+            patmitname = ""
+            try:
+                patmitname = arg[1]
+            except:
+                reporterr("No revert arguments")
+                exit(1)
+            revert(patmitname)             
         elif 'flow' == arg[0]:
             patmitname = ""
             try:

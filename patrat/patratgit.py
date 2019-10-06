@@ -78,16 +78,16 @@ def patratgitshell():
 
 #merges patmit x to a git tree
 def patratgitmerge(patmit):
-        patratgitexec("rm -rf *")
-        i = PATRAT_LIST.index(patmit)
-        patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATMIT+patmit+"/"+patmit+".pat", ".patrat/GITRAT"))
-        print("Copy patmit "+patmit)
-        patrat.syscall("cd {} && tar -xzf {} > /dev/null".format(PATRAT_GIT, "../GITRAT"))
-        print("Detar patmit "+patmit)
-        patratgitexec("git add .")
-        patratgitexec('git commit -m "{}"'.format(PATRAT_MSGLIST[i]))
-        print("Commit patmit "+patmit+" with message "+PATRAT_MSGLIST[i])
-        updhead(patmit)
+    patratgitexec("rm -rf *")
+    i = PATRAT_LIST.index(patmit)
+    patrat.syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATMIT+patmit+"/"+patmit+".pat", ".patrat/GITRAT"))
+    print("Copy patmit "+patmit)
+    patrat.syscall("cd {} && tar -xzf {} > /dev/null".format(PATRAT_GIT, "../GITRAT"))
+    print("Detar patmit "+patmit)
+    patratgitexec("git add .")
+    patratgitexec('git commit -m "{}" --date "{}"'.format(PATRAT_MSGLIST[i], PATRAT_PATLIST[i]))
+    print("Commit patmit "+patmit+" with message "+PATRAT_MSGLIST[i])
+    updhead(patmit)
 
 #merges ALL patmits to a git tree
 def patratgitmergeall():
