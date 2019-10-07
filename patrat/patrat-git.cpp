@@ -5,13 +5,27 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include <boost/filesystem.hpp>
 
 using namespace std;
 namespace boostf = boost::filesystem;
 void get_repo_name(string &h) {
-int t = h.find("/", 29);
-h.erase(0, t + 1);
+  int t = h.find("/", 29);
+  h.erase(0, t + 1);
+}
+void extract_patmit(string &h) {
+  string command = "tar xf " + h;
+  system(command.c_str());
+}
+string extract_codename(ifstream &h, int a) {
+  string s,output;
+  getline(h,s);
+  istringstream iss(s);
+  for(int j; j < a;j++) {
+    iss >> output;
+  }
+  return output;
 }
 int main(int argc, char *argv[]) {
   if(argc == 1) {
@@ -28,6 +42,6 @@ int main(int argc, char *argv[]) {
   command_git += argv[1];
   system(command_git.c_str());
   get_repo_name(command_git);
-  cout << command_git << endl;
+  cout << extract_codename(f, 2) << endl;
   return 0;
 }
