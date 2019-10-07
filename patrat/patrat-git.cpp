@@ -10,14 +10,17 @@
 
 using namespace std;
 namespace boostf = boost::filesystem;
+
 inline void get_repo_name(string &h) {
   int t = h.find("/", 29);
   h.erase(0, t + 1);
 }
+
 inline void extract_patmit(string &h) {
   string command = "tar xf " + h;
   system(command.c_str());
 }
+
 inline string extract_codename(ifstream &h, int a) {
   string s,output;
   getline(h,s);
@@ -26,6 +29,12 @@ inline string extract_codename(ifstream &h, int a) {
     iss >> output;
   }
   return output;
+}
+
+bool copy(path &from, path &to) {
+  if(boostf::copy(from, to)) {
+    return true;
+  } else return false;
 }
 int main(int argc, char *argv[]) {
   if(argc == 1) {
@@ -42,6 +51,7 @@ int main(int argc, char *argv[]) {
   command_git += argv[1];
   system(command_git.c_str());
   get_repo_name(command_git);
-  cout << extract_codename(f, 2) << endl;
+  path to = command_git;
+  
   return 0;
 }
