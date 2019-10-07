@@ -104,7 +104,7 @@ def patratgit_getHEAD():
 def patratgitmerge_fromHEAD():
     HEADpatmit = patratgit_getHEAD()
     ind = PATRAT_LIST.index(HEADpatmit)
-    PATRAT_L = PATRAT_LIST[str(ind)+":"]
+    PATRAT_L = PATRAT_LIST[str(ind):]
     if not PATRAT_L:
         print("patratgit: tree is already updated!")
         return
