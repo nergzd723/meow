@@ -36,9 +36,9 @@ copy: $(targets)
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
 	cp bark/bark++ bin/bark++
-	mv bark/bark.bin bin/barkpy
+	mv bark/bark.bin bin/bark
 	mv cpy/cpy++ bin/cpy++
-	mv cpy/cpy.bin bin/cpypy
+	mv cpy/cpy.bin bin/cpy
 	mv dip/dip.bin bin/dip
 	#mv dutils/filer bin/filer
 	mv dutils/gendir.bin bin/gendir
@@ -50,7 +50,7 @@ copy: $(targets)
 	mv goblin/goblin.bin bin/goblinpy
 	mv lt/lt.bin bin/lt
 	mv meow/meow.exe bin/meowcs
-	mv bark/bark++ bin/meow++
+	mv bark/bark++ bin/meow
 	mv mkdip/mkdip.bin bin/mkdip
 	mv no/no.bin bin/no
 	mv no/nogo bin/nogo
@@ -60,6 +60,7 @@ copy: $(targets)
 	#mv forker/forker bin/forker
 	mv kid/kid.bin bin/kid
 	mv kid/pit.bin bin/pit
+	mv kid/kid++ bin/kid++
 	mv patrat/patrat.bin bin/patrat
 	mv aname/aname++ bin/aname++
 	mv patrat/patratgit.bin bin/patratgit
