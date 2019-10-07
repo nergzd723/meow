@@ -10,15 +10,15 @@
 
 using namespace std;
 namespace boostf = boost::filesystem;
-void get_repo_name(string &h) {
+inline void get_repo_name(string &h) {
   int t = h.find("/", 29);
   h.erase(0, t + 1);
 }
-void extract_patmit(string &h) {
+inline void extract_patmit(string &h) {
   string command = "tar xf " + h;
   system(command.c_str());
 }
-string extract_codename(ifstream &h, int a) {
+inline string extract_codename(ifstream &h, int a) {
   string s,output;
   getline(h,s);
   istringstream iss(s);
