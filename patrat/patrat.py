@@ -11,6 +11,7 @@ import random
 import time
 import shutil
 import subprocess
+import hashlib
 
 cwd = os.getcwd()
 arg = sys.argv[1:]
@@ -38,6 +39,7 @@ PATRAT_PATRAT = searchpokemon()
 PATRAT_PATMIT = "patmit/"
 PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
 PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
+PATRAT_CONFIG = PATRAT_PATRAT+"pconf"
 PATRAT_PATCHLEVEL = 1
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
@@ -86,7 +88,16 @@ if os.path.exists(PATRAT_PATRAT):
     PATRAT_TIMELIST = gettimelist()
     PATRAT_MSGLIST = getmsglist()
 
+#switches
+
+PATRAT_THROW_STACK = False
+PATRAT_UNSAFE_ACTIONS = False
 #main part
+
+#very important part, does calculate hash of _SOMEFILE_ need for (patmit renaming)? security reasons not to execute random code from PATRAT_SWITCH and PATRAT_MOD
+def hexdigest(filename):
+    patlogger("hexdigest: calculated hash of "+filename+" "+hashlib.md5(open(filename,'rb').read()).hexdigest())
+    return hashlib.md5(open(filename,'rb').read()).hexdigest()
 
 #logs ALL the actions. you cant even think what is it doing
 def patlogger(rattymessage):
@@ -132,14 +143,16 @@ def reporterr(mess):
     l = len(power) -1
     print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
     print("That`s all I know")
-    throwpartstack(cwd+"/"+"callstack")
-    print(".patrat directory image dumped on disk")
-    pr = input("Proceed with error? Things may crash! ")
-    if pr == "y":
-        patlogger("-------------------------------------------User chose to proceed-----------------")
-    else:
-        patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
-        exit(1)
+    if PATRAT_THROW_STACK:
+        throwpartstack(cwd+"/"+"callstack")
+        print(".patrat directory image dumped on disk")
+    if PATRAT_UNSAFE_ACTIONS:
+        pr = input("Proceed with error? Things may crash! ")
+        if pr == "y":
+            patlogger("-------------------------------------------User chose to proceed-----------------")
+        else:
+            patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
+            exit(1)
         
 #cleans temporary directory
 def cleantempf():
