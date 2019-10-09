@@ -30,11 +30,19 @@ inline string extract_codename(ifstream &h, int a) {
   }
   return output;
 }
-
-bool copy(path &from, path &to) {
-  if(boostf::copy(from, to)) {
-    return true;
-  } else return false;
+int count_of_dirs(void) {
+  boostf::path dir = ".patrat/patmit";
+  return distance(boostf::directory_iterator(dir), boostf::directory_iterator()) - 1;
+}
+string setup_from(ifstream &h, int &a) {
+  string s, out;
+  s = extract_codename(h, a);
+  out = ".patrat/patmit/";
+  out += s;
+  out += "/";
+  out += s;
+  out += ".pat";
+  return out;
 }
 int main(int argc, char *argv[]) {
   if(argc == 1) {
@@ -51,7 +59,10 @@ int main(int argc, char *argv[]) {
   command_git += argv[1];
   system(command_git.c_str());
   get_repo_name(command_git);
-  path to = command_git;
-  
+  boostf::path to = command_git;
+  for(int j = 0; j < count_of_dirs();j++) {
+    boostf::path from = setup_from(f, j);
+    boostf::copy(from, to);
+  }
   return 0;
 }
