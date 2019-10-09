@@ -39,7 +39,7 @@ PATRAT_PATRAT = searchpokemon()
 PATRAT_PATMIT = "patmit/"
 PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
 PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
-PATRAT_CONFIG = PATRAT_PATRAT+"pconf"
+PATRAT_SWITCH = PATRAT_PATRAT+"pconf"
 PATRAT_PATCHLEVEL = 1
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
@@ -87,18 +87,35 @@ if os.path.exists(PATRAT_PATRAT):
     PATRAT_PATLIST = getpatmitlist()
     PATRAT_TIMELIST = gettimelist()
     PATRAT_MSGLIST = getmsglist()
-
-#switches
-
-PATRAT_THROW_STACK = False
-PATRAT_UNSAFE_ACTIONS = False
-#main part
+PATRAT_HASH = PATRAT_PATRAT+"checksum"
 
 #very important part, does calculate hash of _SOMEFILE_ need for (patmit renaming)? security reasons not to execute random code from PATRAT_SWITCH and PATRAT_MOD
 def hexdigest(filename):
     patlogger("hexdigest: calculated hash of "+filename+" "+hashlib.md5(open(filename,'rb').read()).hexdigest())
     return hashlib.md5(open(filename,'rb').read()).hexdigest()
 
+def enclave(filen):
+    t = open(PATRAT_HASH, "r")
+    r = t.read()
+    filehash = hexdigest(filen)
+    if r == filehash:
+        return
+    reporterr("Bad checksum, "+filehash+" and "+r)
+
+def loadmod(mod):
+    enclave(mod)
+    with open(mod) as f:
+        content = f.readlines()
+        content = [x.strip() for x in content]
+    for command in content:
+        exec(command)
+    
+#switches
+loadmod(PATRAT_SWITCH)
+PATRAT_THROW_STACK = False
+PATRAT_UNSAFE_ACTIONS = False
+#main part
+  
 #logs ALL the actions. you cant even think what is it doing
 def patlogger(rattymessage):
     if os.path.exists(PATRAT_DEBUGLOG):
@@ -412,6 +429,15 @@ def lex():
             em()
         elif 'apiupgrade' == arg[0]:
             apiupgrade()
+        elif 'loadm' == arg[0]:
+            a = ""
+            try:
+                a = arg[1]
+            except:
+                print("No arguments in loadm!")
+                exit(1)
+            loadmod(a)
+        
         elif 'version' == arg[0]:
             print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
         elif 'renew' == arg[0]:
