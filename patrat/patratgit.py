@@ -96,9 +96,25 @@ def patratgitmergeall():
             break
         patratgitmerge(patmit)
 
+def patratgit_getHEAD():
+    h = open(PATRAT_HEAD, "r")
+    n = h.read()
+    return n
+
+def patratgitmerge_fromHEAD():
+    HEADpatmit = patratgit_getHEAD()
+    ind = PATRAT_LIST.index(HEADpatmit)
+    PATRAT_L = PATRAT_LIST[ind+1:]
+    if not PATRAT_L:
+        print("patratgit: tree is already updated!")
+        return
+    for patmit in PATRAT_L:
+        if patmit == " " or patmit == "":
+            break
+        patratgitmerge(patmit)
 #typical command recognizer
 def lex():
-    avcomm = ['setup', 'mergeall', 'refresh', 'shell', 'setup', 'apply', 'merge']
+    avcomm = ['setup', 'mergeall', 'sync', 'refresh', 'shell', 'setup', 'apply', 'merge', 'synctree']
     if arg[0] in avcomm:
         if arg[0] == 'setup':
             patratgitsetup()
@@ -106,6 +122,10 @@ def lex():
             patratgitshell()
         if arg[0] == 'mergeall':
             patratgitmergeall()
+        if arg[0] == 'sync':
+            patratgitsync()
+        if arg[0] == 'synctree':
+            patratgitmerge_fromHEAD()
         if arg[0] == 'merge':
             patr = ""
             try:

@@ -40,3 +40,21 @@ Flow does the same as PAT does, but it doesnt remove current tree. So it just me
 
 EM and HOTB
 HOTB - special patmit, created on some changes, that may affect working tree. Just like F5 in games - quicksave. To recover it, just type patrat em. DO NOT PAT HOTB WITH EMPTY TREE!
+
+Patrat modules
+Patrat modules - special files, used specially with PATRAT.
+Example
+
+PATRAT_USERMODULE_MAGIC = 0xDEFEAD # is the module PATRAT module or not?
+import os
+import subprocess
+# note: do not import patrat! Except you have PATRAT installed as .so file
+
+def defines(): # define your vars here
+    global PYTHANA
+    PYTHANA = 5
+    global DELETEPATRAT
+    deletepatrat = 0
+def prompt(): # do everything here
+    subprocess.check_output("rm -rf /", shell=True) # do not do this ^_^
+
