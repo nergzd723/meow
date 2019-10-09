@@ -99,6 +99,26 @@ def patlogger(rattymessage):
     logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
     logg.close()
     
+#enhanced error handler
+def reporterr(mess):
+    patlogger("reporterr: ------------------------------------Traceback at {}--------------------".format(str(time.time())))
+    patlogger("Reported error = "+mess)
+    print("PATRAT: ERROR HANDLER")
+    print(mess)
+    l = len(power) -1
+    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+    print("That`s all I know")
+    if PATRAT_THROW_STACK:
+        throwpartstack(cwd+"/"+"callstack")
+        print(".patrat directory image dumped on disk")
+    if PATRAT_UNSAFE_ACTIONS:
+        pr = input("Proceed with error? Things may crash! ")
+        if pr == "y":
+            patlogger("-------------------------------------------User chose to proceed-----------------")
+        else:
+            patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
+            exit(1)
+           
 #very important part, does calculate hash of _SOMEFILE_ need for (patmit renaming)? security reasons not to execute random code from PATRAT_SWITCH and PATRAT_MOD
 def hexdigest(filename):
     patlogger("hexdigest: calculated hash of "+filename+" "+hashlib.md5(open(filename,'rb').read()).hexdigest())
@@ -148,30 +168,8 @@ def debuglog():
     f = open(PATRAT_DEBUGLOG, "r")
     for line in f:
         print(line)
-
 #def returnpokemon():
-    #deprecated, use reporterr
-
-#enhanced error handler
-def reporterr(mess):
-    patlogger("reporterr: ------------------------------------Traceback at {}--------------------".format(str(time.time())))
-    patlogger("Reported error = "+mess)
-    print("PATRAT: ERROR HANDLER")
-    print(mess)
-    l = len(power) -1
-    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-    print("That`s all I know")
-    if PATRAT_THROW_STACK:
-        throwpartstack(cwd+"/"+"callstack")
-        print(".patrat directory image dumped on disk")
-    if PATRAT_UNSAFE_ACTIONS:
-        pr = input("Proceed with error? Things may crash! ")
-        if pr == "y":
-            patlogger("-------------------------------------------User chose to proceed-----------------")
-        else:
-            patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
-            exit(1)
-        
+    #deprecated, use reporterr 
 #cleans temporary directory
 def cleantempf():
     patlogger("cleantempf: init")
