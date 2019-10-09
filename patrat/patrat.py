@@ -89,6 +89,16 @@ if os.path.exists(PATRAT_PATRAT):
     PATRAT_MSGLIST = getmsglist()
 PATRAT_HASH = PATRAT_PATRAT+"checksum"
 
+#logs ALL the actions. you cant even think what is it doing
+def patlogger(rattymessage):
+    if os.path.exists(PATRAT_DEBUGLOG):
+        pass
+    else:
+        return
+    logg = open(PATRAT_DEBUGLOG, "a+")
+    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
+    logg.close()
+    
 #very important part, does calculate hash of _SOMEFILE_ need for (patmit renaming)? security reasons not to execute random code from PATRAT_SWITCH and PATRAT_MOD
 def hexdigest(filename):
     patlogger("hexdigest: calculated hash of "+filename+" "+hashlib.md5(open(filename,'rb').read()).hexdigest())
@@ -111,21 +121,12 @@ def loadmod(mod):
         exec(command)
     
 #switches
-loadmod(PATRAT_SWITCH)
-PATRAT_THROW_STACK = False
-PATRAT_UNSAFE_ACTIONS = False
+if os.path.exists(PATRAT_PATRAT): 
+    loadmod(PATRAT_SWITCH)
+    PATRAT_THROW_STACK = False
+    PATRAT_UNSAFE_ACTIONS = False
 #main part
-  
-#logs ALL the actions. you cant even think what is it doing
-def patlogger(rattymessage):
-    if os.path.exists(PATRAT_DEBUGLOG):
-        pass
-    else:
-        return
-    logg = open(PATRAT_DEBUGLOG, "a+")
-    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
-    logg.close()
-    
+
 #tells user to init
 def reportnorepo():
     patlogger("reportnorepo init, reporting error")
