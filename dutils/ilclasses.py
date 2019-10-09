@@ -9,13 +9,19 @@ class Main:
     print(arg)
 class Hello:
   def __init__(self):
+    checkcode()
     m = Main()
     t = TransmitVeryImportantmsg()
     n = t.enc()
     m.printl(n)
+class TransferToMarine:
+  def __init__(self):
+    code = "CODE"
+    if code == "CODE":
+      h = Hello()
 if __name__ == "__main__":
   try:
-    h = Hello()
+    h = TransferToMarine()
   except:
     class Error:
       def __init__(self):
