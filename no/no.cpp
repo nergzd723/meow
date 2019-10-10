@@ -5,27 +5,28 @@
 #include <iostream>
 #include <csignal>
 #include <cstring>
+#include "../external_projects/argh/argh.h"
 
 using namespace std;
-
-void ctrl_handler(int s) {
-  throw 1;
-}
-
+void helper(void) {
+  cout << "NO: GNU yes analog" << endl;
+  cout << "Usage: simply run this without help argh" << endl;
+  cout << "OPTIONS: " << endl;
+  cout << "-y,--yes                     floods yes(by default it's floods by no)";
+  cout << "-h,--help                    print this message" << endl;
+};
 int main(int argc, char *argv[]) {
+  argh::parser cmdl(argv);
   bool is_yes;
-  if(argc == 1) is_yes = false;
-  if(argv[1] == "-h") {
-    cout << "NO: GNU yes analog" << endl;
-    cout << "Usage: no [OPTIONS]" << endl;
-    cout << "Options:" << endl;
-    cout << "-y            flood by yes(floods no by default)" << endl;
-    return 0;
-  };
-  if(argv[1] == "-y") {
+  if(cmdl[{"-y", "--yes"}]) {
     is_yes = true;
+  } else {
+    is_yes = false;
   };
-
+  if(cmdl[{"-h", "--help"}]) {
+    helper();
+    return 0;
+  }
   if(is_yes) {
     while(true) {
       cout << "yes" << endl;
