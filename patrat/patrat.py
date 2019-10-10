@@ -286,7 +286,7 @@ def patrat_init():
     api.close()
     has = open(PATRAT_SWITCH, "w+")
     had = open(PATRAT_HASH, "w+")
-    has.write("PATRAT_GIT=True\n")
+    has.write("PATRAT_GIT=True\nPATRAT_THROW_STACK=False\nPATRAT_UNSAFE_ACTIONS=False")
     has.close()
     had.write(hexdigest(PATRAT_SWITCH)+"\n")
     had.close()
