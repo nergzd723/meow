@@ -168,13 +168,6 @@ def debuglog():
     f = open(PATRAT_DEBUGLOG, "r")
     for line in f:
         print(line)
-#def returnpokemon():
-<<<<<<< HEAD
-    #deprecated, use reporterr
-        
-=======
-    #deprecated, use reporterr 
->>>>>>> 3589f9c7938f8ec7890fa9d53479472dde407ac1
 #cleans temporary directory
 def cleantempf():
     patlogger("cleantempf: init")
