@@ -143,8 +143,6 @@ def loadmod(mod):
 #switches
 if os.path.exists(PATRAT_PATRAT): 
     loadmod(PATRAT_SWITCH)
-    PATRAT_THROW_STACK = False
-    PATRAT_UNSAFE_ACTIONS = False
 #main part
 
 #tells user to init
