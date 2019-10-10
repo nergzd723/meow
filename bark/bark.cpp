@@ -7,17 +7,20 @@
 #include <boost/filesystem.hpp> // for filesystem management
 #include <cstring>              // for strcmp
 #include <iostream>             // for IO management
+#include "../external_projects/argh/argh.h" // argument handler
 using namespace std;
 using namespace boost::filesystem;
 int main(int argc, char *argv[]) {
-
+  argh::parser cmdl(argv); 
   bool Recursive = false; // bool for -r key
-
+  if(cmdl({"-r", "--recursive"})) {
+    Recursive = true;
+  }
   if (argc == 1) { // if no arguments, write help
     cout << "Basic Auto Remove toolKit" << endl;
     cout << "Usage: bark [OPTIONS] paths_to_remove" << endl;
     cout << "Options:" << endl;
-    cout << "-r                                 detete 'em recursivily" << endl;
+    cout << "-r, --recursive                                 detete 'em recursivily" << endl;
     return 0;
   };
   if (!strcmp(argv[1], "-r")) { // check for -r key
