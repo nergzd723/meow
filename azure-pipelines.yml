@@ -15,5 +15,5 @@ steps:
 - script: pip install setuptools
 - script: pip3 install nuitka termcolor
 - script: |
-    make
+    make -j8
   displayName: 'make'
