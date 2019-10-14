@@ -125,7 +125,7 @@ def reporterr(mess):
             patlogger("-------------------------------------------User chose to proceed-----------------")
         else:
             patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
-            exit(1)
+    exit(1)
            
 #very important part, does calculate hash of _SOMEFILE_ need for (patmit renaming)? security reasons not to execute random code from PATRAT_SWITCH and PATRAT_MOD
 def hexdigest(filename):
