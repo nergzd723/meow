@@ -12,11 +12,19 @@ import time
 import shutil
 import subprocess
 import hashlib
+import importlib
 
 cwd = os.getcwd()
 arg = sys.argv[1:]
 PATRAT_MAJOR = 0
 PATRAT_MINOR = 3
+
+#defswitches begin
+
+PATRAT_THROW_STACK = False
+PATRAT_UNSAFE_ACTIONS = False
+
+#defswitches end
 
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
@@ -89,6 +97,36 @@ if os.path.exists(PATRAT_PATRAT):
     PATRAT_MSGLIST = getmsglist()
 PATRAT_HASH = PATRAT_PATRAT+"checksum"
 
+#logs ALL the actions. you cant even think what is it doing
+def patlogger(rattymessage):
+    if os.path.exists(PATRAT_DEBUGLOG):
+        pass
+    else:
+        return
+    logg = open(PATRAT_DEBUGLOG, "a+")
+    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
+    logg.close()
+    
+#enhanced error handler
+def reporterr(mess):
+    patlogger("reporterr: ------------------------------------Traceback at {}--------------------".format(str(time.time())))
+    patlogger("Reported error = "+mess)
+    print("PATRAT: ERROR HANDLER")
+    print(mess)
+    l = len(power) -1
+    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
+    print("That`s all I know")
+    if PATRAT_THROW_STACK:
+        throwpartstack(cwd+"/"+"callstack")
+        print(".patrat directory image dumped on disk")
+    if PATRAT_UNSAFE_ACTIONS:
+        pr = input("Proceed with error? Things may crash! ")
+        if pr == "y":
+            patlogger("-------------------------------------------User chose to proceed-----------------")
+        else:
+            patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
+            exit(1)
+           
 #very important part, does calculate hash of _SOMEFILE_ need for (patmit renaming)? security reasons not to execute random code from PATRAT_SWITCH and PATRAT_MOD
 def hexdigest(filename):
     patlogger("hexdigest: calculated hash of "+filename+" "+hashlib.md5(open(filename,'rb').read()).hexdigest())
@@ -103,29 +141,18 @@ def enclave(filen):
     reporterr("Bad checksum, "+filehash+" and "+r)
 
 def loadmod(mod):
-    enclave(mod)
     with open(mod) as f:
         content = f.readlines()
         content = [x.strip() for x in content]
+    enclave(mod)
     for command in content:
         exec(command)
     
 #switches
-loadmod(PATRAT_SWITCH)
-PATRAT_THROW_STACK = False
-PATRAT_UNSAFE_ACTIONS = False
+if os.path.exists(PATRAT_PATRAT): 
+    loadmod(PATRAT_SWITCH)
 #main part
-  
-#logs ALL the actions. you cant even think what is it doing
-def patlogger(rattymessage):
-    if os.path.exists(PATRAT_DEBUGLOG):
-        pass
-    else:
-        return
-    logg = open(PATRAT_DEBUGLOG, "a+")
-    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
-    logg.close()
-    
+
 #tells user to init
 def reportnorepo():
     patlogger("reportnorepo init, reporting error")
@@ -147,7 +174,6 @@ def debuglog():
     f = open(PATRAT_DEBUGLOG, "r")
     for line in f:
         print(line)
-
 #def returnpokemon():
     #deprecated, use reporterr
         
@@ -219,26 +245,6 @@ def hotb():
     patmit = "HOTB" 
     syscall("mkdir -p {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit))
     tarball(patmit)
-
-#enhanced error handler
-def reporterr(mess):
-    patlogger("reporterr: ------------------------------------Traceback at {}--------------------".format(str(time.time())))
-    patlogger("Reported error = "+mess)
-    print("PATRAT: ERROR HANDLER")
-    print(mess)
-    l = len(power) -1
-    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-    print("That`s all I know")
-    if PATRAT_THROW_STACK:
-        throwpartstack(cwd+"/"+"callstack")
-        print(".patrat directory image dumped on disk")
-    if PATRAT_UNSAFE_ACTIONS:
-        pr = input("Proceed with error? Things may crash! ")
-        if pr == "y":
-            patlogger("-------------------------------------------User chose to proceed-----------------")
-        else:
-            patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
-            exit(1)
 
 #opens PATLOG and reads entities from it
 def log():
@@ -383,6 +389,24 @@ def revert(patmit):
     patmit("Revert patmit "+patmit)
     print("Patmit "+patmit+" reverted")
 
+#loads user module, backend of loadmod, uses EXEC which is not safe at all but it is needed to use patrat functions
+def loadusrmod(mod):
+    patlogger("loadusrmod: loading mod "+mod)
+    with open(mod) as f:
+        content = f.readlines()
+        content = [x.strip() for x in content]
+    for command in content:
+        exec(command)
+
+#imports module, but it cant use patrat functions. __--__
+def smartloadusrmod(mod):
+    patmod = importlib.import_module(mod)
+    if patmod.PATRAT_USERMODULE_MAGIC not in globals():
+        reporterr("That really doesnt look like patrat module...")
+    patmod.defines() #defines of module
+    patmod.prompt() #main part of a module
+
+
 #recognizes CLI commands
 def lex():
     if os.path.exists(PATRAT_PATRAT):
@@ -390,7 +414,7 @@ def lex():
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
                 reporterr("Old api or too new API. Do patrat apiupgrade(patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade', 'revert']
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade', 'revert', 'loadmod']
     if not arg:
         print("patrat: no command")
         exit(0)
@@ -435,14 +459,18 @@ def lex():
             em()
         elif 'apiupgrade' == arg[0]:
             apiupgrade()
-        elif 'loadm' == arg[0]:
+        elif 'loadmod' == arg[0]:
             a = ""
             try:
                 a = arg[1]
             except:
                 print("No arguments in loadm!")
                 exit(1)
-            loadmod(a)
+            if "--legacy" in arg:
+                loadusrmod(a)
+            else:
+                smartloadusrmod(a)
+            exit()
         
         elif 'version' == arg[0]:
             print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
