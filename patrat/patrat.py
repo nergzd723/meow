@@ -318,7 +318,7 @@ def em():
     
 #going to state of specific commit    
 def pat(patmitname):
-    if patmitname not in PATRAT_PATLIST:
+    if patmitname not in PATRAT_PATLIST and not patmitname == "HOTB":
         reporterr("Patmit "+patmitname+" do not exists")
     patlogger("pat: recovering to state "+patmitname+" patmit")
     #if patmitname not in PATRAT_PATLIST:
