@@ -3,35 +3,35 @@ include Makeheader
 .PHONY: $(targets) changelog copy
 all: $(targets) copy
 bark:
-	make -C bark
+	$(MAKE) -C bark
 cpy:
-	make -C cpy
+	$(MAKE) -C cpy
 dip:
-	make -C dip
+	$(MAKE) -C dip
 dutils:
-	make -C dutils
+	$(MAKE) -C dutils
 exo:
-	make -C exo
+	$(MAKE) -C exo
 goblin:
-	make -C goblin
+	$(MAKE) -C goblin
 lt:
-	make -C lt
+	$(MAKE) -C lt
 meow:
-	make -C meow
+	$(MAKE) -C meow
 mkdip:
-	make -C mkdip
+	$(MAKE) -C mkdip
 no:
-	make -C no
+	$(MAKE) -C no
 tap:
-	make -C tap
+	$(MAKE) -C tap
 yedd:
-	make -C yedd
+	$(MAKE) -C yedd
 aname:
-	make -C aname
+	$(MAKE) -C aname
 kid:
-	make -C kid
+	$(MAKE) -C kid
 patrat:
-	make -C patrat
+	$(MAKE) -C patrat
 copy: $(targets)
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
@@ -70,7 +70,7 @@ clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
 
 build: all
-	make -C build
+	$(MAKE) -C build
 
 install: build
 	dpkg -i build/meowproj_$(version)
