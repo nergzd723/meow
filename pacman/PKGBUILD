@@ -1,0 +1,23 @@
+pkgname="meowproj"
+pkgver=0.16
+pkgrel=1
+pkgdesc="Meow project package"
+arch=('x86_64')
+url="https://github.com/nergzd723/meow"
+license=('GPLv3')
+makedepends=('gcc-go'
+	 'mono'
+	 'python-pip'
+	 'boost')
+source=("https://github.com/nergzd723/meow/archive/${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+	cd "${srcdir}/meow-${pkgver}-${pkgrel}"
+	make -j4
+}
+
+package() {
+	cd "${srcdir}/meow-${pkgver}-${pkgrel}"
+	sudo make DESTDIR="${pkgdir}" install_normal
+}
