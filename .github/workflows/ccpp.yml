@@ -14,4 +14,4 @@ jobs:
     - name: install_py
       run: pip3 install nuitka termcolor
     - name: make
-      run: make
+      run: make -j8
