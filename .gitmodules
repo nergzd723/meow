@@ -1,0 +1,3 @@
+[submodule "patrat/libgit2cpp"]
+	path = patrat/libgit2cpp
+	url = https://github.com/AndreyG/libgit2cpp

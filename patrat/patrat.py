@@ -12,11 +12,19 @@ import time
 import shutil
 import subprocess
 import hashlib
+import importlib
 
 cwd = os.getcwd()
 arg = sys.argv[1:]
 PATRAT_MAJOR = 0
 PATRAT_MINOR = 3
+
+#defswitches begin
+
+PATRAT_THROW_STACK = False
+PATRAT_UNSAFE_ACTIONS = False
+
+#defswitches end
 
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
@@ -117,7 +125,7 @@ def reporterr(mess):
             patlogger("-------------------------------------------User chose to proceed-----------------")
         else:
             patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
-            exit(1)
+    exit(1)
            
 #very important part, does calculate hash of _SOMEFILE_ need for (patmit renaming)? security reasons not to execute random code from PATRAT_SWITCH and PATRAT_MOD
 def hexdigest(filename):
@@ -133,10 +141,10 @@ def enclave(filen):
     reporterr("Bad checksum, "+filehash+" and "+r)
 
 def loadmod(mod):
-    enclave(mod)
     with open(mod) as f:
         content = f.readlines()
         content = [x.strip() for x in content]
+    enclave(mod)
     for command in content:
         exec(command)
     
@@ -310,7 +318,7 @@ def em():
     
 #going to state of specific commit    
 def pat(patmitname):
-    if patmitname not in PATRAT_PATLIST:
+    if patmitname not in PATRAT_PATLIST and not patmitname == "HOTB":
         reporterr("Patmit "+patmitname+" do not exists")
     patlogger("pat: recovering to state "+patmitname+" patmit")
     #if patmitname not in PATRAT_PATLIST:
@@ -398,6 +406,26 @@ def revert(patmit):
     patmit("Revert patmit "+patmit)
     print("Patmit "+patmit+" reverted")
 
+#loads user module, backend of loadmod, uses EXEC which is not safe at all but it is needed to use patrat functions
+def loadusrmod(mod):
+    patlogger("loadusrmod: loading mod "+mod)
+    with open(mod) as f:
+        content = f.readlines()
+        content = [x.strip() for x in content]
+    for command in content:
+        exec(command)
+
+#imports module, but it cant use patrat functions. __--__
+def smartloadusrmod(mod):
+    patmod = importlib.import_module(mod)
+    try:
+        patmod.PATRAT_USERMODULE_MAGIC()
+    except AttributeError:
+        reporterr("That really doesnt look like patrat module...")
+    patmod.defines() #defines of module
+    patmod.prompt() #main part of a module
+
+
 #recognizes CLI commands
 def lex():
     if os.path.exists(PATRAT_PATRAT):
@@ -405,7 +433,7 @@ def lex():
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
                 reporterr("Old api or too new API. Do patrat apiupgrade(patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade', 'revert']
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade', 'revert', 'loadmod']
     if not arg:
         print("patrat: no command")
         exit(0)
@@ -450,14 +478,18 @@ def lex():
             em()
         elif 'apiupgrade' == arg[0]:
             apiupgrade()
-        elif 'loadm' == arg[0]:
+        elif 'loadmod' == arg[0]:
             a = ""
             try:
                 a = arg[1]
             except:
                 print("No arguments in loadm!")
                 exit(1)
-            loadmod(a)
+            if "--legacy" in arg:
+                loadusrmod(a)
+            else:
+                smartloadusrmod(a)
+            exit()
         
         elif 'version' == arg[0]:
             print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))

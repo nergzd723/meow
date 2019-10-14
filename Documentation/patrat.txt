@@ -45,7 +45,8 @@ Patrat modules
 Patrat modules - special files, used specially with PATRAT.
 Example
 
-PATRAT_USERMODULE_MAGIC = 0xDEFEAD # is the module PATRAT module or not?
+def PATRAT_USERMODULE_MAGIC():
+    return 0xDEFEAD # is the module PATRAT module or not?
 import os
 import subprocess
 # note: do not import patrat! Except you have PATRAT installed as .so file
