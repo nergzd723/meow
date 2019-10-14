@@ -418,7 +418,9 @@ def loadusrmod(mod):
 #imports module, but it cant use patrat functions. __--__
 def smartloadusrmod(mod):
     patmod = importlib.import_module(mod)
-    if patmod.PATRAT_USERMODULE_MAGIC not in globals():
+    try:
+        patmod.PATRAT_USERMODULE_MAGIC()
+    except AttributeError:
         reporterr("That really doesnt look like patrat module...")
     patmod.defines() #defines of module
     patmod.prompt() #main part of a module
