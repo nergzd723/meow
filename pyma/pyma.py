@@ -75,6 +75,8 @@ def comm():
             proj = arg[0]
             try:
                 page = arg[1]
+            except:
+                pass
         except:
             print("PYMA: no command")
             exit()
