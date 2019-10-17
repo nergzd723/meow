@@ -38,7 +38,7 @@ def addproj(proj):
 
 #adds page to proj
 def addpage(proj, page, pagenumber):
-    pymaexec("mv {} {}".format(page, PYMA_PYMA+proj+"/"+pagenumber))
+    pymaexec("mv {} {}".format(page, PYMA_PYMA+str(proj)+"/"+pagenumber))
 
 #init pyma
 def pymainit():
