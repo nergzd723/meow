@@ -60,7 +60,8 @@ def comm():
             print("Pyma already have this project!")
             exit()
         addproj(proj)
-        o = open(PYMA_PYMA+proj+"/main", "w+")
+        pymaexec("touch "+PYMA_PYMA+proj+"/main")
+        o = open(PYMA_PYMA+proj+"/main", "w")
         o.write("Automatically created page by PYMA")
         o.close()
     if "pageadd" in PYMA_ARG:
