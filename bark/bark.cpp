@@ -23,9 +23,6 @@ int main(int argc, char *argv[]) {
     cout << "-r, --recursive                                 detete 'em recursivily" << endl;
     return 0;
   };
-  if (!strcmp(argv[1], "-r")) { // check for -r key
-    Recursive = true;
-  };
 
   path need_to_remove;
   if (!Recursive) {
