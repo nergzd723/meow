@@ -82,3 +82,5 @@ def comm():
             exit()
         pymaexec("cat {}".format(PYMA_PYMA+proj+"/"+page))
         
+if __name__ == "__main__":
+    comm()
