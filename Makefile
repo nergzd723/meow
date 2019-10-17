@@ -67,7 +67,7 @@ copy: $(targets)
 	mv patrat/patrat.bin bin/patrat
 	mv aname/aname++ bin/aname++
 	mv patrat/patratgit.bin bin/patratgit
-	mv pyma/pyma.bin bin/pyma
+	#mv pyma/pyma.bin bin/pyma
 
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
