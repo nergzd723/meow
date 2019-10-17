@@ -49,11 +49,11 @@ def pymainit():
     print("Pyma is ready-to-fly")
 
 def comm():
+    if "init" in PYMA_ARG:
+        pymainit()
     if not PYMA_EXISTS:
         print("Pyma does not exist!")
         exit()
-    if "init" in PYMA_ARG:
-        pymainit()
     if "addproj" in PYMA_ARG:
         proj = PYMA_ARG[1]
         if os.path.exists(PYMA_PYMA+proj):
