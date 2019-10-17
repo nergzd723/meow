@@ -243,26 +243,6 @@ def hotb():
     syscall("mkdir -p {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit))
     tarball(patmit)
 
-#enhanced error handler
-def reporterr(mess):
-    patlogger("reporterr: ------------------------------------Traceback at {}--------------------".format(str(time.time())))
-    patlogger("Reported error = "+mess)
-    print("PATRAT: ERROR HANDLER")
-    print(mess)
-    l = len(power) -1
-    print('Dont worry if something went wrong! Patrat is supported and maintaned by nergzd723. Open issue at GitHub for assistance.\nAnd always remember, PATRAT has a force of', power[random.randint(0, l)])
-    print("That`s all I know")
-    if PATRAT_THROW_STACK:
-        throwpartstack(cwd+"/"+"callstack")
-        print(".patrat directory image dumped on disk")
-    if PATRAT_UNSAFE_ACTIONS:
-        pr = input("Proceed with error? Things may crash! ")
-        if pr == "y":
-            patlogger("-------------------------------------------User chose to proceed-----------------")
-        else:
-            patlogger("-------------------------------------------Calming down, EOEXEC----------------------")
-            exit(1)
-
 #opens PATLOG and reads entities from it
 def log():
     patlogger("log: writing PATLOG to screen")

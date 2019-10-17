@@ -32,6 +32,8 @@ kid:
 	$(MAKE) -C kid
 patrat:
 	$(MAKE) -C patrat
+pyma:
+	$(MAKE) -C pyma
 copy: $(targets)
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
@@ -65,6 +67,7 @@ copy: $(targets)
 	mv patrat/patrat.bin bin/patrat
 	mv aname/aname++ bin/aname++
 	mv patrat/patratgit.bin bin/patratgit
+	mv pyma/pyma.bin bin/pyma
 
 clean:
 	rm -rf bin/* */*.build/* */*.bin */*.exe
@@ -75,7 +78,7 @@ build: all
 install: build
 	dpkg -i build/meowproj_$(version)
 
-install_normal:
+install_legacy:
 	cp bin/* $(DESTDIR)/bin
 
 changelog:
