@@ -1,3 +1,7 @@
+# Meow part
+# Simple music player
+# Copyright 2019, x0r3d(yeah, it's me)
+# 19.10.19: Initial write
 from pydub import AudioSegment
 from pydub.playback import play
 import sys
