@@ -23,6 +23,7 @@ PATRAT_MINOR = 3
 
 PATRAT_THROW_STACK = False
 PATRAT_UNSAFE_ACTIONS = False
+PATRAT_PATLOGGER = True
 
 #defswitches end
 
@@ -99,6 +100,8 @@ PATRAT_HASH = PATRAT_PATRAT+"checksum"
 
 #logs ALL the actions. you cant even think what is it doing
 def patlogger(rattymessage):
+    if not PATRAT_PATLOGGER:
+        return
     if os.path.exists(PATRAT_DEBUGLOG):
         pass
     else:
@@ -132,6 +135,12 @@ def hexdigest(filename):
     patlogger("hexdigest: calculated hash of "+filename+" "+hashlib.md5(open(filename,'rb').read()).hexdigest())
     return hashlib.md5(open(filename,'rb').read()).hexdigest()
 
+#if switches changed, you need to rehash
+def rehashswitches():
+    had = open(PATRAT_HASH, "w")
+    had.write(hexdigest(PATRAT_SWITCH)+"\n")
+    had.close()
+    
 def enclave(filen):
     t = open(PATRAT_HASH, "r")
     r = t.read().strip()
@@ -274,7 +283,7 @@ def patrat_init():
     api.close()
     has = open(PATRAT_SWITCH, "w+")
     had = open(PATRAT_HASH, "w+")
-    has.write("PATRAT_GIT=True\nPATRAT_THROW_STACK=False\nPATRAT_UNSAFE_ACTIONS=False")
+    has.write("PATRAT_GIT=True\nPATRAT_THROW_STACK=False\nPATRAT_UNSAFE_ACTIONS=False\nPATRAT_PATLOGGER=True")
     has.close()
     had.write(hexdigest(PATRAT_SWITCH)+"\n")
     had.close()
@@ -413,7 +422,7 @@ def lex():
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
                 reporterr("Old api or too new API. Do patrat apiupgrade(patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
-    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade', 'revert', 'loadmod']
+    avcomm = ['patmit', 'init', 'pat', 'log', 'flow', 'em', 'backup', 'dlog', 'version', 'apiupgrade', 'revert', 'loadmod', 'rehash']
     if not arg:
         print("patrat: no command")
         exit(0)
@@ -470,7 +479,8 @@ def lex():
             else:
                 smartloadusrmod(a)
             exit()
-        
+        elif 'rehash' == arg[0]:
+            rehashswitches()
         elif 'version' == arg[0]:
             print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
         elif 'renew' == arg[0]:
