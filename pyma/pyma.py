@@ -20,6 +20,7 @@ import getpass
 PYMA_PYMA = "/home/{}/.pyma/".format(getpass.getuser())
 PYMA_EXISTS = os.path.exists("/home/{}/.pyma/".format(getpass.getuser()))
 PYMA_ARG = sys.argv[1:]
+arg = sys.argv()
 #/defines
 
 #func
@@ -38,7 +39,7 @@ def addproj(proj):
 
 #adds page to proj
 def addpage(proj, page, pagenumber):
-    pymaexec("mv {} {}".format(page, PYMA_PYMA+proj+"/"+pagenumber))
+    pymaexec("mv {} {}".format(page, PYMA_PYMA+str(proj)+"/"+pagenumber))
 
 #init pyma
 def pymainit():
@@ -49,18 +50,19 @@ def pymainit():
     print("Pyma is ready-to-fly")
 
 def comm():
+    if "init" in PYMA_ARG:
+        pymainit()
     if not PYMA_EXISTS:
         print("Pyma does not exist!")
         exit()
-    if "init" in PYMA_ARG:
-        pymainit()
     if "addproj" in PYMA_ARG:
         proj = PYMA_ARG[1]
         if os.path.exists(PYMA_PYMA+proj):
             print("Pyma already have this project!")
             exit()
         addproj(proj)
-        o = open(PYMA_PYMA+proj+"/main")
+        pymaexec("touch "+PYMA_PYMA+proj+"/main")
+        o = open(PYMA_PYMA+proj+"/main", "w")
         o.write("Automatically created page by PYMA")
         o.close()
     if "pageadd" in PYMA_ARG:
@@ -75,8 +77,12 @@ def comm():
             proj = arg[0]
             try:
                 page = arg[1]
+            except:
+                pass
         except:
             print("PYMA: no command")
             exit()
         pymaexec("cat {}".format(PYMA_PYMA+proj+"/"+page))
         
+if __name__ == "__main__":
+    comm()
