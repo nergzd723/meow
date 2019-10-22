@@ -27,6 +27,15 @@ PATRAT_PATLOGGER = True
 
 #defswitches end
 
+#if switches changed, you need to rehash
+def rehashswitches():
+    print("rehashing...")
+    had = open(PATRAT_HASH, "w")
+    had.write(hexdigest(PATRAT_SWITCH)+"\n")
+    had.close()
+
+if arg[0] == 'rehash':
+    rehashswitches()
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
     p = '.patrat/'
@@ -138,12 +147,6 @@ def reporterr(mess):
 def hexdigest(filename):
     patlogger("hexdigest: calculated hash of "+filename+" "+hashlib.md5(open(filename,'rb').read()).hexdigest())
     return hashlib.md5(open(filename,'rb').read()).hexdigest()
-
-#if switches changed, you need to rehash
-def rehashswitches():
-    had = open(PATRAT_HASH, "w")
-    had.write(hexdigest(PATRAT_SWITCH)+"\n")
-    had.close()
     
 def enclave(filen):
     t = open(PATRAT_HASH, "r")
