@@ -161,6 +161,8 @@ def loadmod(mod):
 if os.path.exists(PATRAT_PATRAT):
     if not arg[0] == 'rehash':  
         loadmod(PATRAT_SWITCH)
+    else:
+        rehashswitches()
 #main part
 
 #tells user to init
