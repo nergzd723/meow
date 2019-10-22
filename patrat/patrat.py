@@ -158,8 +158,9 @@ def loadmod(mod):
         exec(command)
     
 #switches
-if os.path.exists(PATRAT_PATRAT): 
-    loadmod(PATRAT_SWITCH)
+if os.path.exists(PATRAT_PATRAT):
+    if not arg[1] == 'rehash':  
+        loadmod(PATRAT_SWITCH)
 #main part
 
 #tells user to init
@@ -483,7 +484,6 @@ def lex():
             rehashswitches()
         elif 'version' == arg[0]:
             print("patrat version {}, bugfix level {}, API level {}\n Mighty Onyx)".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
-            print("ve
         elif 'renew' == arg[0]:
             patmitname = ""
             filename = ""
