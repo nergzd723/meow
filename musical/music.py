@@ -4,7 +4,7 @@
 # 19.10.19: Initial write
 from pydub import AudioSegment
 from pydub.playback import play
-import sys
+from sys import argv
 
 def stupid_func():
     print("very simple music player on pydub")
@@ -12,12 +12,13 @@ def stupid_func():
     print("Usage: music format_of_file filename")
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
+    if len(argv) == 1:
         stupid_func()
-        quit(0)
+        exit(0)
     try:
-        print(len(sys.argv))
-        sound = AudioSegment.from_file(sys.argv[2], format=sys.argv[1])
+        print(len(argv))
+        sound = AudioSegment.from_file(argv[2], format=argv[1])
         play(sound)
     except KeyboardInterrupt:
-        print("Goodbye!")
+        print("Ctrl^C")
+        exit()
