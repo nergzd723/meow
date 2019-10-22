@@ -269,7 +269,7 @@ def log():
 #inits PATRAT repository
 def patrat_init():
     patlogger("patrat_init: got init command")
-    if os.path.exists(cwd+'/'+PATRAT_PATRAT):
+    if PATRAT_EXISTS:
         patlogger("patrat_init: repo at "+cwd+'/'+PATRAT_PATRAT+" is already init")
         reporterr("Patrat repository is already init!")
     os.mkdir(PATRAT_PATRAT)
