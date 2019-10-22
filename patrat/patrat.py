@@ -92,7 +92,11 @@ PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
-if os.path.exists(PATRAT_PATRAT):
+PATRAT_EXISTS = os.path.exists(PATRAT_PATRAT)
+if '--neutral' in arg:
+    PATRAT_EXISTS = False
+
+if PATRAT_EXISTS:
     PATRAT_PATLIST = getpatmitlist()
     PATRAT_TIMELIST = gettimelist()
     PATRAT_MSGLIST = getmsglist()
@@ -158,7 +162,7 @@ def loadmod(mod):
         exec(command)
     
 #switches
-if os.path.exists(PATRAT_PATRAT):
+if PATRAT_EXISTS:
     if not arg[0] == 'rehash':  
         loadmod(PATRAT_SWITCH)
     else:
@@ -420,7 +424,7 @@ def smartloadusrmod(mod):
 
 #recognizes CLI commands
 def lex():
-    if os.path.exists(PATRAT_PATRAT):
+    if PATRAT_EXISTS:
         with open(PATRAT_API, "r") as API:
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
