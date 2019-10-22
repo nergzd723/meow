@@ -159,7 +159,7 @@ def loadmod(mod):
     
 #switches
 if os.path.exists(PATRAT_PATRAT):
-    if not arg[1] == 'rehash':  
+    if not arg[0] == 'rehash':  
         loadmod(PATRAT_SWITCH)
 #main part
 
