@@ -482,7 +482,8 @@ def lex():
         elif 'rehash' == arg[0]:
             rehashswitches()
         elif 'version' == arg[0]:
-            print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
+            print("patrat version {}, bugfix level {}, API level {}\n Mighty Onyx)".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
+            print("ve
         elif 'renew' == arg[0]:
             patmitname = ""
             filename = ""
