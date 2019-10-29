@@ -52,7 +52,7 @@ copy: $(targets)
 	mv goblin/goblin.bin bin/goblinpy
 	mv lt/lt.bin bin/lt
 	mv meow/meow.exe bin/meowcs
-	mv bark/bark++ bin/meow
+	mv meow/meow++ bin/meow
 	mv mkdip/mkdip.bin bin/mkdip
 	mv no/no.bin bin/no
 	mv no/nogo bin/nogo

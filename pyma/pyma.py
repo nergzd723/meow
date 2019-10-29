@@ -20,6 +20,7 @@ import getpass
 PYMA_PYMA = "/home/{}/.pyma/".format(getpass.getuser())
 PYMA_EXISTS = os.path.exists("/home/{}/.pyma/".format(getpass.getuser()))
 PYMA_ARG = sys.argv[1:]
+arg = sys.argv()
 #/defines
 
 #func

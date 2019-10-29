@@ -27,6 +27,15 @@ PATRAT_PATLOGGER = True
 
 #defswitches end
 
+#if switches changed, you need to rehash
+def rehashswitches():
+    print("rehashing...")
+    had = open(PATRAT_HASH, "w")
+    had.write(hexdigest(PATRAT_SWITCH)+"\n")
+    had.close()
+
+if arg[0] == 'rehash':
+    rehashswitches()
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
     p = '.patrat/'
@@ -92,7 +101,11 @@ PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
-if os.path.exists(PATRAT_PATRAT):
+PATRAT_EXISTS = os.path.exists(PATRAT_PATRAT)
+if '--neutral' in arg:
+    PATRAT_EXISTS = False
+
+if PATRAT_EXISTS:
     PATRAT_PATLIST = getpatmitlist()
     PATRAT_TIMELIST = gettimelist()
     PATRAT_MSGLIST = getmsglist()
@@ -134,12 +147,6 @@ def reporterr(mess):
 def hexdigest(filename):
     patlogger("hexdigest: calculated hash of "+filename+" "+hashlib.md5(open(filename,'rb').read()).hexdigest())
     return hashlib.md5(open(filename,'rb').read()).hexdigest()
-
-#if switches changed, you need to rehash
-def rehashswitches():
-    had = open(PATRAT_HASH, "w")
-    had.write(hexdigest(PATRAT_SWITCH)+"\n")
-    had.close()
     
 def enclave(filen):
     t = open(PATRAT_HASH, "r")
@@ -158,8 +165,11 @@ def loadmod(mod):
         exec(command)
     
 #switches
-if os.path.exists(PATRAT_PATRAT): 
-    loadmod(PATRAT_SWITCH)
+if PATRAT_EXISTS:
+    if not arg[0] == 'rehash':  
+        loadmod(PATRAT_SWITCH)
+    else:
+        rehashswitches()
 #main part
 
 #tells user to init
@@ -262,7 +272,7 @@ def log():
 #inits PATRAT repository
 def patrat_init():
     patlogger("patrat_init: got init command")
-    if os.path.exists(cwd+'/'+PATRAT_PATRAT):
+    if PATRAT_EXISTS:
         patlogger("patrat_init: repo at "+cwd+'/'+PATRAT_PATRAT+" is already init")
         reporterr("Patrat repository is already init!")
     os.mkdir(PATRAT_PATRAT)
@@ -417,7 +427,7 @@ def smartloadusrmod(mod):
 
 #recognizes CLI commands
 def lex():
-    if os.path.exists(PATRAT_PATRAT):
+    if PATRAT_EXISTS:
         with open(PATRAT_API, "r") as API:
             a = str(API.read())
             if int(a[:-1]) != PATRAT_APILEVEL:
@@ -482,7 +492,7 @@ def lex():
         elif 'rehash' == arg[0]:
             rehashswitches()
         elif 'version' == arg[0]:
-            print("patrat version {}, bugfix level {}, API level {})".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
+            print("patrat version {}, bugfix level {}, API level {}\n Mighty Onyx)".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
         elif 'renew' == arg[0]:
             patmitname = ""
             filename = ""
