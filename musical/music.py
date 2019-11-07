@@ -10,10 +10,19 @@ def stupid_func():
     print("very simple music player on pydub")
     print("need ffmpeg to work")
     print("Usage: music format_of_file filename")
+def play_music(type, path):
+    sound = AudioSegment.from_file(path, format=type)
+    play(sound)
 
 if __name__ == "__main__":
     if len(argv) == 1:
         stupid_func()
+<<<<<<< HEAD
+        quit(0)
+    else:
+        play_music(sys.argv[1], sys.argv[2])
+
+=======
         exit(0)
     try:
         print(len(argv))
@@ -22,3 +31,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("Ctrl^C")
         exit()
+>>>>>>> cc6323abe3eb837ae678386a580e32bd1ab02e19
