@@ -16,8 +16,6 @@ import importlib
 
 cwd = os.getcwd()
 arg = sys.argv[1:]
-PATRAT_MAJOR = 0
-PATRAT_MINOR = 3
 
 #defswitches begin
 
@@ -36,6 +34,7 @@ def rehashswitches():
 
 if arg[0] == 'rehash':
     rehashswitches()
+    
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
     p = '.patrat/'
@@ -84,8 +83,6 @@ def getmsglist():
     return patlist
 
 #init
-cwd = os.getcwd()
-arg = sys.argv[1:]
 PATRAT_MAJOR = 0
 PATRAT_MINOR = 5
 PATRAT_PATRAT = searchpokemon()
@@ -102,6 +99,7 @@ allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
 power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
 PATRAT_EXISTS = os.path.exists(PATRAT_PATRAT)
+
 if '--neutral' in arg:
     PATRAT_EXISTS = False
 
