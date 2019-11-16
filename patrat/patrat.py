@@ -305,7 +305,7 @@ def patrat_init():
     had.write(hexdigest(PATRAT_SWITCH)+"\n")
     had.close()
     key = open(PATRAT_KEY+'t', "w+")
-    key.write(str(b64encode(os.urandom(64).decode('utf-8'))))
+    key.write(str(os.urandom(n).encode('base64')))
     key.close()
     charmander.charenc(PATRAT_KEY+"t", PATRAT_BASEKEY, PATRAT_KEY)
     syscall("rm -f {}".format(PATRAT_KEY+'t'))
