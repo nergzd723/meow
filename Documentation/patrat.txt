@@ -17,6 +17,8 @@ patmit/
                 xxxxx.pat
 (x - patmit random name)
 
+It would be probably better to generate name by hash of tarball, todo
+
 Full patrat folder structure
 
 .patrat/
@@ -49,7 +51,8 @@ def PATRAT_USERMODULE_MAGIC():
     return 0xDEFEAD # is the module PATRAT module or not?
 import os
 import subprocess
-# note: do not import patrat! Except you have PATRAT installed as .so file
+
+# note: do not import patrat! Except you have PATRAT installed as .so file, or as linked library in Windows. It is not supported now though.
 
 def defines(): # define your vars here
     global PYTHANA
@@ -59,3 +62,11 @@ def defines(): # define your vars here
 def prompt(): # do everything here
     subprocess.check_output("rm -rf /", shell=True) # do not do this ^_^
 
+Legacy modules
+Legacy modules is not recommended to use, basically they`re scripts. They are executed line-by-line so no indents work, BUT they can access patrat functions! yay
+
+e.g.
+
+print("Upgrading...")
+syscall(*DO SOMETHING THERE*)
+print("End")

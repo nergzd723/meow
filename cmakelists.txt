@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 2.8)
+set(NUITKA python3_-m_nuitka)
+set(CC clang++)
+set(BINDIR bin/)
+set(CS mcs)
+project(meowproj)
+
+add_custom_command(
+
+)

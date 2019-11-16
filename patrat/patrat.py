@@ -12,7 +12,9 @@ import time
 import shutil
 import subprocess
 import hashlib
+import charmander
 import importlib
+from base64 import b64encode
 
 cwd = os.getcwd()
 arg = sys.argv[1:]
@@ -31,9 +33,6 @@ def rehashswitches():
     had = open(PATRAT_HASH, "w")
     had.write(hexdigest(PATRAT_SWITCH)+"\n")
     had.close()
-
-if arg[0] == 'rehash':
-    rehashswitches()
     
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
@@ -47,8 +46,8 @@ def searchpokemon():
         return p
     return ".patrat/"
 PATRAT_PATRAT = searchpokemon()
+PATRAT_LOCK = PATRAT_PATRAT+'PATRAT_LOCK'
 PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
-PATRAT_APILEVEL = 11
 PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
 PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
 PATRAT_API = PATRAT_PATRAT+"APILEVEL"
@@ -58,8 +57,6 @@ PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
 PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
 PATRAT_SWITCH = PATRAT_PATRAT+"pconf"
 PATRAT_PATCHLEVEL = 1
-allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
-power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
 def getpatmitlist():
     r = open(PATRAT_RATTLOG, "r")
@@ -84,19 +81,21 @@ def getmsglist():
 
 #init
 PATRAT_MAJOR = 0
-PATRAT_MINOR = 5
+PATRAT_MINOR = 6
 PATRAT_PATRAT = searchpokemon()
 PATRAT_PATMIT = "patmit/"
 PATRAT_TEMPF = PATRAT_PATRAT+"PATT/"
 PATRAT_PATLOG = PATRAT_PATRAT+"PATLOG"
-PATRAT_PATCHLEVEL = 1
+PATRAT_KEY = PATRAT_PATRAT+"key"
+PATRAT_PATCHLEVEL = 0
+PATRAT_BASEKEY = 'patratisavcsonpythonwrittenbynergzd723pleasedontuseitforevilpurposes'
 PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
 PATRAT_APILEVEL = 12
 PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
 PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
 PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
-power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA']
+power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA', 'Zorua', 'Zoroark', 'Torchic', 'Blaziken', '']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
 PATRAT_EXISTS = os.path.exists(PATRAT_PATRAT)
 
@@ -170,6 +169,14 @@ if PATRAT_EXISTS:
         rehashswitches()
 #main part
 
+#get unique key based on base key
+def getkey():
+    charmander.chardec(PATRAT_KEY, PATRAT_BASEKEY, PATRAT_PATRAT+"tkey")
+    o = open(PATRAT_PATRAT+"tkey", "r")
+    p = o.read()
+    syscall("rm -f {}".format(PATRAT_PATRAT+"tkey"))
+    return p
+
 #tells user to init
 def reportnorepo():
     patlogger("reportnorepo init, reporting error")
@@ -191,6 +198,7 @@ def debuglog():
     f = open(PATRAT_DEBUGLOG, "r")
     for line in f:
         print(line)
+
 #cleans temporary directory
 def cleantempf():
     patlogger("cleantempf: init")
@@ -247,6 +255,7 @@ def patmit(patmitmsg):
     patmit = genpatmitname()   
     os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+patmit)
     tarball(patmit)
+    charmander.charenc(PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", getkey(), PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".blobpat")
     patlogger("patmit: new patmit "+patmit+" with patmitmsg "+patmitmsg)
     if os.path.exists(PATRAT_RATTLOG):
         syscall("cp -r {} {} {} {}".format(PATRAT_RMLOG, PATRAT_PATLOG, PATRAT_TLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"))
@@ -295,6 +304,11 @@ def patrat_init():
     has.close()
     had.write(hexdigest(PATRAT_SWITCH)+"\n")
     had.close()
+    key = open(PATRAT_KEY+'t', "w+")
+    key.write(str(b64encode(urandom(64).decode('utf-8'))))
+    key.close()
+    charmander.charenc(PATRAT_KEY+"t", PATRAT_BASEKEY, PATRAT_KEY)
+    syscall("rm -f {}".format(PATRAT_KEY+'t'))
     patmit("Initial patmit")
     print("Empty PATRAT repository init at "+cwd)
     patlogger("patrat_init: done initing the repository")
@@ -425,6 +439,8 @@ def smartloadusrmod(mod):
 
 #recognizes CLI commands
 def lex():
+    if arg[0] == 'rehash':
+        rehashswitches()
     if PATRAT_EXISTS:
         with open(PATRAT_API, "r") as API:
             a = str(API.read())
