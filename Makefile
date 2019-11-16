@@ -78,7 +78,7 @@ build: all
 install: build
 	dpkg -i build/meowproj_$(version)
 
-install_legacy:
+install_normal:
 	cp bin/* $(DESTDIR)/bin
 
 changelog:
