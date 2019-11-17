@@ -214,6 +214,7 @@ def tarball(patmit):
 
 #unzips tar patmit in the tempdir
 def detar(patmit):
+    syscall("rm -f RAT")
     patlogger("detar: detarring for patmit "+patmit)
     syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RATE"))
     charmander.chardec("RATE", getkey(), "RAT")
