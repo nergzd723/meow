@@ -313,7 +313,7 @@ def patrat_init():
     token = b64encode(random_bytes).decode('utf-8')
     for char in token:
         token = token.replace("/", '')
-        token = token.replace("\", '')
+        token = token.replace(";", '')
     key.write(token)
     key.close()
     charmander.charenc(PATRAT_KEY+"t", PATRAT_BASEKEY, PATRAT_KEY)
