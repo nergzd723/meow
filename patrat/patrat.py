@@ -311,9 +311,10 @@ def patrat_init():
     key = open(PATRAT_KEY+'t', "w+")
     random_bytes = os.urandom(64)
     token = b64encode(random_bytes).decode('utf-8')
-    for char in token:
+    for _ in token:
         token = token.replace("/", '')
         token = token.replace(";", '')
+        token = token.replace("=", '')
     key.write(token)
     key.close()
     charmander.charenc(PATRAT_KEY+"t", PATRAT_BASEKEY, PATRAT_KEY)
