@@ -90,12 +90,12 @@ PATRAT_KEY = PATRAT_PATRAT+"key"
 PATRAT_PATCHLEVEL = 0
 PATRAT_BASEKEY = 'patratisavcsonpythonwrittenbynergzd723pleasedontuseitforevilpurposes'
 PATRAT_DEBUGLOG = PATRAT_PATRAT+'DLOG'
-PATRAT_APILEVEL = 12
+PATRAT_APILEVEL = 13
 PATRAT_RMLOG = PATRAT_PATRAT+"RMLOG"
 PATRAT_TLOG = PATRAT_PATRAT+"TLOG"
 PATRAT_API = PATRAT_PATRAT+"APILEVEL"
 allowed_patmit_id = list("abcdefghijklmnopqrstuvwxyz1234567890")
-power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA', 'Zorua', 'Zoroark', 'Torchic', 'Blaziken', '']
+power = ['PATRAT', 'RATICATE', 'RATTATA', 'PIKACHU', 'CHARIZARD', 'PORYGON', 'EMPOLEON', 'PALKIA', 'Zorua', 'Zoroark', 'Torchic', 'Blaziken', 'Kadabra']
 PATRAT_RATTLOG = PATRAT_PATRAT+"RATLOG"
 PATRAT_EXISTS = os.path.exists(PATRAT_PATRAT)
 
@@ -215,8 +215,11 @@ def tarball(patmit):
 #unzips tar patmit in the tempdir
 def detar(patmit):
     patlogger("detar: detarring for patmit "+patmit)
-    syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RAT"))
+    syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RATE"))
+    charmander.chardec(cwd+"/RATE", getkey(), cwd+"/RAT")
+    syscall("rm -f RATE")
     syscall("tar -xzf {} > /dev/null".format(cwd+"/"+"RAT"))
+    syscall("rm -f RAT")
 
 #generates name for patmit, 5 symbols
 def genpatmitname():
@@ -256,6 +259,7 @@ def patmit(patmitmsg):
     os.mkdir(PATRAT_PATRAT+PATRAT_PATMIT+patmit)
     tarball(patmit)
     charmander.charenc(PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", getkey(), PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".blobpat")
+    syscall("mv {} {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".blobpat", PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"))
     patlogger("patmit: new patmit "+patmit+" with patmitmsg "+patmitmsg)
     if os.path.exists(PATRAT_RATTLOG):
         syscall("cp -r {} {} {} {}".format(PATRAT_RMLOG, PATRAT_PATLOG, PATRAT_TLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"))
