@@ -18,5 +18,5 @@ def charenc(filen, passc, pathto):
 
 #decrypt blob
 def chardec(filen, passc, pathto):
-    syscall("gpg --output {} --passphrase {} --batch {}".format('"'+pathto+'"', passc, '"'+filen+'"'))
+    syscall("gpg --batch --passphrase {} --output {} --decrypt {}".format(passc, '"'+pathto+'"',  '"'+filen+'"'))
 
