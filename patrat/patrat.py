@@ -216,7 +216,7 @@ def tarball(patmit):
 def detar(patmit):
     patlogger("detar: detarring for patmit "+patmit)
     syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RATE"))
-    charmander.chardec(cwd+"/RATE", getkey(), cwd+"/RAT")
+    charmander.chardec("RATE", getkey(), "RAT")
     syscall("rm -f RATE")
     syscall("tar -xzf {} > /dev/null".format(cwd+"/"+"RAT"))
     syscall("rm -f RAT")
@@ -314,6 +314,7 @@ def patrat_init():
     for _ in token:
         token = token.replace("/", '')
         token = token.replace(";", '')
+        token = token.replace("+", '')
         token = token.replace("=", '')
     key.write(token)
     key.close()
