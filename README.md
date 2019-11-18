@@ -14,12 +14,4 @@ It means that Python modules cannot be run on systems with no Python installed. 
 Rewrite of build system might affect it. Checkout another branch.
 
 # Dependencies
-In Arch Linux it's in two commands:
-`sudo pacman -S gcc-go mono python-pip base-devel boost python python3 python3-pip` and
-`sudo pip install nuitka termcolor`...
-
-In Debian-like systems with apt and dpkg do
-` sudo apt install libboost-all-dev python python-pip gccgo &&
-  sudo apt install -y python-setuptools python3-setuptools &&
-  pip install setuptools &&
-  pip3 install nuitka termcolor && `
+Do `chmod +x configure.py && ./configure.py` to install all dependencies. It will automatically detect your package manager.
