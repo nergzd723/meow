@@ -37,7 +37,7 @@ def rehashswitches():
 #searches .patrat directory up to 5 levels down
 def searchpokemon():
     p = '.patrat/'
-    for i in range(5):
+    for _ in range(5):
         if os.path.exists(cwd+"/"+p):
             break
         p = '../'+p
@@ -163,7 +163,10 @@ def loadmod(mod):
     
 #switches
 if PATRAT_EXISTS:
-    if not arg[0] == 'rehash':  
+    if not arg:
+        print("patrat: no command")
+        exit()
+    if not arg[0] == 'rehash':
         loadmod(PATRAT_SWITCH)
     else:
         rehashswitches()
@@ -212,6 +215,11 @@ def tarball(patmit):
     patlogger("tarball: generating tarball for patmit "+patmit)
     syscall("tar -czf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
 
+#spawns new background process
+def backcall(call):
+    patlogger("backcall: got new background call "+call)
+    subprocess.Popen(["{}"+call], close_fds=True)
+
 #unzips tar patmit in the tempdir
 def detar(patmit):
     syscall("rm -f RAT")
@@ -226,7 +234,7 @@ def detar(patmit):
 def genpatmitname():
     patlogger("genpatmitname: init")
     patmit_name = ""
-    for i in range(5):
+    for _ in range(5):
         patmit_name = patmit_name + allowed_patmit_id[random.randint(0, 35)]
     patlogger("genpatmitname: New patmit name "+patmit_name)
     return patmit_name
@@ -341,12 +349,7 @@ def em():
     
 #going to state of specific commit    
 def pat(patmitname):
-    if patmitname not in PATRAT_PATLIST and not patmitname == "HOTB":
-        reporterr("Patmit "+patmitname+" do not exists")
     patlogger("pat: recovering to state "+patmitname+" patmit")
-    #if patmitname not in PATRAT_PATLIST:
-       # patlogger("pat: no such patmit "+patmitname) do not work, dunno why
-        #reporterr("No such patmit "+patmitname)
     if patmitname == "HOTB":
         syscall("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
         detar(patmitname)
@@ -374,10 +377,6 @@ def renew(filen, patmit, projfilepath):
     syscall("cp {} {} > /dev/null".format(PATRAT_TEMPF+filen, projfilepath))
     patlogger("renew: done, cleaning tempf")
     cleantempf()
-
-#interactive patmit creation. will replace patmit or will be along with it
-def senorita(patmit):
-    reporterr('Not yet implemented')
 
 #os.system call and log
 def syscall(call):
@@ -518,7 +517,7 @@ def lex():
         elif 'rehash' == arg[0]:
             rehashswitches()
         elif 'version' == arg[0]:
-            print("patrat version {}, bugfix level {}, API level {}\n Mighty Onyx)".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
+            print("patrat version {}, bugfix level {}, API level {}\n Mysterious Gardevoir)".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
         elif 'renew' == arg[0]:
             patmitname = ""
             filename = ""
