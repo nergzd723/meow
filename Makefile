@@ -76,6 +76,7 @@ build: all
 	$(MAKE) -C build
 
 install: build
+	rm -rf /build/meowproj_$(version)
 	sudo dpkg -i build/meowproj_$(version)
 
 install_normal:
