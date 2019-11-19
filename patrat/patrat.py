@@ -457,8 +457,6 @@ def smartloadusrmod(mod):
 
 #recognizes CLI commands
 def lex():
-    if arg[0] == 'rehash':
-        rehashswitches()
     if PATRAT_EXISTS:
         with open(PATRAT_API, "r") as API:
             a = str(API.read())
@@ -521,8 +519,6 @@ def lex():
             else:
                 smartloadusrmod(a)
             exit()
-        elif 'rehash' == arg[0]:
-            rehashswitches()
         elif 'version' == arg[0]:
             print("patrat version {}, bugfix level {}, API level {}\n Mysterious Gardevoir)".format(str(PATRAT_MAJOR)+"."+str(PATRAT_MINOR), PATRAT_PATCHLEVEL, PATRAT_APILEVEL))
         elif 'renew' == arg[0]:
