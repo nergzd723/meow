@@ -76,7 +76,7 @@ build: all
 	$(MAKE) -C build
 
 install: build
-	dpkg -i build/meowproj_$(version)
+	sudo dpkg -i build/meowproj_$(version)
 
 install_normal:
 	cp bin/* $(DESTDIR)/bin
