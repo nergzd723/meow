@@ -352,15 +352,22 @@ def pat(patmitname):
     patlogger("pat: recovering to state "+patmitname+" patmit")
     if patmitname == "HOTB":
         syscall("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
-        detar(patmitname)
+        try:
+            detar(patmitname)
+        except:
+            em()
+            print("It looks like there`s not such patmit "+patmitname)
         print("patrat: recovered HOTB")
         patlogger("pat: recovered hotb")
     else:
         patlogger("pat: ready-to-fly")
         hotb()
         syscall("find . ! -name . -prune ! -name '.*' ! -name '.patrat' -exec rm -rf {} +")
-        detar(patmitname)
-        # dont work??? syscall("cp -r {} {} {} {}".format(PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_RMLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_PATLOG, PATRAT_PATRAT+PATRAT_PATMIT+patmitname+"/"PATRAT_TLOG, ".patrat/")) #api 12 - add storing logs
+        try:
+            detar(patmitname)
+        except:
+            em()
+            print("It looks like there`s not such patmit "+patmitname)       
         print("patrat: you are on "+patmitname+" patmit now")
         patlogger("pat: done recovering to "+patmitname)
 
