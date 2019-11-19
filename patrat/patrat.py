@@ -213,7 +213,7 @@ def cleantempf():
 #generates a tarball for patmit
 def tarball(patmit):
     patlogger("tarball: generating tarball for patmit "+patmit)
-    syscall("tar -czf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
+    syscall("tar -cJf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
 
 #spawns new background process
 def backcall(call):
@@ -227,7 +227,7 @@ def detar(patmit):
     syscall("cp {} {} > /dev/null".format(cwd+"/"+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat", cwd+"/"+"RATE"))
     charmander.chardec("RATE", getkey(), "RAT")
     syscall("rm -f RATE")
-    syscall("tar -xzf {} > /dev/null".format(cwd+"/"+"RAT"))
+    syscall("tar -xJf {} > /dev/null".format(cwd+"/"+"RAT"))
     syscall("rm -f RAT")
 
 #generates name for patmit, 5 symbols
