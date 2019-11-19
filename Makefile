@@ -77,7 +77,7 @@ build: all
 
 install: build
 	rm -rf /build/meowproj_$(version)
-	sudo dpkg -i build/meowproj_$(version)
+	sudo dpkg -i build/meowproj_$(version).deb
 
 install_normal:
 	cp bin/* $(DESTDIR)/bin
