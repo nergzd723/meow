@@ -22,6 +22,7 @@ set(pyma "pyma")
 if(UNIX AND NOT APPLE)
     set(LINUX TRUE)
 endif()
+
 if(NOT LINUX)
     message(FATAL_ERROR "You are trying to build on Windows or on macOS. It is not supported yet. Use WSL on Windows.")
 endif()
@@ -55,4 +56,4 @@ execute_process(COMMAND ${MAKE} ${EXEC} ${patrat}
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 execute_process(COMMAND ${MAKE} ${EXEC} ${pyma}
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
-    message(STATUS "cmake test build succeeded")
+message(STATUS "cmake test build succeeded")

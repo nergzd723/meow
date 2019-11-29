@@ -113,13 +113,10 @@ def patlogger(rattymessage):
     if not PATRAT_PATLOGGER:
         return
     if os.path.exists(PATRAT_DEBUGLOG):
-        pass
-    else:
-        return
-    logg = open(PATRAT_DEBUGLOG, "a+")
-    logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
-    logg.close()
-    
+        logg = open(PATRAT_DEBUGLOG, "a+")
+        logg.write(str(time.time())+str(" ")+str(rattymessage)+str("\n"))
+        logg.close()
+
 #enhanced error handler
 def reporterr(mess):
     patlogger("reporterr: ------------------------------------Traceback at {}--------------------".format(str(time.time())))
