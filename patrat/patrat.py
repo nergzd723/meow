@@ -213,7 +213,7 @@ def cleantempf():
 #generates a tarball for patmit
 def tarball(patmit):
     patlogger("tarball: generating tarball for patmit "+patmit)
-    syscall("XZ_OPT=-3 tar -cJf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
+    syscall("tar -cJf "+PATRAT_PATRAT+PATRAT_PATMIT+patmit+"/"+patmit+".pat"+" * >/dev/null")
 
 #spawns new background process
 def backcall(call):

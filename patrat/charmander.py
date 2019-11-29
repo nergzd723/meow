@@ -6,7 +6,7 @@ import subprocess
 
 #os.system call and log
 def syscall(call):
-    out = subprocess.check_output(call, shell=True) #shell=False due to security issue
+    _ = subprocess.check_output(call, shell=True) #shell=False due to security issue
 
 CHAR_ARGS = sys.argv[1:]
 CHAR_CHAR = '.char/'

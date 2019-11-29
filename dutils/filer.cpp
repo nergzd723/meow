@@ -7,6 +7,8 @@
 #include <filesystem>
 #include <string>
 #include <iostream>
+#include <stdio.h>
+#include <io.h>
 
 using namespace std;
 using namespace std::filesystem;
@@ -19,11 +21,13 @@ int main
   cout << "How many directories to create? ";
   dirs << cin;
   int n = atoi(dirs);
-  for (int i; i!=n; i++)
+  mkdir("ndir")
+  while (n>0)
   {
-    
-    //not ready yet
+    mkdir("")
+    n--;
   }
+  
   return 0;
 }
 

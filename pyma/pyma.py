@@ -5,7 +5,7 @@
 # To register pyma for project - pyma addproj *PROJECTNAME*
 # Then, pyma pageadd *PROJECTNAME* page.txt *NAMEOFPAGE*
 # Show page - pyma *PROJECTNAME* /PAGENAME/
-# Pyma do not support stylization... for now
+# Pyma do not support stylization... for now... and ever ^_^
 # Copyright Mark Hargreaves, 2019
 # GNU GPLv3
 
@@ -20,7 +20,7 @@ import getpass
 PYMA_PYMA = "/home/{}/.pyma/".format(getpass.getuser())
 PYMA_EXISTS = os.path.exists("/home/{}/.pyma/".format(getpass.getuser()))
 PYMA_ARG = sys.argv[1:]
-arg = sys.argv()
+arg = sys.argv[]
 #/defines
 
 #func
