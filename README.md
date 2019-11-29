@@ -14,4 +14,4 @@ It means that Python modules cannot be run on systems with no Python installed. 
 Rewrite of build system might affect it. Checkout another branch.
 
 # Dependencies
-Do `chmod +x configure.py && ./configure.py` to install all dependencies. It will automatically detect your package manager.
+Do `chmod +x configure && ./configure` to install all dependencies. It will automatically detect your package manager.
