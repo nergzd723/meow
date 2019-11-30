@@ -10,10 +10,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: sudo apt install libboost-all-dev python python-pip gccgo
-- script: sudo apt install -y python-setuptools python3-setuptools
-- script: pip install setuptools
-- script: pip3 install nuitka termcolor
+- script: chmod +x configure
+- script: ./configure
 - script: |
     make -j8
   displayName: 'make'
