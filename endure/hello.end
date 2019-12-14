@@ -1,2 +1,7 @@
 title("Hello, cruel World!")
 paragraph("Hello, fucking World!")
+paragraph("Hello, fucking World!")
+paragraph("Hello, fucking World!")
+paragraph("Hello, fucking World!")
+paragraph("Hello, fucking World!")
+header("center", "World!", 1)

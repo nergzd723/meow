@@ -1,20 +1,27 @@
 # endure - make html MORE easier
 import sys
 from os import getcwd
+from termcolor import cprint
 ENDURE_CV = 1
 ENDURE_ARGS = sys.argv[1:]
 ENDURE_DOC = ""
 backslashn = '\n'
 whereto = ""
 ENDURE_BODYTEMP = ""
+ticktock = 0
 ENDURE_HEADTEMP = ""
 ENDURE_OTHERTEMP = ""
 def loadf(mod):
+    global ticktock
     with open(mod) as f:
         content = f.readlines()
         content = [x.strip() for x in content]
     for command in content:
+        ticktock+=1
         exec(command)
+def cc_err(error):
+    cprint("error: "+error+" at line "+ticktock, 'red')
+    exit(1)
 def write_doc():
     o = open(whereto, "w+")
     o.write(ENDURE_DOC)
@@ -32,13 +39,20 @@ def generate():
     ENDURE_DOC = ENDURE_DOC+"</body>\n"
     ENDURE_DOC = ENDURE_DOC+ENDURE_OTHERTEMP
     ENDURE_DOC = ENDURE_DOC + "</html>\n"
-
+def header(align, text, size):
+    global ENDURE_BODYTEMP
+    if size > 8 or size < 1:
+        cc_err("bad <h> size: "+size)
+    if not align == 'left' or not align = 'right' or not align = 'center':
+        cc_err("bad align: "+align)
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<h{} align={}>{}</h{}>\n".format(size, align, text, size)
 def paragraph(text):
     global ENDURE_BODYTEMP
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<p>"+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
-    ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>"
+    if 
+    ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
 def dino():
     global whereto
     if "-o" in ENDURE_ARGS:
