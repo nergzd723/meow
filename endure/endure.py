@@ -57,7 +57,7 @@ def header(*arg):
     if arlen > 3:
         color = arg[3]
     if size > 8 or size < 1:
-        cc_err("bad <h> size: "+str(size))
+        cc_err("bad <h> size: "+str(int(size)))
     if align == 'left' or align == 'right' or align == 'center':
         pass
     else:
@@ -81,6 +81,7 @@ def title(hdr):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
 def html(code):
+    global ENDURE_OTHERTEMP
     ENDURE_OTHERTEMP = ENDURE_OTHERTEMP + code
 def dino():
     global whereto
