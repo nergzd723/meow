@@ -32,10 +32,12 @@ def dino():
         endfile = getcwd()+"/"+ENDURE_ARGS[0]
         loadf(endfile)
         generate()
+        write_doc()
     else:
         whereto = getcwd()+'/'+"a.out"
         endfile = getcwd+"/"+ENDURE_ARGS[0]
         loadf(endfile)
         generate()
+        write_doc()
 if __name__ == "__main__":
     dino()
