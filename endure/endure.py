@@ -57,7 +57,7 @@ def header(*arg):
     if arlen > 3:
         color = arg[3]
     if size > 8 or size < 1:
-        cc_err("bad <h> size: "+size)
+        cc_err("bad <h> size: "+str(size))
     if align == 'left' or align == 'right' or align == 'center':
         pass
     else:
