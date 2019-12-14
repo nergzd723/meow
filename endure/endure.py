@@ -8,6 +8,7 @@ backslashn = '\n'
 whereto = ""
 ENDURE_BODYTEMP = ""
 ENDURE_HEADTEMP = ""
+ENDURE_OTHERTEMP = ""
 def loadf(mod):
     with open(mod) as f:
         content = f.readlines()
@@ -28,7 +29,7 @@ def generate():
     ENDURE_DOC = ENDURE_DOC+"<body>\n"
     ENDURE_DOC = ENDURE_DOC+ENDURE_BODYTEMP
     ENDURE_DOC = ENDURE_DOC+"</body>\n"
-    ENDURE_DOC = ENDURE_DOC+ENDURE_TEMP
+    ENDURE_DOC = ENDURE_DOC+ENDURE_OTHERTEMP
     ENDURE_DOC = ENDURE_DOC + "</html>\n"
 
 def paragraph(text):
