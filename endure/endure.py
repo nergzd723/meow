@@ -40,21 +40,37 @@ def generate():
     ENDURE_DOC = ENDURE_DOC+"</body>\n"
     ENDURE_DOC = ENDURE_DOC+ENDURE_OTHERTEMP
     ENDURE_DOC = ENDURE_DOC + "</html>\n"
-def header(align, text, size):
+def header(*arg):
     global ENDURE_BODYTEMP
+    arlen = len(arg)
+    text = arg[0]
+    align = 'left'
+    size = "1"
+    color = "black"
+    if arlen > 0:
+        size = arg[1]
+    if arlen > 1:
+        align = arg[2]
+    if arlen > 2:
+        color = arg[3]
     if size > 8 or size < 1:
         cc_err("bad <h> size: "+size)
     if align == 'left' or align == 'right' or align == 'center':
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<h{} align={}>{}</h{}>\n".format(size, align, text, size)
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}">{}</h{}>\n'.format(size, align, color, text, size)
 def background(color):
     global ENDURE_BODYBACK
     ENDURE_BODYBACK = color
-def paragraph(text):
+def paragraph(*arg):
     global ENDURE_BODYTEMP
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<p>"+text+"</p>"+backslashn
+    arlen = len(arg)
+    align = "left"
+    text = arg[0]
+    if arlen > 1:
+        align = arg[1]
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}">'.format(align, color)+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"

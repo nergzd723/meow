@@ -34,6 +34,8 @@ patrat:
 	$(MAKE) -C patrat
 pyma:
 	$(MAKE) -C pyma
+endure:
+	$(MAKE) -C endure
 copy: $(targets)
 	mkdir -p bin
 	mv bark/bark.exe bin/barkcs
@@ -67,6 +69,7 @@ copy: $(targets)
 	mv patrat/patrat.bin bin/patrat
 	mv aname/aname++ bin/aname++
 	mv patrat/patratgit.bin bin/patratgit
+	mv endure/endure.bin bin/endure
 	#mv pyma/pyma.bin bin/pyma
 
 clean:
