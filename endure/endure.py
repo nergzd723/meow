@@ -20,7 +20,7 @@ def loadf(mod):
         ticktock+=1
         exec(command)
 def cc_err(error):
-    cprint("error: "+error+" at line "+ticktock, 'red')
+    cprint("error: "+error+" at line "+str(ticktock), 'red')
     exit(1)
 def write_doc():
     o = open(whereto, "w+")
