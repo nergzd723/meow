@@ -69,6 +69,7 @@ def paragraph(*arg):
     align = "left"
     text = arg[0]
     color = "black"
+    print(arlen)
     if arlen > 0:
         align = arg[1]
     if arlen > 1:
