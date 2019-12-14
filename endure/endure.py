@@ -40,6 +40,9 @@ def generate():
     ENDURE_DOC = ENDURE_DOC+"</body>\n"
     ENDURE_DOC = ENDURE_DOC+ENDURE_OTHERTEMP
     ENDURE_DOC = ENDURE_DOC + "</html>\n"
+def setcharset(charset):
+    global ENDURE_HEADTEMP
+    ENDURE_HEADTEMP = ENDURE_HEADTEMP + '<meta charset="{}">'.format(charset) 
 def header(*arg):
     global ENDURE_BODYTEMP
     arlen = len(arg)
@@ -69,15 +72,16 @@ def paragraph(*arg):
     align = "left"
     text = arg[0]
     color = "black"
-    print(arlen)
     if arlen > 1:
         align = arg[1]
     if arlen > 2:
-        align = arg[2]
+        color = arg[2]
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}">'.format(align, color)+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
+def html(code):
+    ENDURE_OTHERTEMP = ENDURE_OTHERTEMP + code
 def dino():
     global whereto
     if "-o" in ENDURE_ARGS:

@@ -1,0 +1,15 @@
+The endlist syntax
+
+// <meta charset="|charset|">
+setcharset(charset e.g. utf-8 or CP-1251)
+// <body style="color:|color|">
+background(color e.g. cornsilk or #FFFFFF)
+// <title>titleofdocument</title>
+title(titleofdocument)
+// <p align=|align| style="color:|color|">|text|</p>
+paragraph(text, [align], [color])
+// <h|size| align=|align| style="color:|color|">|text|</h|size|>
+header(text, [size], [align], [color])
+
+Usage:
+    endure ENDFILE -o OUTPUT_PAGE
