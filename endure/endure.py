@@ -7,7 +7,7 @@ ENDURE_ARGS = sys.argv[1:]
 ENDURE_DOC = ""
 backslashn = '\n'
 whereto = ""
-ENDURE_TEMP = ""
+ENDURE_TEMP = " "
 
 def loadf(mod):
     with open(mod) as f:
@@ -28,11 +28,14 @@ def paragraph(text):
     ENDURE_TEMP = ENDURE_TEMP + "<p>"+text+"</p>"+backslashn
 def dino():
     if "-o" in ENDURE_ARGS:
-        whereto = getcwd+"/"+ENDURE_ARGS["-o".index(ENDURE_ARGS)+1]
-        endfile = getcwd+"/"+ENDURE_ARGS[0]
+        whereto = getcwd()+"/"+ENDURE_ARGS["-o".index(ENDURE_ARGS)+1]
+        endfile = getcwd()+"/"+ENDURE_ARGS[0]
+        loadf(endfile)
+        generate()
     else:
         whereto = getcwd()+'/'+"a.out"
         endfile = getcwd+"/"+ENDURE_ARGS[0]
+        loadf(endfile)
         generate()
 if __name__ == "__main__":
     dino()
