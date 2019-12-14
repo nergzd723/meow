@@ -8,6 +8,7 @@ ENDURE_DOC = ""
 backslashn = '\n'
 whereto = ""
 ENDURE_BODYTEMP = ""
+ENDURE_BODYBACK = "#FFFFFF"
 ticktock = 0
 ENDURE_HEADTEMP = ""
 ENDURE_OTHERTEMP = ""
@@ -34,7 +35,7 @@ def generate():
     ENDURE_DOC = ENDURE_DOC+"<head>\n"
     ENDURE_DOC = ENDURE_DOC+ENDURE_HEADTEMP
     ENDURE_DOC = ENDURE_DOC+"</head>\n"
-    ENDURE_DOC = ENDURE_DOC+"<body>\n"
+    ENDURE_DOC = ENDURE_DOC+'<body bgcolor="{}">\n'.format(ENDURE_BODYBACK)
     ENDURE_DOC = ENDURE_DOC+ENDURE_BODYTEMP
     ENDURE_DOC = ENDURE_DOC+"</body>\n"
     ENDURE_DOC = ENDURE_DOC+ENDURE_OTHERTEMP
@@ -48,6 +49,9 @@ def header(align, text, size):
     else:
         cc_err("bad align: "+align)
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<h{} align={}>{}</h{}>\n".format(size, align, text, size)
+def background(color):
+    global ENDURE_BODYBACK
+    ENDURE_BODYBACK = color
 def paragraph(text):
     global ENDURE_BODYTEMP
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<p>"+text+"</p>"+backslashn
