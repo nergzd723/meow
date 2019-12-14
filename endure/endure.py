@@ -68,8 +68,11 @@ def paragraph(*arg):
     arlen = len(arg)
     align = "left"
     text = arg[0]
-    if arlen > 1:
+    color = "black"
+    if arlen > 0:
         align = arg[1]
+    if arlen > 1:
+        align = arg[2]
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}">'.format(align, color)+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
