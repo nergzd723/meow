@@ -51,7 +51,6 @@ def paragraph(text):
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<p>"+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
-    if 
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
 def dino():
     global whereto
