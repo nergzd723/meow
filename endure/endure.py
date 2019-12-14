@@ -28,7 +28,7 @@ def paragraph(text):
     ENDURE_TEMP = ENDURE_TEMP + "<p>"+text+"</p>"+backslashn
 def dino():
     if "-o" in ENDURE_ARGS:
-        whereto = getcwd()+"/"+ENDURE_ARGS["-o".index(ENDURE_ARGS)+1]
+        whereto = getcwd()+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
         endfile = getcwd()+"/"+ENDURE_ARGS[0]
         loadf(endfile)
         generate()
