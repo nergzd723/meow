@@ -43,7 +43,9 @@ def header(align, text, size):
     global ENDURE_BODYTEMP
     if size > 8 or size < 1:
         cc_err("bad <h> size: "+size)
-    if not align == 'left' or not align == 'right' or not align == 'center':
+    if align == 'left' or align == 'right' or align == 'center':
+        pass
+    else:
         cc_err("bad align: "+align)
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<h{} align={}>{}</h{}>\n".format(size, align, text, size)
 def paragraph(text):
