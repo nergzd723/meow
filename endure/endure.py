@@ -47,11 +47,11 @@ def header(*arg):
     align = 'left'
     size = "1"
     color = "black"
-    if arlen > 0:
-        size = arg[1]
     if arlen > 1:
-        align = arg[2]
+        size = arg[1]
     if arlen > 2:
+        align = arg[2]
+    if arlen > 3:
         color = arg[3]
     if size > 8 or size < 1:
         cc_err("bad <h> size: "+size)
@@ -70,9 +70,9 @@ def paragraph(*arg):
     text = arg[0]
     color = "black"
     print(arlen)
-    if arlen > 0:
-        align = arg[1]
     if arlen > 1:
+        align = arg[1]
+    if arlen > 2:
         align = arg[2]
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}">'.format(align, color)+text+"</p>"+backslashn
 def title(hdr):
