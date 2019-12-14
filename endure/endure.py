@@ -60,9 +60,9 @@ def header(*arg):
     else:
         cc_err("bad align: "+align)
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}">{}</h{}>\n'.format(size, align, color, text, size)
-def background(color):
+def background(cl):
     global ENDURE_BODYBACK
-    ENDURE_BODYBACK = color
+    ENDURE_BODYBACK = cl
 def paragraph(*arg):
     global ENDURE_BODYTEMP
     arlen = len(arg)
