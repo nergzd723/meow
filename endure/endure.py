@@ -30,7 +30,7 @@ class Header_type:
     size = "1"
     align = "left"
     color = "black"
-    id = "ffff"
+    ide = "ffff"
 
 def project(name, typeof):
     global ENDURE_PROJNAME, ENDURE_PROJTYPE
@@ -76,7 +76,7 @@ def header_class(header_h):
     align = header_h.align
     size = header_h.size
     color = header_h.color
-    ide = header_h.id
+    ide = header_h.ide
     if size > 8 or size < 1:
         cc_err("bad <h> size: "+str(int(size)))
     if align == 'left' or align == 'right' or align == 'center':
