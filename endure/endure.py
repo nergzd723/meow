@@ -131,11 +131,11 @@ def button(*arg):
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<button align="{}"'.format(align)
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p style="text-align:{};"><button'.format(align)
     if not action == "ffff":
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + ' onclick="{}">{}</button>\n'.format(action, text)
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + ' onclick="{}">{}</button></p>\n'.format(action, text)
     else:
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '>{}</button>\n'.format(text)
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '>{}</button></p>\n'.format(text)
 def html(code):
     global ENDURE_OTHERTEMP
     ENDURE_OTHERTEMP = ENDURE_OTHERTEMP + code
