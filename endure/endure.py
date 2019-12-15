@@ -133,7 +133,7 @@ def button(*arg):
         cc_err("bad align: "+align)
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<button align={}".format(align)
     if not action == "ffff":
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + 'onclick="{}">{}</button>\n'.format(action, text)
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + ' onclick="{}">{}</button>\n'.format(action, text)
     else:
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '>{}</button>\n'.format(text)
 def html(code):
