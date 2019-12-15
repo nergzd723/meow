@@ -12,5 +12,11 @@ paragraph(text, [align], [color], [id])
 header(text, [size], [align], [color], [id])
 // imprints code to output file
 html(code e.g. "<img src=lala>\n")
+// insert image to page, if using width and height need to specify px or %, e.g. 100px or 50%
+insert_img(pathtoimg, [align], [alttext], [width], [height])
+href(link, [text])
+button(text, [align], [action])
+project(name, typeof e.g. packed or embedded)
+script(src)
 Usage:
     endure ENDFILE -o OUTPUT_PAGE

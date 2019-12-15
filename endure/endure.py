@@ -24,6 +24,7 @@ ENDURE_IMG = ENDURE_DATA+"img/"
 ENDURE_SCRIPTS = ENDURE_DATA+"scripts/"
 ENDURE_IMAGELIST = []
 ENDURE_SCRIPTSLIST = []
+ENDURE_ADDLIST = []
 
 def project(name, typeof):
     global ENDURE_PROJNAME, ENDURE_PROJTYPE
@@ -123,9 +124,9 @@ def button(*arg):
     arlen = len(arg)
     text = arg[0]
     if arlen > 1:
-        action = arg[1]
+        align = arg[1]
     if arlen > 2:
-        align = arg[2]
+        action = arg[2]
     if align == 'left' or align == 'right' or align == 'center':
         pass
     else:
@@ -142,18 +143,39 @@ def insert_img(*args):
     global ENDURE_BODYTEMP
     imgpath = args[0]
     align = "left"
+    alt = "ffff"
+    width = "100%"
+    height = "100%"
     argslen = len(args)
     if argslen > 1:
         align = args[1]
+    if argslen > 2:
+        alt = args[2]
+    if argslen > 3:
+        width = args[3]
+    if argslen > 4:
+        height = args[4]
     if align == 'left' or align == 'right' or align == 'center':
         pass
     else:
         cc_err("bad align: "+align)
     if exists(imgpath):
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="data/img/{}" align="{}">\n'.format(imgpath, align)
+        if alt == "ffff":
+            ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="data/img/{}" align="{}" style="width:{};height:{};">\n'.format(imgpath, align, width, height)
+        else:
+            ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="data/img/{}" alt="{}" align="{}"style=" width:{};height:{};">\n'.format(imgpath, alt, align, width, height)
         ENDURE_IMAGELIST.append(imgpath)
     else:
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">\n'.format(imgpath, align)
+def script(*args):
+    global ENDURE_BODYTEMP
+    script_src = args[0]
+    if exists(script_src):
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<script src="data/scripts/{}"></script>\n'.format(script_src)
+        ENDURE_SCRIPTSLIST.append(script_src)
+    else:
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<script src="{}">\n'.format(script_src)
+
 def href(*a):
     global ENDURE_BODYTEMP
     alen = len(a)
@@ -161,10 +183,12 @@ def href(*a):
     hreff = a[0]
     if alen > 1:
         text = a[1]
-    if not text == "ffff":
+    if not text == "ffff":  
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}">{}</a></p>\n'.format(hreff, text)
     else:
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}"></a></p>\n'.format(hreff)
+    if exists(hreff):
+        ENDURE_ADDLIST.append(hreff)
 def dino():
     global whereto
     endfile = getcwd()+"/"+ENDURE_ARGS[0]
@@ -188,6 +212,8 @@ def dino():
                 check_output("cp {} {}".format(image, ENDURE_PROJNAME+"/"+ENDURE_IMG), shell=True)
             for script in ENDURE_IMAGELIST:
                 check_output("cp {} {}".format(script, ENDURE_PROJNAME+"/"+ENDURE_SCRIPTS), shell=True)
+            for document in ENDURE_ADDLIST:
+                check_output("cp {} {}".format(document, ENDURE_PROJNAME+"/"), shell=True)
     else:
         whereto = "/dev/tty"
         generate()
