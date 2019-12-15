@@ -134,7 +134,7 @@ def dino():
         write_doc()
     else:
         whereto = getcwd()+'/'+"a.out"
-        endfile = getcwd+"/"+ENDURE_ARGS[0]
+        endfile = getcwd()+"/"+ENDURE_ARGS[0]
         loadf(endfile)
         generate()
         write_doc()
