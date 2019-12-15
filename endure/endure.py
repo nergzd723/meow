@@ -83,7 +83,7 @@ def paragraph(*arg):
     align = "left"
     text = arg[0]
     color = "black"
-    ide = randint(100000000, 500000000)
+    ide = "ffff"
     if arlen > 1:
         align = arg[1]
     if arlen > 2:
@@ -94,7 +94,10 @@ def paragraph(*arg):
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}" id="{}">'.format(align, color, ide)+text+"</p>"+backslashn
+    if not ide == "ffff":
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}" id="{}">'.format(align, color, ide)+text+"</p>"+backslashn
+    else:
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}">'.format(align, color)+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
