@@ -133,7 +133,7 @@ def dino():
         generate()
         write_doc()
     else:
-        whereto = getcwd()+'/'+"a.out"
+        whereto = "/dev/tty"
         endfile = getcwd()+"/"+ENDURE_ARGS[0]
         loadf(endfile)
         generate()
