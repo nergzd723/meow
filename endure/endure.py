@@ -149,7 +149,7 @@ def insert_img(*args):
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">'
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">'.format(imgpath, align)
     if exists(imgpath):
         ENDURE_IMAGELIST[len(ENDURE_IMAGELIST)] = imgpath
 
@@ -166,11 +166,11 @@ def href(*a):
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}"></a></p>\n'.format(hreff)
 def dino():
     global whereto
+    loadf(endfile)
     if "-o" in ENDURE_ARGS:
         if ENDURE_PROJTYPE == embedded:
             whereto = getcwd()+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
             endfile = getcwd()+"/"+ENDURE_ARGS[0]
-            loadf(endfile)
             generate()
             write_doc()
         else:
@@ -179,7 +179,6 @@ def dino():
             check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_IMG)
             check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_SCRIPTS)
             whereto = getcwd()+"/"+ENDURE_PROJNAME+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
-            loadf(endfile)
             generate()
             write_doc()
             for image in ENDURE_IMAGELIST:
@@ -189,7 +188,6 @@ def dino():
     else:
         whereto = "/dev/tty"
         endfile = getcwd()+"/"+ENDURE_ARGS[0]
-        loadf(endfile)
         generate()
         write_doc()
 if __name__ == "__main__":
