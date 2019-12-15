@@ -27,10 +27,7 @@ def cc_err(error):
 def write_doc():
     symbuf = ""
     if whereto == "/dev/tty":
-        for symbol in ENDURE_DOC:
-            if symbol == "\n":
-                print(symbuf)
-            symbuf = symbuf + symbol
+        print(ENDURE_DOC)
         exit()
     o = open(whereto, "w+")
     o.write(ENDURE_DOC)
