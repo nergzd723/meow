@@ -1,6 +1,7 @@
 # endure - make html MORE easier
 import sys
 from os import getcwd
+from subprocess import check_output
 from termcolor import cprint
 from random import randint
 ENDURE_CV = 1
@@ -13,6 +14,20 @@ ENDURE_BODYBACK = "#FFFFFF"
 ticktock = 0
 ENDURE_HEADTEMP = ""
 ENDURE_OTHERTEMP = ""
+packed = "packed"
+embedded = "embedded"
+ENDURE_PROJNAME = "noname"
+ENDURE_PROJTYPE=embedded
+ENDURE_DATA = "data/"
+ENDURE_IMG = ENDURE_DATA+"img/"
+ENDURE_SCRIPTS = ENDURE_DATA+"scripts/"
+ENDURE_IMAGELIST = []
+ENDURE_SCRIPTSLIST = []
+
+def project(name, typeof):
+    global ENDURE_PROJNAME, ENDURE_PROJTYPE
+    ENDURE_PROJTYPE = typeof
+    ENDURE_PROJNAME = name
 def loadf(mod):
     global ticktock
     with open(mod) as f:
@@ -25,7 +40,6 @@ def cc_err(error):
     cprint("error: "+error+" at line "+str(ticktock), 'red')
     exit(1)
 def write_doc():
-    symbuf = ""
     if whereto == "/dev/tty":
         print(ENDURE_DOC)
         exit()
@@ -123,6 +137,19 @@ def button(*arg):
 def html(code):
     global ENDURE_OTHERTEMP
     ENDURE_OTHERTEMP = ENDURE_OTHERTEMP + code
+def insert_img(*args):
+    global ENDURE_BODYTEMP
+    imgpath = args[0]
+    align = "left"
+    argslen = len(args)
+    if argslen > 1:
+        align = args[1]
+    if align == 'left' or align == 'right' or align == 'center':
+        pass
+    else:
+        cc_err("bad align: "+align)
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">'
+    ENDURE_IMAGELIST[len(ENDURE_IMAGELIST)] = imgpath
 def href(*a):
     global ENDURE_BODYTEMP
     alen = len(a)
@@ -137,11 +164,25 @@ def href(*a):
 def dino():
     global whereto
     if "-o" in ENDURE_ARGS:
-        whereto = getcwd()+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
-        endfile = getcwd()+"/"+ENDURE_ARGS[0]
-        loadf(endfile)
-        generate()
-        write_doc()
+        if ENDURE_PROJTYPE == embedded:
+            whereto = getcwd()+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
+            endfile = getcwd()+"/"+ENDURE_ARGS[0]
+            loadf(endfile)
+            generate()
+            write_doc()
+        else:
+            check_output("mkdir -p "+ENDURE_PROJNAME)
+            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_DATA)
+            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_IMG)
+            check_output("mkdir -p "+ENDURE_PROJNAME+"/"ENDURE_SCRIPTS)
+            whereto = getcwd()+"/"+ENDURE_PROJNAME+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
+            loadf(endfile)
+            generate()
+            write_doc()
+            for image in ENDURE_IMAGELIST:
+                check_output("cp {} {}".format(image, ENDURE_IMG))
+            for script in ENDURE_IMAGELIST:
+                check_output("cp {} {}".format(script, ENDURE_SCRIPTS))
     else:
         whereto = "/dev/tty"
         endfile = getcwd()+"/"+ENDURE_ARGS[0]
