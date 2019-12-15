@@ -55,7 +55,7 @@ def header(*arg):
     align = 'left'
     size = "1"
     color = "black"
-    ide = randint(100000000, 500000000)
+    ide = "ffff"
     if arlen > 1:
         size = arg[1]
     if arlen > 2:
@@ -70,7 +70,10 @@ def header(*arg):
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}" id="{}">{}</h{}>\n'.format(size, align, color, ide, text, size)
+    if not ide == "ffff":
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}" id="{}">{}</h{}>\n'.format(size, align, color, ide, text, size)
+    else:
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}">{}</h{}>\n'.format(size, align, color, text, size)
 def background(cl):
     global ENDURE_BODYBACK
     ENDURE_BODYBACK = cl
