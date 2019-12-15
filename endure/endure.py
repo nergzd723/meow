@@ -166,11 +166,11 @@ def href(*a):
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}"></a></p>\n'.format(hreff)
 def dino():
     global whereto
+    endfile = getcwd()+"/"+ENDURE_ARGS[0]
     loadf(endfile)
     if "-o" in ENDURE_ARGS:
         if ENDURE_PROJTYPE == embedded:
             whereto = getcwd()+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
-            endfile = getcwd()+"/"+ENDURE_ARGS[0]
             generate()
             write_doc()
         else:
@@ -187,7 +187,6 @@ def dino():
                 check_output("cp {} {}".format(script, ENDURE_SCRIPTS))
     else:
         whereto = "/dev/tty"
-        endfile = getcwd()+"/"+ENDURE_ARGS[0]
         generate()
         write_doc()
 if __name__ == "__main__":
