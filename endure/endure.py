@@ -25,9 +25,12 @@ def cc_err(error):
     cprint("error: "+error+" at line "+str(ticktock), 'red')
     exit(1)
 def write_doc():
+    symbuf = ""
     if whereto == "/dev/tty":
-        for line in ENDURE_DOC:
-            print(line)
+        for symbol in ENDURE_DOC:
+            if symbol == "\n":
+                print(symbuf)
+            symbuf = symbuf + symbol
         exit()
     o = open(whereto, "w+")
     o.write(ENDURE_DOC)
