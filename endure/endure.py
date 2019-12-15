@@ -208,7 +208,7 @@ def dino():
             write_doc()
             for image in ENDURE_IMAGELIST:
                 check_output("cp {} {}".format(image, ENDURE_PROJNAME+"/"+ENDURE_IMG), shell=True)
-            for script in ENDURE_IMAGELIST:
+            for script in ENDURE_SCRIPTSLIST:
                 check_output("cp {} {}".format(script, ENDURE_PROJNAME+"/"+ENDURE_SCRIPTS), shell=True)
             for document in ENDURE_ADDLIST:
                 check_output("cp {} {}".format(document, ENDURE_PROJNAME+"/"), shell=True)
