@@ -173,6 +173,8 @@ def dino():
             generate()
             write_doc()
         else:
+            global ENDURE_DATA
+            ENDURE_DATA = ENDURE_PROJNAME+"/"
             check_output("mkdir -p "+ENDURE_PROJNAME, shell=True)
             check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_DATA, shell=True)
             check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_IMG, shell=True)
