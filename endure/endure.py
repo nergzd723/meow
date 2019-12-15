@@ -77,7 +77,7 @@ def header_class(header_h):
     size = header_h.size
     color = header_h.color
     ide = header_h.ide
-    if size > 8 or size < 1:
+    if int(size) > 8 or int(size) < 1:
         cc_err("bad <h> size: "+str(int(size)))
     if align == 'left' or align == 'right' or align == 'center':
         pass
