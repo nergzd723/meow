@@ -174,7 +174,7 @@ def dino():
             check_output("mkdir -p "+ENDURE_PROJNAME)
             check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_DATA)
             check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_IMG)
-            check_output("mkdir -p "+ENDURE_PROJNAME+"/"ENDURE_SCRIPTS)
+            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_SCRIPTS)
             whereto = getcwd()+"/"+ENDURE_PROJNAME+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
             loadf(endfile)
             generate()
