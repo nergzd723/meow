@@ -87,7 +87,7 @@ def paragraph(*arg):
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}" id={}}>'.format(align, color, ide)+text+"</p>"+backslashn
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}" id={}>'.format(align, color, ide)+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
