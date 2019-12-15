@@ -26,11 +26,11 @@ ENDURE_IMAGELIST = []
 ENDURE_SCRIPTSLIST = []
 ENDURE_ADDLIST = []
 class Header_type:
-    self.text = ""
-    self.size = "1"
-    self.align = "left"
-    self.color = "black"
-    self.id = "ffff"
+    text = ""
+    size = "1"
+    align = "left"
+    color = "black"
+    id = "ffff"
 
 def project(name, typeof):
     global ENDURE_PROJNAME, ENDURE_PROJTYPE
