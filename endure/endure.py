@@ -87,9 +87,9 @@ def header(*arg):
     else:
         cc_err("bad align: "+align)
     if not ide == "ffff":
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}" id="{}">{}</h{}>\n'.format(size, align, color, ide, text, size)
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align="{}" style="color:{}" id="{}">{}</h{}>\n'.format(size, align, color, ide, text, size)
     else:
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}">{}</h{}>\n'.format(size, align, color, text, size)
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align="{}" style="color:{}">{}</h{}>\n'.format(size, align, color, text, size)
 def background(cl):
     global ENDURE_BODYBACK
     ENDURE_BODYBACK = cl
@@ -111,9 +111,9 @@ def paragraph(*arg):
     else:
         cc_err("bad align: "+align)
     if not ide == "ffff":
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}" id="{}">'.format(align, color, ide)+text+"</p>"+backslashn
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align="{}" style="color:{}" id="{}">'.format(align, color, ide)+text+"</p>"+backslashn
     else:
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}">'.format(align, color)+text+"</p>"+backslashn
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align="{}" style="color:{}">'.format(align, color)+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
@@ -131,7 +131,7 @@ def button(*arg):
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + "<button align={}".format(align)
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<button align="{}"'.format(align)
     if not action == "ffff":
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + ' onclick="{}">{}</button>\n'.format(action, text)
     else:
