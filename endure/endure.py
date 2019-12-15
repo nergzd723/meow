@@ -28,7 +28,7 @@ def write_doc():
     if whereto == "/dev/tty":
         for line in ENDURE_DOC:
             print(line)
-            exit()
+        exit()
     o = open(whereto, "w+")
     o.write(ENDURE_DOC)
     o.close()
