@@ -121,9 +121,9 @@ def href(*a):
     if alen > 1:
         text = a[1]
     if not text == "ffff":
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}">{}</a></p>'.format(hreff, text)
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}">{}</a></p>\n'.format(hreff, text)
     else:
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}"></a></p>'.format(hreff)
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}"></a></p>\n'.format(hreff)
 def dino():
     global whereto
     if "-o" in ENDURE_ARGS:
