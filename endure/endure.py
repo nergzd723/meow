@@ -66,7 +66,7 @@ def header(*arg):
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}" id={}>{}</h{}>\n'.format(size, align, color, ide, text, size)
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align={} style="color:{}" id="{}">{}</h{}>\n'.format(size, align, color, ide, text, size)
 def background(cl):
     global ENDURE_BODYBACK
     ENDURE_BODYBACK = cl
@@ -87,7 +87,7 @@ def paragraph(*arg):
         pass
     else:
         cc_err("bad align: "+align)
-    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}" id={}>'.format(align, color, ide)+text+"</p>"+backslashn
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align={} style="color:{}" id="{}">'.format(align, color, ide)+text+"</p>"+backslashn
 def title(hdr):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
