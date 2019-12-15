@@ -151,8 +151,7 @@ def insert_img(*args):
         cc_err("bad align: "+align)
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">'.format(imgpath, align)
     if exists(imgpath):
-        ENDURE_IMAGELIST[len(ENDURE_IMAGELIST)] = imgpath
-
+        ENDURE_IMAGELIST.append(imgpath)
 def href(*a):
     global ENDURE_BODYTEMP
     alen = len(a)
