@@ -1,6 +1,7 @@
 # endure - make html MORE easier
 import sys
 from os import getcwd
+from os.path import exists
 from subprocess import check_output
 from termcolor import cprint
 from random import randint
@@ -149,7 +150,9 @@ def insert_img(*args):
     else:
         cc_err("bad align: "+align)
     ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">'
-    ENDURE_IMAGELIST[len(ENDURE_IMAGELIST)] = imgpath
+    if exists(imgpath):
+        ENDURE_IMAGELIST[len(ENDURE_IMAGELIST)] = imgpath
+
 def href(*a):
     global ENDURE_BODYTEMP
     alen = len(a)
