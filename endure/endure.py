@@ -25,6 +25,12 @@ ENDURE_SCRIPTS = ENDURE_DATA+"scripts/"
 ENDURE_IMAGELIST = []
 ENDURE_SCRIPTSLIST = []
 ENDURE_ADDLIST = []
+class Header_type:
+    self.text = ""
+    self.size = "1"
+    self.align = "left"
+    self.color = "black"
+    self.id = "ffff"
 
 def project(name, typeof):
     global ENDURE_PROJNAME, ENDURE_PROJTYPE
@@ -64,6 +70,23 @@ def generate():
 def setcharset(charset):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + '<meta charset="{}">'.format(charset) 
+def header_class(header_h):
+    global ENDURE_BODYTEMP
+    text = header_h.text
+    align = header_h.align
+    size = header_h.size
+    color = header_h.color
+    ide = header_h.id
+    if size > 8 or size < 1:
+        cc_err("bad <h> size: "+str(int(size)))
+    if align == 'left' or align == 'right' or align == 'center':
+        pass
+    else:
+        cc_err("bad align: "+align)
+    if not ide == "ffff":
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align="{}" style="color:{}" id="{}">{}</h{}>\n'.format(size, align, color, ide, text, size)
+    else:
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align="{}" style="color:{}">{}</h{}>\n'.format(size, align, color, text, size)
 def header(*arg):
     global ENDURE_BODYTEMP
     arlen = len(arg)

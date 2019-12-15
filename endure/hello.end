@@ -5,6 +5,11 @@ paragraph("Hello, fucking World!")
 paragraph("Hello, fucking World!")
 paragraph("Hello, fucking World!")
 paragraph("Hello, fucking World!", "right", "cornsilk", "fuckinglast")
+hdr = Header_type()
+hdr.text = "Oh myyy"
+hdr.size = "2"
+hdr.color = "magenta"
+header_class(hdr)
 header("Oh, such a beautiful World!", 1, "center")
 background("lightgray")
 href("https://github.com/nergzd723/meow", "My GitHub meow project!")
