@@ -174,17 +174,17 @@ def dino():
             generate()
             write_doc()
         else:
-            check_output("mkdir -p "+ENDURE_PROJNAME)
-            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_DATA)
-            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_IMG)
-            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_SCRIPTS)
+            check_output("mkdir -p "+ENDURE_PROJNAME, shell=True)
+            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_DATA, shell=True)
+            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_IMG, shell=True)
+            check_output("mkdir -p "+ENDURE_PROJNAME+"/"+ENDURE_SCRIPTS, shell=True)
             whereto = getcwd()+"/"+ENDURE_PROJNAME+"/"+ENDURE_ARGS[ENDURE_ARGS.index("-o")+1]
             generate()
             write_doc()
             for image in ENDURE_IMAGELIST:
-                check_output("cp {} {}".format(image, ENDURE_IMG))
+                check_output("cp {} {}".format(image, ENDURE_IMG), shell=True)
             for script in ENDURE_IMAGELIST:
-                check_output("cp {} {}".format(script, ENDURE_SCRIPTS))
+                check_output("cp {} {}".format(script, ENDURE_SCRIPTS), shell=True)
     else:
         whereto = "/dev/tty"
         generate()
