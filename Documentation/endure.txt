@@ -7,9 +7,10 @@ background(color e.g. cornsilk or #FFFFFF)
 // <title>titleofdocument</title>
 title(titleofdocument)
 // <p align=|align| style="color:|color|">|text|</p>
-paragraph(text, [align], [color])
+paragraph(text, [align], [color], [id])
 // <h|size| align=|align| style="color:|color|">|text|</h|size|>
-header(text, [size], [align], [color])
-
+header(text, [size], [align], [color], [id])
+// imprints code to output file
+html(code e.g. "<img src=lala>\n")
 Usage:
     endure ENDFILE -o OUTPUT_PAGE
