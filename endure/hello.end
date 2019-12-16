@@ -5,16 +5,16 @@ p.text = "Hello, fucking World!"
 p.id = "fuck"
 p1 = paragraph()
 p1.text = "Hello, fucking World!"
-p1.id = "fuck1"
+p1.ide = "fuck1"
 p2 = paragraph()
 p2.text = "Hello, fucking World!"
-p2.id = "fuck2"
+p2.ide = "fuck2"
 p3 = paragraph()
 p3.text = "Hello, fucking World!"
-p3.id = "fuck3"
+p3.ide = "fuck3"
 p4 = paragraph()
 p4.text = "Hello, fucking World!"
-p4.id = "fuck4"
+p4.ide = "fuck4"
 par(p1)
 par(p2)
 par(p3)
