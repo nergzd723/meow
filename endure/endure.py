@@ -25,12 +25,34 @@ ENDURE_SCRIPTS = ENDURE_DATA+"scripts/"
 ENDURE_IMAGELIST = []
 ENDURE_SCRIPTSLIST = []
 ENDURE_ADDLIST = []
-class Header_type:
+class ref:
+    link = ""
+    text = "ffff"
+
+class image:
+    imgpath = ""
+    align = "left"
+    height = "100%"
+    width = "100%"
+    alt = "ffff"
+
+class header:
     text = ""
     size = "1"
     align = "left"
     color = "black"
     ide = "ffff"
+class paragraph:
+    text = ""
+    align = "left"
+    color = "black"
+    ide = "ffff"
+
+class button:
+    text = ""
+    align = "left"
+    ide = "ffff"
+    action = "ffff"
 
 def project(name, typeof):
     global ENDURE_PROJNAME, ENDURE_PROJTYPE
@@ -70,7 +92,7 @@ def generate():
 def setcharset(charset):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + '<meta charset="{}">'.format(charset) 
-def header_class(header_h):
+def put_hdr(header_h):
     global ENDURE_BODYTEMP
     text = header_h.text
     align = header_h.align
@@ -87,7 +109,7 @@ def header_class(header_h):
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align="{}" style="color:{}" id="{}">{}</h{}>\n'.format(size, align, color, ide, text, size)
     else:
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<h{} align="{}" style="color:{}">{}</h{}>\n'.format(size, align, color, text, size)
-def header(*arg):
+def header_legacy(*arg):
     global ENDURE_BODYTEMP
     arlen = len(arg)
     text = arg[0]
@@ -116,7 +138,21 @@ def header(*arg):
 def background(cl):
     global ENDURE_BODYBACK
     ENDURE_BODYBACK = cl
-def paragraph(*arg):
+def par(paragraph):
+    global ENDURE_BODYTEMP
+    align = paragraph.align
+    text = paragraph.text
+    color = paragraph.color
+    ide = paragraph.ide
+    if align == 'left' or align == 'right' or align == 'center':
+        pass
+    else:
+        cc_err("bad align: "+align)
+    if not ide == "ffff":
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align="{}" style="color:{}" id="{}">'.format(align, color, ide)+text+"</p>"+backslashn
+    else:
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p align="{}" style="color:{}">'.format(align, color)+text+"</p>"+backslashn
+def paragraph_legacy(*arg):
     global ENDURE_BODYTEMP
     arlen = len(arg)
     align = "left"
@@ -140,7 +176,7 @@ def paragraph(*arg):
 def title(hdr):
     global ENDURE_HEADTEMP
     ENDURE_HEADTEMP = ENDURE_HEADTEMP + "<title>"+hdr+"</title>\n"
-def button(*arg):
+def button_legacy(*arg):
     global ENDURE_BODYTEMP
     action = "ffff"
     align = "left"
@@ -159,25 +195,30 @@ def button(*arg):
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + ' onclick="{}">{}</button></p>\n'.format(action, text)
     else:
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '>{}</button></p>\n'.format(text)
+def place_button(btn):
+    global ENDURE_BODYTEMP
+    action = btn.action
+    align = btn.align
+    text = btn.text
+    if align == 'left' or align == 'right' or align == 'center':
+        pass
+    else:
+        cc_err("bad align: "+align)
+    ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p style="text-align:{};"><button'.format(align)
+    if not action == "ffff":
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + ' onclick="{}">{}</button></p>\n'.format(action, text)
+    else:
+        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '>{}</button></p>\n'.format(text)
 def html(code):
     global ENDURE_OTHERTEMP
     ENDURE_OTHERTEMP = ENDURE_OTHERTEMP + code
-def insert_img(*args):
+def insert_img(img):
     global ENDURE_BODYTEMP
-    imgpath = args[0]
-    align = "left"
-    alt = "ffff"
-    width = "100%"
-    height = "100%"
-    argslen = len(args)
-    if argslen > 1:
-        align = args[1]
-    if argslen > 2:
-        alt = args[2]
-    if argslen > 3:
-        width = args[3]
-    if argslen > 4:
-        height = args[4]
+    imgpath = img.imgpath
+    align = img.align
+    alt = img.alt
+    width = img.width
+    height = img.height
     if align == 'left' or align == 'right' or align == 'center':
         pass
     else:
@@ -189,7 +230,10 @@ def insert_img(*args):
             ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="data/img/{}" alt="{}" align="{}"style=" width:{};height:{};">\n'.format(imgpath, alt, align, width, height)
         ENDURE_IMAGELIST.append(imgpath)
     else:
-        ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">\n'.format(imgpath, align)
+        if not align == "left":
+            ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">\n'.format(imgpath, align)
+        else:
+            ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}">\n'.format(imgpath)
 def script(*args):
     global ENDURE_BODYTEMP
     script_src = args[0]
@@ -199,13 +243,10 @@ def script(*args):
     else:
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<script src="{}">\n'.format(script_src)
 
-def href(*a):
+def href(reference):
     global ENDURE_BODYTEMP
-    alen = len(a)
-    text = "ffff"
-    hreff = a[0]
-    if alen > 1:
-        text = a[1]
+    text = reference.text
+    hreff = reference.link
     if not text == "ffff":  
         ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<p><a href="{}">{}</a></p>\n'.format(hreff, text)
     else:

@@ -1,18 +1,43 @@
 project("hello", packed)
 title("Hello, cruel World!")
-paragraph("Hello, fucking World!")
-paragraph("Hello, fucking World!")
-paragraph("Hello, fucking World!")
-paragraph("Hello, fucking World!")
-paragraph("Hello, fucking World!", "right", "cornsilk", "fuckinglast")
-hdr = Header_type()
+p = paragraph()
+p.text = "Hello, fucking World!"
+p.id = "fuck"
+p1 = paragraph()
+p1.text = "Hello, fucking World!"
+p1.id = "fuck1"
+p2 = paragraph()
+p2.text = "Hello, fucking World!"
+p2.id = "fuck2"
+p3 = paragraph()
+p3.text = "Hello, fucking World!"
+p3.id = "fuck3"
+p4 = paragraph()
+p4.text = "Hello, fucking World!"
+p4.id = "fuck4"
+par(p1)
+par(p2)
+par(p3)
+par(p4)
+hdr = header()
 hdr.text = "Oh myyy"
 hdr.size = "2"
 hdr.color = "magenta"
-header_class(hdr)
-header("Oh, such a beautiful World!", 1, "center")
+put_hdr(hdr)
 background("lightgray")
-href("https://github.com/nergzd723/meow", "My GitHub meow project!")
-button("hrmrm", "center", "world()")
+red = ref()
+red.link = "https://github.com/nergzd723/meow"
+red.text = "My GitHub meow project!"
+href(red)
 script("hello.js")
-insert_img("https://image.shutterstock.com/z/stock-vector-a-photo-and-phone-forbidden-warning-sign-vector-illustration-1389437819.jpg", "right")
+i = image()
+i.imgpath = "https://image.shutterstock.com/z/stock-vector-a-photo-and-phone-forbidden-warning-sign-vector-illustration-1389437819.jpg"
+i.align = "right"
+i.height = "30%"
+i.width = "30%"
+i.alt = "no capturing"
+insert_img(i)
+b = button()
+b.text = "no swear"
+b.action = "world()"
+place_button(b)
