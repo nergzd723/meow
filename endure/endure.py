@@ -231,7 +231,7 @@ def insert_img(img):
         ENDURE_IMAGELIST.append(imgpath)
     else:
         if not align == "left":
-            ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}">\n'.format(imgpath, align)
+            ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}" align="{}" style="width:{};height:{};">\n'.format(imgpath, align, width, height)
         else:
             ENDURE_BODYTEMP = ENDURE_BODYTEMP + '<img src="{}">\n'.format(imgpath)
 def script(*args):
