@@ -11,7 +11,7 @@ function world()
         fuck2.innerHTML = 'Hello World!'
         fuck3.innerHTML = 'Hello World!'
         fuck4.innerHTML = 'Hello World!'
-        trigger++
+        trigger = 1
         button.innerHTML = 'swear.ON'
 
     }
@@ -25,7 +25,7 @@ function world()
         fuck3.innerHTML = 'Hello Fucking World!'
         fuck4.innerHTML = 'Hello Fucking World!'
         button.innerHTML = 'no swear'
-        trigger--
+        trigger = 0
     }
     
 }
