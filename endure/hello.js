@@ -1,6 +1,7 @@
 function world()
 {
-    let trigger = 0
+    let trigger
+    let button = document.getElementById("button1")
     if (trigger == 0){
         let fuck1 = document.getElementById("fuck1")
         let fuck2 = document.getElementById("fuck2")
@@ -15,7 +16,6 @@ function world()
 
     }
     else{
-        let button = document.getElementById("button1")
         let fuck1 = document.getElementById("fuck1")
         let fuck2 = document.getElementById("fuck2")
         let fuck3 = document.getElementById("fuck3")
