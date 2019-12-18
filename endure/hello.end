@@ -38,6 +38,7 @@ i.width = "30%"
 i.alt = "no capturing"
 insert_img(i)
 b = button()
+b.ide = "button1"
 b.text = "no swear"
 b.action = "world()"
 place_button(b)
