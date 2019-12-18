@@ -1,6 +1,6 @@
+let trigger = 0
 function world()
 {
-    let trigger
     let button = document.getElementById("button1")
     if (trigger == 0){
         let fuck1 = document.getElementById("fuck1")
