@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 from distutils.spawn import find_executable
 from os import system
-command_for_apt="sudo apt install clang git mono-mcs libboost-all-dev python3 python python3-pip python-pip gccgo && sudo apt install -y python-setuptools python3-setuptools && pip install setuptools && pip3 install nuitka termcolor"
-command_for_pacman="sudo pacman -S gcc-go clang python-pip base-devel boost python python3 python3-pip g++ git && pip install setuptools && pip3 install nuitka termcolor"
-def is_apt():
-    return find_executable("apt") is not None
-def is_pacman():
-    return find_executable("pacman") is not None
-if is_apt():
-    system(command_for_apt)
-if is_pacman():
-    system(command_for_pacman)
+if find_executable("apt") is not None:
+    system("sudo apt install clang git mono-mcs libboost-all-dev python3 python python3-pip python-pip gccgo && sudo apt install -y python-setuptools python3-setuptools && pip install setuptools && pip3 install nuitka termcolor")
+if find_executable("pacman") is not None:
+    system("sudo pacman -S gcc-go clang python-pip base-devel boost python python3 python3-pip g++ git && pip install setuptools && pip3 install nuitka termcolor")
